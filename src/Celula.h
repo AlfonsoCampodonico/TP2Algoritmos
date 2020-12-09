@@ -6,6 +6,7 @@
 #define TP2ALGORITMOS_CELULA_H
 
 #include "InformacionGenetica.h"
+#include "Tablero.h"
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -20,6 +21,15 @@ enum EstadoDeLaCelula {
 class Celula{
 
 private:
+	/* Es la posicion x de la celula
+	 *
+	 */
+	int x;
+	/*
+	 * Es la posicion y de la celula
+	 */
+	int y;
+	int vecinasVivas;
     EstadoDeLaCelula condicion;
     InformacionGenetica* informacionGenetica;
 
@@ -29,7 +39,7 @@ public:
      * Post: Se inicializa una celula con la condicion MUERTA
      *
      */
-    Celula();
+    Celula(int x,int y);
 
     /* Pre: Que el estado de la cedula este muerta
      * Post: La celula pasa a estar viva.
@@ -50,11 +60,20 @@ public:
      * POST: Indica si la celula esta viva.
      */
     bool estaViva();
+    /*Pre:-
+     * Post: Devuelve el estado de la celula
+     */
+    EstadoDeLaCelula obtenerCondicion();
+    /*Pre: Que la posicion X y Y de la celula sea la correcta y este dentro de los rangos [1,MAX]
+     * Post: Devuelve un int con la cantidad de ceulas vecinas vivas
+     */
+    int obtenerCantidadDeVecinasVivas(int x, int y,Tablero* tablero);
 
     /* PRE: -.
      * POST: Libera la memoria pedida.
      */
     ~Celula();
+
 };
 
 
