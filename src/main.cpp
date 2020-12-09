@@ -3,7 +3,11 @@
 //
 #include <iostream>
 using namespace  std;
+#include "JuegoDeLaVida.h"
 int main () {
-    //TODO: Que haga algo
+    JuegoDeLaVida* elJuegoDeLaVida;
+    elJuegoDeLaVida = new JuegoDeLaVida();
+    elJuegoDeLaVida->jugar();
+    delete elJuegoDeLaVida;
     return 0;
 }

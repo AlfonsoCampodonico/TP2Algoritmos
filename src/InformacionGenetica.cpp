@@ -9,5 +9,5 @@ InformacionGenetica::InformacionGenetica(std::string bits) {
 
 }
 InformacionGenetica::InformacionGenetica() {
-    this ->Gen = "0"
+    this ->Gen = "0";
 }

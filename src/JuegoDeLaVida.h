@@ -14,10 +14,12 @@ private:
     InterfazUsuario* consola;
     Tablero* elTablero;
 public:
+    JuegoDeLaVida();
     void ingresarRutaDelArchivo(ifstream& archivo);
     void procesarArchivo(ifstream& nombreArchivo);
     void crearTablero(ifstream& archivo);
     void agregarCelula(ifstream& archivo);
+    void jugar();
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

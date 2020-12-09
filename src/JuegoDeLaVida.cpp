@@ -67,6 +67,13 @@ void JuegoDeLaVida::crearTablero(ifstream& archivo){
 }
 
 void JuegoDeLaVida::agregarCelula(ifstream& archivo){
+    unsigned int posicionX, posicionY,informacionGenetica,intensidad;
+    Tablero* unTablero = this->elTablero;
+
+    archivo  >> posicionX;
+    archivo  >> posicionY;
+
+
 
 
 }

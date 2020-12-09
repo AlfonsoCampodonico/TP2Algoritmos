@@ -16,7 +16,7 @@ void InterfazUsuario::enviarMensajeInicioJuego(){
 void InterfazUsuario::pedirRutaDeUnArchivo(){
     cout << endl;
     cout << "Por favor agrega la ruta del archivo a continuacion"<< endl;
-    cout << "Nombre archivo:"
+    cout << "Nombre archivo:";
 }
 
 void InterfazUsuario::mostrarArchivoInexistente(){
