@@ -3,3 +3,11 @@
 //
 
 #include "InformacionGenetica.h"
+
+InformacionGenetica::InformacionGenetica(std::string bits) {
+    this -> Gen = bits;
+
+}
+InformacionGenetica::InformacionGenetica() {
+    this ->Gen = "0"
+}
