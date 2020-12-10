@@ -3,6 +3,7 @@
 //
 
 #include "JuegoDeLaVida.h"
+#include "Celula.h"
 
 using namespace std;
 
@@ -73,6 +74,7 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
     archivo  >> posicionX;
     archivo  >> posicionY;
 
+   this->elTablero[x]
 
 
 

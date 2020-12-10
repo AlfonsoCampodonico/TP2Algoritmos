@@ -15,11 +15,11 @@ private:
 
     unsigned int cantidadDeFilas;
     unsigned int cantidadDeColumnas;
+    int* tablero;
     Celula* espacio;
 
 
 public:
-
     /*
      * Pre: cantidadDeFilas y cantidadDeColumnas son mayores a 0.
      * POST: crea un tablero con las dimensiones indicadas.
@@ -28,6 +28,11 @@ public:
 
     /* POST: devuelve la cantidad de columnas del tablero */
     unsigned int contarColumnas();
+
+    /* Pre:-
+     * Post: Devuelve el tablero.
+     */
+    int obtenerTablero();
 
     /* POST: devuelve la cantidad de filas del tablero */
     unsigned int contarFilas();
@@ -38,6 +43,7 @@ public:
      * POST: Devuelve la cantidad de vecinas vivas de la parcela ubicada en ( numeroDeColumna, numeroDeFila)
      */
     unsigned int obtenerCantidadDeVecinasVivas(unsigned int numeroDeColumna, unsigned int numeroDeFila);
+
 
 
     /* POST: libera los recursos utilizados */

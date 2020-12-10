@@ -1,6 +1,4 @@
-//
-// Created by alfon on 12/7/2020.
-//
+
 #include "Celula.h"
 #include "Tablero.h"
 Celula::Celula(int x,int y){
@@ -11,11 +9,20 @@ Celula::Celula(int x,int y){
     this-> vecinasVivas = 0;
 }
 
+void Celula::analizarCelula(){
+	if ((this->condicion == MUERTA) && (obtenerVecinasVivas() == 3)){
+		revivirCelula();
+	}
+	else if((this-> condicion == VIVA )&& (obtenerVecinasVivas() != 2 || obtenerVecinasVivas() != 3) ){
+		matarCelula();
+	}
+}
 
 void Celula::revivirCelula(){
     this->condicion = VIVA;
 }
-int Celula::obtenerCantidadDeVecinasVivas(int x , int y,Tablero* tablero){
+ void Celula::CantidadDeVecinasVivas(int x , int y,Tablero* tablero){
+
 	if ((this->obtenerCondicion()) == VIVA && (x-1) != -1 && (y-1) != -1){
 	    this->vecinasVivas ++;
 	      }
@@ -42,7 +49,6 @@ int Celula::obtenerCantidadDeVecinasVivas(int x , int y,Tablero* tablero){
 	        }
 	}
 
-}
 void Celula::matarCelula(){
     this->condicion = MUERTA;
 }
@@ -54,6 +60,11 @@ bool Celula::estaMuerta(){
 bool Celula::estaViva(){
     return (this->condicion==VIVA);
 }
+
+unsigned int Celula::obtenerVecinasVivas(){
+	return (this->vecinasVivas);
+}
+
 EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }

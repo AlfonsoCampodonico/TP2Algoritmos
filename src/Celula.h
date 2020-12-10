@@ -36,17 +36,22 @@ private:
 public:
 
     /* Pre: -.
-     * Post: Se inicializa una celula con la condicion MUERTA
+     * Post: Se inicializa una celula con la condicion MUERTA y su posicion X y su posicion Y.
      *
      */
     Celula(int x,int y);
 
-    /* Pre: Que el estado de la cedula este muerta
+    /* Pre: -
+     * Post: Analizara la celula para ver si se cumplen las condiciones para seguir viva o muerta.
+     */
+    void analizarCelula();
+
+    /* Pre: Que el estado de la celula este muerta
      * Post: La celula pasa a estar viva.
      */
     void revivirCelula();
 
-    /* PRE: Que el estado de la cedula este viva.
+    /* PRE: Que el estado de la celula este viva.
      * POST: La celula pasa a estar muerta.
      */
     void matarCelula();
@@ -64,10 +69,17 @@ public:
      * Post: Devuelve el estado de la celula
      */
     EstadoDeLaCelula obtenerCondicion();
+
     /*Pre: Que la posicion X y Y de la celula sea la correcta y este dentro de los rangos [1,MAX]
-     * Post: Devuelve un int con la cantidad de ceulas vecinas vivas
+     * Post: Calcula la cantidad de celulas vecinas vivas
      */
-    int obtenerCantidadDeVecinasVivas(int x, int y,Tablero* tablero);
+
+    void CantidadDeVecinasVivas(int x, int y,Tablero* tablero);
+
+    /* Pre:-
+     * Post devuelve la cantidad de celulas vecinas vivas que tiene la celula
+     */
+    unsigned int obtenerVecinasVivas();
 
     /* PRE: -.
      * POST: Libera la memoria pedida.
