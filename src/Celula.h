@@ -5,8 +5,8 @@
 #ifndef TP2ALGORITMOS_CELULA_H
 #define TP2ALGORITMOS_CELULA_H
 
-#include "InformacionGenetica.h"
 #include "Tablero.h"
+#include "Gen.h"
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -31,7 +31,8 @@ private:
 	int y;
 	int vecinasVivas;
     EstadoDeLaCelula condicion;
-    InformacionGenetica* informacionGenetica;
+    Gen* gen;
+    -
 
 public:
 
