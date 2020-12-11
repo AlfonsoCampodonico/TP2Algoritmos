@@ -11,6 +11,7 @@ InformacionGenetica::InformacionGenetica(std::string bits) {
 }
 InformacionGenetica::InformacionGenetica() {
     this ->cadenaDeBits = "0";
+    this -> tamano = contarBits();
 }
 
 bool InformacionGenetica::esIgualA(InformacionGenetica *otra) {
