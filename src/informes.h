@@ -41,7 +41,7 @@ class Informes{
 		/*Pre:El tablero ya debe estar inicializado para analizarlo
 		 * Post: Devuelve un int con la cantidad de celulas vivas que tiene el tablero
 		 */
-		int contabilizarCelulasVivas(Tablero* tablero);
+		void contarCelulasVivas(Tablero* tablero);
 
 		/*Pre: -
 		 * Post: Analizara si el juego se congelo y sumará uno
@@ -63,14 +63,19 @@ class Informes{
 		unsigned int obtenerTurnos();
 
 		/* Pre:-
-		 * Post: Devuelve la cantidad de nacimientos
+		 * Post: Devuelve la cantidad de nacimientos en el ultimo turno
 		 */
 		unsigned int obtenerNacimientos();
 
 		/* Pre:-
-		 * Post: Devuelve la cantidad de muertes
+		 * Post: Devuelve la cantidad de muertes en el ultimo turno
 		 */
 		unsigned int obtenerMuertes();
+
+		/*Post: Suma una celula viva
+		 *
+		 */
+		void sumarViva();
 
 
 

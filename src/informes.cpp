@@ -1,6 +1,7 @@
 
 #include "informes.h"
-
+#include "Celula.h"
+#include
 Informes::Informes(){
 
 	this->cantidadTurnos = 0;
@@ -24,6 +25,10 @@ unsigned int Informes::obtenerNacimientos(){
 	return (this->celulasQueNacenEnElTurno);
 }
 
+void Informes::sumarViva(){
+	this->celulasVivas++;
+}
+
 void Informes::sumarTurno(){
 	this->cantidadTurnos++;
 }
@@ -44,4 +49,15 @@ void Informes::promediarMuertes(){
 	this->promedioMuertes = (float)obtenerMuertes() / (float)obtenerTurnos();
 }
 
+void Informes::contarCelulasVivas(Tablero* tablero){
 
+	for (int x = 0 ; x < tablero->contarFilas() ; x++){
+		for (int y = 0 ; y < tablero->contarColumnas() ; y++){
+			//Tablero* unTablero = tablero->obtenerTablero();
+			Celula* celula = tablero[x][y];
+			if ((celula->obtenerCondicion()) == VIVA){
+					sumarViva();
+			}
+		}
+	}
+}

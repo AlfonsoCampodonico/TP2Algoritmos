@@ -1,11 +1,13 @@
 
 #include "Celula.h"
 #include "Tablero.h"
+#include "InformacionGenetica.h"
+
 Celula::Celula(int x,int y){
 	this-> x = x;
 	this-> y = y;
     this->condicion = MUERTA;
-    this->informacionGenetica = new InformacionGenetica();
+    this->informacion = new InformacionGenetica();
     this-> vecinasVivas = 0;
 }
 
@@ -54,11 +56,11 @@ void Celula::matarCelula(){
 }
 
 bool Celula::estaMuerta(){
-    return (this->condicion==MUERTA);
+    return (this->condicion == MUERTA);
 }
 
 bool Celula::estaViva(){
-    return (this->condicion==VIVA);
+    return (this->condicion == VIVA);
 }
 
 unsigned int Celula::obtenerVecinasVivas(){
@@ -69,5 +71,5 @@ EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }
 Celula::~Celula(){
-    delete this->informacionGenetica;
+    delete this->informacion;
 }

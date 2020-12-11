@@ -74,7 +74,7 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
     archivo  >> posicionX;
     archivo  >> posicionY;
 
-   this->elTablero[x]
+   unTablero[posicionX][posicionY] = VIVA;
 
 
 

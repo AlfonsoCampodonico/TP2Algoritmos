@@ -7,6 +7,7 @@
 
 #include "Tablero.h"
 #include "Gen.h"
+#include "InformacionGenetica.h"
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -29,6 +30,7 @@ private:
 	 * Es la posicion y de la celula
 	 */
 	int y;
+	InformacionGenetica* informacion;
 	int vecinasVivas;
     EstadoDeLaCelula condicion;
     Gen* gen;
