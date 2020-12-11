@@ -15,8 +15,8 @@
 class InformacionGenetica {
 
 private:
-    std::string Gen;
-    Intensidad* intensidad;
+    std::string cadenaDeBits;
+    unsigned int tamano;
 
 
 public:
@@ -37,7 +37,7 @@ public:
     bool esIgualA(InformacionGenetica* otra);
 
     /* post: combina la secuencia de bits de la instancia con la secuencia bits de
-     * 'otra', aplicando un OR bit a bit.
+     * 'otra', aplicando un XOR bit a bit.
      */
     void combinarCon(InformacionGenetica* otra);
 
