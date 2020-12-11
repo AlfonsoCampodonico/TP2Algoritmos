@@ -14,7 +14,7 @@ enum EstadoDeLaCelula {
 };
 
 /* Unidad basica que compone un organismo.
- * Su condicion esta representada por un tipo de dato enumerado que puede variar entre:
+ * Su condicion esta representada por un tipo de valor enumerado que puede variar entre:
  * 	 MUERTA: una celula sin vida.
  *	 VIVA: una celula con vida.
  */

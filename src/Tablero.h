@@ -16,7 +16,7 @@ private:
     unsigned int cantidadDeFilas;
     unsigned int cantidadDeColumnas;
     int* tablero;
-    Celula* espacio;
+     Celula* espacio;
 
 
 public:
