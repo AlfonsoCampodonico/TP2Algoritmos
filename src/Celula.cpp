@@ -1,17 +1,29 @@
 
 #include "Celula.h"
+<<<<<<< HEAD
 #include "Tablero.h"
 #include "InformacionGenetica.h"
 
+=======
+//#include "Tablero.h"
+>>>>>>> 00792c272fd48f22f4e99b74fc57b7e1f3726556
 Celula::Celula(int x,int y){
 	this-> x = x;
 	this-> y = y;
     this->condicion = MUERTA;
+<<<<<<< HEAD
     this->informacion = new InformacionGenetica();
+=======
+    this->gen = new Gen();
+>>>>>>> 00792c272fd48f22f4e99b74fc57b7e1f3726556
     this-> vecinasVivas = 0;
 }
 
-void Celula::analizarCelula(){
+Celula::Celula() {
+    this->condicion = MUERTA;
+    this->gen = new Gen();
+}
+/*void Celula::analizarCelula(){
 	if ((this->condicion == MUERTA) && (obtenerVecinasVivas() == 3)){
 		revivirCelula();
 	}
@@ -50,7 +62,7 @@ void Celula::revivirCelula(){
 		this->vecinasVivas ++;
 	        }
 	}
-
+*/
 void Celula::matarCelula(){
     this->condicion = MUERTA;
 }
@@ -63,13 +75,17 @@ bool Celula::estaViva(){
     return (this->condicion == VIVA);
 }
 
-unsigned int Celula::obtenerVecinasVivas(){
+/*unsigned int Celula::obtenerVecinasVivas(){
 	return (this->vecinasVivas);
-}
+}*/
 
 EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }
 Celula::~Celula(){
+<<<<<<< HEAD
     delete this->informacion;
+=======
+    delete this->gen;
+>>>>>>> 00792c272fd48f22f4e99b74fc57b7e1f3726556
 }

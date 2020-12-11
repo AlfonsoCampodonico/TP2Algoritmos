@@ -16,7 +16,7 @@ private:
 public:
     JuegoDeLaVida();
     void ingresarRutaDelArchivo(ifstream& archivo);
-    void procesarArchivo(ifstream& nombreArchivo);
+    void procesarArchivo(ifstream& archivo);
     void crearTablero(ifstream& archivo);
     void agregarCelula(ifstream& archivo);
     void jugar();
