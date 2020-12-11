@@ -44,6 +44,10 @@ public:
      */
     unsigned int obtenerCantidadDeVecinasVivas(unsigned int numeroDeColumna, unsigned int numeroDeFila);
 
+    /* PRE:
+     * POST:
+     */
+    Celula* obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila);
 
 
     /* POST: libera los recursos utilizados */

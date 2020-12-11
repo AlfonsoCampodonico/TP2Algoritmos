@@ -13,6 +13,8 @@ Celula::Celula() {
     this->condicion = MUERTA;
     this->gen = new Gen();
 }
+
+void Celula::setearGen()
 /*void Celula::analizarCelula(){
 	if ((this->condicion == MUERTA) && (obtenerVecinasVivas() == 3)){
 		revivirCelula();

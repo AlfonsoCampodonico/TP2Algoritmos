@@ -37,7 +37,9 @@ unsigned int Tablero::contarFilas(){
     return this->cantidadDeFilas;
 }
 
-
+Celula* Tablero::obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila){
+    return this->espacio[numeroDeColumna-1][numeroDeFila-1];
+}
 
 
 Tablero::~Tablero() {

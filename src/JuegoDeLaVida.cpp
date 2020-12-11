@@ -4,7 +4,7 @@
 
 #include "JuegoDeLaVida.h"
 #include "Celula.h"
-
+// /mnt/c/Users/alfon/Documents/GithubFIUBA/TP2Algoritmos/prueba
 using namespace std;
 
 JuegoDeLaVida::JuegoDeLaVida(){
@@ -16,21 +16,10 @@ JuegoDeLaVida::JuegoDeLaVida(){
 void JuegoDeLaVida::jugar(){
     this->consola->enviarMensajeInicioJuego();
 
-    std::string filename, line;
-    std::cout << "Input file name: ";
-    std::cin >> filename;
 
-    std::ifstream infile(filename);
-    if(!infile)
-        std::cout << "No such file!" << std::endl;
-    else {
-        std::cout << "File contents: " << std::endl;
-        while(infile >> line)
-            std::cout << line << std::endl;
-    }
-    //ifstream archivoInicial;
-    //ingresarRutaDelArchivo(archivoInicial);
-    //procesarArchivo(archivoInicial);
+    ifstream archivoInicial;
+    ingresarRutaDelArchivo(archivoInicial);
+    procesarArchivo(archivoInicial);
     
 }
 
@@ -59,10 +48,10 @@ void JuegoDeLaVida::procesarArchivo(std::ifstream& nombreArchivo){
     while(!nombreArchivo.eof()){
         nombreArchivo >> tipoDeCarga;
 
-        if(tipoDeCarga.compare("Tablero") == 0){
+        if(tipoDeCarga.compare("tablero") == 0){
             crearTablero(nombreArchivo);
         }
-        if(tipoDeCarga.compare("Celula") == 0){
+        if(tipoDeCarga.compare("celula") == 0){
             agregarCelula(nombreArchivo);
         }
 
@@ -72,7 +61,7 @@ void JuegoDeLaVida::procesarArchivo(std::ifstream& nombreArchivo){
 
 void JuegoDeLaVida::crearTablero(ifstream& archivo){
 
-    unsigned int ancho, alto;
+    unsigned int ancho{}, alto{};
     archivo >> ancho;
     archivo >> alto;
     Tablero* nuevoTablero;
@@ -81,14 +70,30 @@ void JuegoDeLaVida::crearTablero(ifstream& archivo){
 }
 
 void JuegoDeLaVida::agregarCelula(ifstream& archivo){
-    unsigned int posicionX, posicionY,informacionGenetica,intensidad;
+    unsigned int posicionX{}, posicionY{};
+    std::string ejecucion{};
     Tablero* unTablero = this->elTablero;
+    Celula* laCelula;
 
     archivo  >> posicionX;
     archivo  >> posicionY;
 
-   this->elTablero[posicionX];
+    laCelula = unTablero->obtenerPosicionCelula(posicionX,posicionY);
+    laCelula ->revivirCelula();
 
+    while(!ejecucion.compare("fin")){
+        archivo >> ejecucion;
 
+        if(ejecucion.compare("gen") == 0){
+            anadirGen(archivo,laCelula);
+        }
+    }
+}
 
+void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
+    std::string informacionGenetica{};
+    unsigned int intensidad{};
+    archivo  >> informacionGenetica;
+    archivo  >> intensidad;
+    
 }

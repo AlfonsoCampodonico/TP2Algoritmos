@@ -19,6 +19,7 @@ public:
     void procesarArchivo(ifstream& archivo);
     void crearTablero(ifstream& archivo);
     void agregarCelula(ifstream& archivo);
+    void anadirGen(ifstream& archivo,celula* celula);
     void jugar();
 };
 

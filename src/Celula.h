@@ -74,6 +74,8 @@ public:
      */
     EstadoDeLaCelula obtenerCondicion();
 
+
+
     /*Pre: Que la posicion X y Y de la celula sea la correcta y este dentro de los rangos [1,MAX]
      * Post: Calcula la cantidad de celulas vecinas vivas
      */
