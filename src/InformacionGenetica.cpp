@@ -47,7 +47,7 @@ void InformacionGenetica::combinarCon(InformacionGenetica *otra) {
             nuevaInformacionGenetica[i] = '0';
         }
         else{
-            nuevaInformacionGenetica[1] = '1';
+            nuevaInformacionGenetica[i] = '1';
         }
 
     }
