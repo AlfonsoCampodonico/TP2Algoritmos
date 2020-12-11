@@ -5,7 +5,7 @@
 #ifndef TP2ALGORITMOS_CELULA_H
 #define TP2ALGORITMOS_CELULA_H
 
-#include "Tablero.h"
+//#include "Tablero.h"
 #include "Gen.h"
 
 enum EstadoDeLaCelula {
@@ -21,7 +21,8 @@ enum EstadoDeLaCelula {
 class Celula{
 
 private:
-	/* Es la posicion x de la celula
+
+/* Es la posicion x de la celula
 	 *
 	 */
 	int x;
@@ -32,7 +33,7 @@ private:
 	int vecinasVivas;
     EstadoDeLaCelula condicion;
     Gen* gen;
-    -
+
 
 public:
 
@@ -41,6 +42,8 @@ public:
      *
      */
     Celula(int x,int y);
+
+    Celula();
 
     /* Pre: -
      * Post: Analizara la celula para ver si se cumplen las condiciones para seguir viva o muerta.
@@ -75,12 +78,12 @@ public:
      * Post: Calcula la cantidad de celulas vecinas vivas
      */
 
-    void CantidadDeVecinasVivas(int x, int y,Tablero* tablero);
+    //void CantidadDeVecinasVivas(int x, int y,Tablero* tablero);
 
     /* Pre:-
      * Post devuelve la cantidad de celulas vecinas vivas que tiene la celula
      */
-    unsigned int obtenerVecinasVivas();
+    //unsigned int obtenerVecinasVivas();
 
     /* PRE: -.
      * POST: Libera la memoria pedida.

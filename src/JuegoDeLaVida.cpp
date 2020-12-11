@@ -9,15 +9,28 @@ using namespace std;
 
 JuegoDeLaVida::JuegoDeLaVida(){
     unsigned  int fila, columna;
-    this->elTablero = new Tablero(fila,columna);
-    this->consola = new InterfazUsuario;
+    //this->elTablero = new Tablero();
+    this->consola = new InterfazUsuario();
 }
 
 void JuegoDeLaVida::jugar(){
     this->consola->enviarMensajeInicioJuego();
-    ifstream archivoInicial;
-    ingresarRutaDelArchivo(archivoInicial);
-    procesarArchivo(archivoInicial);
+
+    std::string filename, line;
+    std::cout << "Input file name: ";
+    std::cin >> filename;
+
+    std::ifstream infile(filename);
+    if(!infile)
+        std::cout << "No such file!" << std::endl;
+    else {
+        std::cout << "File contents: " << std::endl;
+        while(infile >> line)
+            std::cout << line << std::endl;
+    }
+    //ifstream archivoInicial;
+    //ingresarRutaDelArchivo(archivoInicial);
+    //procesarArchivo(archivoInicial);
     
 }
 
@@ -74,7 +87,7 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
     archivo  >> posicionX;
     archivo  >> posicionY;
 
-   this->elTablero[x]
+   this->elTablero[posicionX];
 
 
 

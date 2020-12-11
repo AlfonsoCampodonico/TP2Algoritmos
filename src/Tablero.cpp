@@ -11,16 +11,20 @@ Tablero::Tablero( unsigned int cantidadDeColumnas, unsigned int cantidadDeFilas)
 
     this->cantidadDeFilas = cantidadDeFilas;
     this->cantidadDeColumnas = cantidadDeColumnas;
-    this-> tablero = new int [cantidadDeFilas][cantidadDeColumnas];
-    for (int x = 0 ; x < (contarFilas()) ; x++){
-    	for (int y = 0 ; y < (contarColumnas()) ; y++){
-    		Celula* celula;
-        	celula = new Celula(x,y);
-        	this->tablero[x][y] = celula;
+    this->espacio = new Celula**[cantidadDeColumnas];
+    for(unsigned int i = 0; i<cantidadDeColumnas; i++){
+        this->espacio[i] = new Celula*[cantidadDeFilas];
+    }
+    for(unsigned int i = 0; i<cantidadDeColumnas; i++){
+        for(unsigned int j = 0; j<cantidadDeFilas; j++){
+            Celula* celulaNueva = new Celula();
+            this->espacio[i][j] = celulaNueva;
         }
     }
+        }
 
-}
+
+
 
 
 unsigned int Tablero::contarColumnas(){
@@ -33,9 +37,6 @@ unsigned int Tablero::contarFilas(){
     return this->cantidadDeFilas;
 }
 
-int Tablero::obtenerTablero(){
-	return (this->tablero);
-}
 
 
 
