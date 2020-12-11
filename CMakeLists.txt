@@ -10,4 +10,7 @@ add_executable(TP2Algoritmos
         src/Intensidad.cpp src/Intensidad.h
         src/InformacionGenetica.cpp src/InformacionGenetica.h
         src/InterfazUsuario.cpp src/InterfazUsuario.h
-        src/JuegoDeLaVida.cpp src/JuegoDeLaVida.h src/Nodo.h src/Lista.h)
+        src/JuegoDeLaVida.cpp src/JuegoDeLaVida.h
+        src/Nodo.h
+        src/Lista.h
+        src/informes.cpp src/informes.h)
