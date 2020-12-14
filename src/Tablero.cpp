@@ -2,6 +2,7 @@
 // Created by alfon on 12/2/2020.
 //
 #include "Celula.h"
+#include "informes.h"
 #include "Tablero.h"
 using namespace std;
 
@@ -32,8 +33,23 @@ unsigned int Tablero::contarFilas(){
     return this->cantidadDeFilas;
 }
 
+void Tablero::analizarCelula(Celula* celula,Informes* informes){
+	if ((celula->obtenerCondicion() == MUERTA) && (celula->obtenerVecinasVivas() == 3)){
+		celula->revivirCelula();
+		informes->sumarNacimiento();
+	}
+	else if((celula->condicion == VIVA )&& (celula->obtenerVecinasVivas() != 2 || celula->obtenerVecinasVivas() != 3) ){
+		celula->matarCelula();
+		informes->sumarMuerte();
+	}
+}
+
 Celula* Tablero::obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila){
     return this-> espacio[numeroDeColumna-1][numeroDeFila-1];
+}
+
+Celula*** Tablero::obtenerEspacio(){
+	return (this->espacio);
 }
 
 void Tablero::contarVecinasVivas(){
@@ -44,11 +60,12 @@ void Tablero::contarVecinasVivas(){
 	}
 }
 
-void Tablero::analizarCondicion(){
+void Tablero::analizarCondicion(Informes* informes){
 	for (int x = 0 ; x < contarColumnas() ; x++){
 		for (int y = 0 ; y < contarFilas() ; y++){
-			Celula* celula = (this-> espacio[x][y]);
-			celula->analizarCelula();
+			Celula* celula = (obtenerEspacio()[x][y]);
+			analizarCelula(celula,informes);
+
 		}
 	}
 }

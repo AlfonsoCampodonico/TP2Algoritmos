@@ -6,6 +6,7 @@
 #define TP2ALGORITMOS_JUEGODELAVIDA_H
 #include "InterfazUsuario.h"
 #include "Tablero.h"
+#include "informes.h"
 #include <iostream>
 #include <fstream>
 
@@ -13,6 +14,7 @@ class JuegoDeLaVida {
 private:
     InterfazUsuario* consola;
     Tablero* elTablero;
+    Informes* informes;
 public:
     JuegoDeLaVida();
     void ingresarRutaDelArchivo(ifstream& archivo);

@@ -5,7 +5,6 @@
 #ifndef TP2ALGORITMOS_CELULA_H
 #define TP2ALGORITMOS_CELULA_H
 
-#include "Tablero.h"
 #include "Gen.h"
 #include "InformacionGenetica.h"
 
@@ -47,10 +46,6 @@ public:
 
     Celula();
 
-    /* Pre: -
-     * Post: Analizara la celula para ver si se cumplen las condiciones para seguir viva o muerta.
-     */
-    void analizarCelula();
 
     /* Pre: Que el estado de la celula este muerta
      * Post: La celula pasa a estar viva.
@@ -79,12 +74,6 @@ public:
     int obtenerX();
 
     int obtenerY();
-
-    /*Pre: Que la posicion X y Y de la celula sea la correcta y este dentro de los rangos [1,MAX]
-     * Post: Calcula la cantidad de celulas vecinas vivas
-     */
-
-    void cantidadDeVecinasVivas(int x, int y,Tablero* tablero);
 
     /* Pre:-
      * Post devuelve la cantidad de celulas vecinas vivas que tiene la celula

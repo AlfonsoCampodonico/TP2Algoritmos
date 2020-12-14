@@ -14,8 +14,10 @@ class Informes{
 	private:
 		int cantidadTurnos;
 		int celulasVivas;
-		int celulasQueNacenEnElTurno;
-		int celulasQueMuerenEnElTurno;
+		int nacimientosTurnos;
+		int nacimientosTotales;
+		int muertesTurnos;
+		int muertesTotales;
 		int promedioNacimiento;
 		int promedioMuertes;
 		int juegoCongelado;
@@ -65,12 +67,12 @@ class Informes{
 		/* Pre:-
 		 * Post: Devuelve la cantidad de nacimientos en el ultimo turno
 		 */
-		unsigned int obtenerNacimientos();
+		unsigned int obtenerNacimientosTurno();
 
 		/* Pre:-
 		 * Post: Devuelve la cantidad de muertes en el ultimo turno
 		 */
-		unsigned int obtenerMuertes();
+		unsigned int obtenerMuertesTurno();
 
 		/*Post: Suma una celula viva
 		 *
@@ -81,8 +83,21 @@ class Informes{
 		 */
 		bool estaCongelado();
 
+		void resetearMuertesTurno();
 
+		void resetearNacimientosTurno();
 
+		void resetearTurnos();
+
+		void resetearVivas();
+
+		void resetearNacimientosTotales();
+
+		void resetearMuertesTotales();
+
+		void sumarNacimientosTotales();
+
+		void sumarMuertesTotales();
 
 
 };

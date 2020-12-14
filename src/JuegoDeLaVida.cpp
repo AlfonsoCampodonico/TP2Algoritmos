@@ -11,6 +11,7 @@ JuegoDeLaVida::JuegoDeLaVida(){
     unsigned  int fila, columna;
     this->elTablero = new Tablero();
     this->consola = new InterfazUsuario();
+    this-> informes = new Informes();
 }
 
 void JuegoDeLaVida::jugar(){
@@ -19,7 +20,7 @@ void JuegoDeLaVida::jugar(){
     ifstream archivoInicial;
     ingresarRutaDelArchivo(archivoInicial);
     procesarArchivo(archivoInicial);
-    Informes informeTotal;
+    Informes* informe = (this->informes);
     Tablero* tablero = (this-> elTablero);
     while(){
     	int turno = 0;
@@ -29,11 +30,13 @@ void JuegoDeLaVida::jugar(){
     	cin >> turno;
 
     	if (turno == 1){
-    		Informes informesTurno;
-    		informeTotal.sumarTurno();
-
+    		informe->resetearMuertesTurno();
+    		informe->resetearNacimientosTurno();
+    		informe->resetearVivas();
+    		informe->sumarTurno();
     		tablero-> contarVecinasVivas();
-    		tablero-> analizarCondicion();
+    		tablero-> analizarCondicion(informe);
+
     	}
     }
 }

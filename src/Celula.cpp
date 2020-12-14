@@ -29,14 +29,7 @@ int Celula::obtenerX(){
 void Celula::setearGen(){
 
 }
-void Celula::analizarCelula(){
-	if ((this->condicion == MUERTA) && (obtenerVecinasVivas() == 3)){
-		revivirCelula();
-	}
-	else if((this-> condicion == VIVA )&& (obtenerVecinasVivas() != 2 || obtenerVecinasVivas() != 3) ){
-		matarCelula();
-	}
-}
+
 
 void Celula::revivirCelula(){
     this->condicion = VIVA;
