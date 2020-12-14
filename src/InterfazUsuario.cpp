@@ -23,3 +23,10 @@ void InterfazUsuario::mostrarArchivoInexistente(){
     cout << endl;
     cout << "El archivo no existe! Por favor verificar." << endl;
 }
+
+
+void InterfazUsuario::mostrarInformacionDelJuego(Informes* informes) {
+    cout << endl;
+    //cout << "Celulas vivas: " << informes->contarCelulasVivas() << endl;
+    cout << "Nacimientos: " << informes->obtenerNacimientos() << endl;
+}

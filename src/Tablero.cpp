@@ -74,28 +74,28 @@ void Tablero::cantidadDeVecinasVivas(int x, int y){
 	Celula* celula = (this->espacio[x][y]);
 
 	if ((celula->obtenerCondicion()) == VIVA && (x-1) != -1 && (y-1) != -1){
-		celula->vecinasVivas ++;
+		celula->aumentarVecinasVivas();
 	      }
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y+1) != contarColumnas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	    }
 	if ((celula->obtenerCondicion())== VIVA && (y+1) != contarColumnas()){
-	    celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	    }
 	if ((celula->obtenerCondicion())== VIVA && (y-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	}
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	      }
 	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1 && (y+1) != contarColumnas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	}
 
