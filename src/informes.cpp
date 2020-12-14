@@ -17,6 +17,7 @@ unsigned int Informes::obtenerTurnos(){
 	return (this->cantidadTurnos);
 }
 
+
 unsigned int Informes::obtenerMuertes(){
 	return (this->celulasQueMuerenEnElTurno);
 }
@@ -59,5 +60,18 @@ void Informes::contarCelulasVivas(Tablero* tablero){
 					sumarViva();
 			}
 		}
+	}
+}
+
+bool Informes::estaCongelado(){
+	bool congelado = false;
+	if ((obtenerNacimientos() == 0) && (obtenerMuertes() == 0)){
+		this-> juegoCongelado++;
+		if ((this->juegoCongelado) == 3){
+			congelado = true;
+		}
+	}
+	else {
+		this->juegoCongelado = 0;
 	}
 }

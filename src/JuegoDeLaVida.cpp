@@ -1,26 +1,41 @@
 //
 // Created by alfon on 12/9/2020.
 //
-
 #include "JuegoDeLaVida.h"
 #include "Celula.h"
+#include "informes.h"
 // /mnt/c/Users/alfon/Documents/GithubFIUBA/TP2Algoritmos/prueba
 using namespace std;
 
 JuegoDeLaVida::JuegoDeLaVida(){
     unsigned  int fila, columna;
-    //this->elTablero = new Tablero();
+    this->elTablero = new Tablero();
     this->consola = new InterfazUsuario();
 }
 
 void JuegoDeLaVida::jugar(){
+
     this->consola->enviarMensajeInicioJuego();
-
-
     ifstream archivoInicial;
     ingresarRutaDelArchivo(archivoInicial);
     procesarArchivo(archivoInicial);
-    
+    Informes informeTotal;
+    Tablero* tablero = (this-> elTablero);
+    while(){
+    	int turno = 0;
+    	cout << "1-Jugar un turno.." << endl;
+    	cout << "2- Reiniciar turno" << endl;
+    	cout << "3- Finalizar juego." << endl;
+    	cin >> turno;
+
+    	if (turno == 1){
+    		Informes informesTurno;
+    		informeTotal.sumarTurno();
+
+    		tablero-> contarVecinasVivas();
+    		tablero-> analizarCondicion();
+    	}
+    }
 }
 
 void JuegoDeLaVida::ingresarRutaDelArchivo(ifstream& archivo){

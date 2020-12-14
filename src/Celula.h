@@ -5,7 +5,7 @@
 #ifndef TP2ALGORITMOS_CELULA_H
 #define TP2ALGORITMOS_CELULA_H
 
-//#include "Tablero.h"
+#include "Tablero.h"
 #include "Gen.h"
 #include "InformacionGenetica.h"
 
@@ -76,24 +76,30 @@ public:
      */
     EstadoDeLaCelula obtenerCondicion();
 
+    int obtenerX();
 
+    int obtenerY();
 
     /*Pre: Que la posicion X y Y de la celula sea la correcta y este dentro de los rangos [1,MAX]
      * Post: Calcula la cantidad de celulas vecinas vivas
      */
 
-    //void CantidadDeVecinasVivas(int x, int y,Tablero* tablero);
+    void cantidadDeVecinasVivas(int x, int y,Tablero* tablero);
 
     /* Pre:-
      * Post devuelve la cantidad de celulas vecinas vivas que tiene la celula
      */
-    //unsigned int obtenerVecinasVivas();
+    unsigned int obtenerVecinasVivas();
 
     /* PRE: -.
      * POST: Libera la memoria pedida.
      */
     ~Celula();
 
+    /*Pre:
+     * Post:
+     */
+    void setearGen();
 };
 
 

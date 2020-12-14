@@ -21,5 +21,5 @@ void InterfazUsuario::pedirRutaDeUnArchivo(){
 
 void InterfazUsuario::mostrarArchivoInexistente(){
     cout << endl;
-    cout << "El archivo no existe! Favor verificar." << endl;
+    cout << "El archivo no existe! Por favor verificar." << endl;
 }

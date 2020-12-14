@@ -37,13 +37,19 @@ public:
     /* POST: devuelve la cantidad de filas del tablero */
     unsigned int contarFilas();
 
-
-    /* PRE: 'numeroDeColumna' pertenece al intervalo (0, contarColumnas()]
-     * y 'numeroDeFila' pertenece al intervalo (0, contarFilas()]
-     * POST: Devuelve la cantidad de vecinas vivas de la parcela ubicada en ( numeroDeColumna, numeroDeFila)
+    /*Pre: Tener un tablero inicializado
+     * Post: Si se cumplen las condiciones, cambia la condicion de la celula
      */
-    unsigned int obtenerCantidadDeVecinasVivas(unsigned int numeroDeColumna, unsigned int numeroDeFila);
+    void Tablero::analizarCondicion();
+    /*Pre:Se debe pasar un objeto a puntero del tipo Celula y las posiciones de la celula
+     * Post: Se fija si las vecinas de la celula estan vivas y las cuenta.
+     */
+    void Tablero::cantidadDeVecinasVivas(int x,int y);
 
+    /* PRE: Tener un tablero inicializado
+     * POST: Recorre todo el tablero para contar las vecinas vivas de cada celula
+     */
+    void contarVecinasVivas();
     /* PRE:
      * POST:
      */
@@ -51,6 +57,7 @@ public:
 
 
     /* POST: libera los recursos utilizados */
+
     ~Tablero();
 };
 

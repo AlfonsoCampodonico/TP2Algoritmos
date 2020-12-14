@@ -41,7 +41,7 @@ class Informes{
 		/*Pre:El tablero ya debe estar inicializado para analizarlo
 		 * Post: Devuelve un int con la cantidad de celulas vivas que tiene el tablero
 		 */
-		void contarCelulasVivas(Tablero* tablero);
+		void contarCelulasVivas();
 
 		/*Pre: -
 		 * Post: Analizara si el juego se congelo y sumará uno
@@ -76,6 +76,10 @@ class Informes{
 		 *
 		 */
 		void sumarViva();
+		/*Pre:-
+		 * Post: Devuelve si el juego está congelado o no
+		 */
+		bool estaCongelado();
 
 
 
