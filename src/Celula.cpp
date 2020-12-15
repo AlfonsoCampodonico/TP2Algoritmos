@@ -9,13 +9,13 @@ Celula::Celula(int x,int y){
 	this-> y = y;
     this->condicion = MUERTA;
     this->informacion = new InformacionGenetica();
-    this-> gen = new Gen();
+    this-> genes = new Lista<Gen*>();
     this-> vecinasVivas = 0;
 }
 
 Celula::Celula() {
     this->condicion = MUERTA;
-    this->gen = new Gen();
+    this-> genes = new Lista<Gen*>();
 }
 
 int Celula::obtenerY(){
@@ -59,5 +59,5 @@ Celula::~Celula(){
 
     delete this->informacion;
 
-    delete this->gen;
+    delete[] this->genes;
 }

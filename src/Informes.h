@@ -24,7 +24,7 @@ class Informes{
 
 	public:
 		/*
-		 * Post: Crea un informe con todo inicializado en 0.
+		 * Post: Crea un informe con to do inicializado en 0.
 		 */
 		Informes();
 

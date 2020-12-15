@@ -3,7 +3,7 @@
 //
 #include "JuegoDeLaVida.h"
 #include "Celula.h"
-#include "informes.h"
+#include "Informes.h"
 // /mnt/c/Users/alfon/Documents/GithubFIUBA/TP2Algoritmos/prueba
 using namespace std;
 
@@ -113,5 +113,6 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
     unsigned int intensidad{};
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
-    
+
+
 }

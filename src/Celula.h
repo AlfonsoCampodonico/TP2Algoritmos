@@ -7,6 +7,7 @@
 
 #include "Gen.h"
 #include "InformacionGenetica.h"
+#include "Lista.h"
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -33,7 +34,7 @@ private:
 	InformacionGenetica* informacion;
 	int vecinasVivas;
     EstadoDeLaCelula condicion;
-    Gen* gen;
+    Lista<Gen*>* genes;
 
 
 public:

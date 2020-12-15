@@ -1,5 +1,5 @@
 
-#include "informes.h"
+#include "Informes.h"
 #include "Celula.h"
 Informes::Informes(){
 

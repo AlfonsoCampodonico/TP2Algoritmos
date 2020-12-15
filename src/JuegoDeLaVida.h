@@ -6,7 +6,7 @@
 #define TP2ALGORITMOS_JUEGODELAVIDA_H
 #include "InterfazUsuario.h"
 #include "Tablero.h"
-#include "informes.h"
+#include "Informes.h"
 #include <iostream>
 #include <fstream>
 

@@ -2,7 +2,7 @@
 // Created by alfon on 12/2/2020.
 //
 #include "Celula.h"
-#include "informes.h"
+#include "Informes.h"
 #include "Tablero.h"
 using namespace std;
 
