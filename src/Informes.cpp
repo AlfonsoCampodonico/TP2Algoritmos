@@ -7,8 +7,10 @@ Informes::Informes(){
 
 	this->cantidadTurnos = 0;
 	this-> celulasVivas = 0;
-	this-> nacimientos = 0;
-	this-> muertes = 0;
+	this-> nacimientosTurnos = 0;
+	this-> nacimientosTotales = 0;
+	this-> muertesTurnos = 0;
+	this-> muertesTotales = 0;
 	this-> promedioNacimiento = 0;
 	this->promedioMuertes = 0;
 	this->juegoCongelado = 0;
@@ -86,7 +88,7 @@ void Informes::promediarMuertes(){
 	this->promedioMuertes = (float)obtenerMuertesTotales() / (float)obtenerTurnos();
 }
 
-/*void Informes::contarCelulasVivas(Tablero* tablero){
+void Informes::contarCelulasVivas(Tablero* tablero){
 
 	for (int x = 0 ; x < tablero->contarFilas() ; x++){
 		for (int y = 0 ; y < tablero->contarColumnas() ; y++){
@@ -97,7 +99,7 @@ void Informes::promediarMuertes(){
 		}
 	}
 }
-*/
+
 bool Informes::estaCongelado(){
 	bool congelado = false;
 	if ((obtenerNacimientosTurno() == 0) && (obtenerMuertesTurno() == 0)){
