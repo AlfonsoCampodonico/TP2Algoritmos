@@ -99,7 +99,7 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
     laCelula = unTablero->obtenerPosicionCelula(posicionX,posicionY);
     laCelula ->revivirCelula();
 
-    while(!ejecucion.compare("fin")){
+    while(!ejecucion.compare("fin")==0){
         archivo >> ejecucion;
 
         if(ejecucion.compare("gen") == 0){
