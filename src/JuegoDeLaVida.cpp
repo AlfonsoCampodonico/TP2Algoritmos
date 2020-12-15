@@ -27,6 +27,7 @@ void JuegoDeLaVida::jugar(){
     	cout << "1-Jugar un turno.." << endl;
     	cout << "2- Reiniciar turno" << endl;
     	cout << "3- Finalizar juego." << endl;
+    	cout << "Ingrese la opcion correcta: " << endl;
     	cin >> turno;
 
     	if (turno == 1){
