@@ -28,5 +28,5 @@ void InterfazUsuario::mostrarArchivoInexistente(){
 void InterfazUsuario::mostrarInformacionDelJuego(Informes* informes) {
     cout << endl;
     //cout << "Celulas vivas: " << informes->contarCelulasVivas() << endl;
-    cout << "Nacimientos: " << informes->obtenerNacimientos() << endl;
+    //cout << "Nacimientos: " << informes->obtenerNacimientos() << endl;
 }

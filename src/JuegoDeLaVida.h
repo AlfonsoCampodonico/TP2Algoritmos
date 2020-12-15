@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 
+
 class JuegoDeLaVida {
 private:
     InterfazUsuario* consola;
@@ -21,7 +22,7 @@ public:
     void procesarArchivo(ifstream& archivo);
     void crearTablero(ifstream& archivo);
     void agregarCelula(ifstream& archivo);
-    void anadirGen(ifstream& archivo,celula* celula);
+    void anadirGen(ifstream& archivo,Celula* celula);
     void jugar();
 };
 

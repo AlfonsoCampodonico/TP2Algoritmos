@@ -6,6 +6,7 @@
 #define TP2ALGORITMOS_INTERFAZUSUARIO_H
 #include <string>
 #include <iostream>
+#include "Informes.h"
 using namespace  std;
 /*
  * La 'InterfazUsuario' se encarga de mostrar mensajes al usuario por consola
@@ -32,7 +33,7 @@ public:
     void mostrarArchivoInexistente();
 
 
-
+    void mostrarInformacionDelJuego(Informes *informes);
 };
 
 #endif //TP2ALGORITMOS_INTERFAZUSUARIO_H

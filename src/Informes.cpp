@@ -86,7 +86,7 @@ void Informes::promediarMuertes(){
 	this->promedioMuertes = (float)obtenerMuertesTotales() / (float)obtenerTurnos();
 }
 
-void Informes::contarCelulasVivas(Tablero* tablero){
+/*void Informes::contarCelulasVivas(Tablero* tablero){
 
 	for (int x = 0 ; x < tablero->contarFilas() ; x++){
 		for (int y = 0 ; y < tablero->contarColumnas() ; y++){
@@ -97,7 +97,7 @@ void Informes::contarCelulasVivas(Tablero* tablero){
 		}
 	}
 }
-
+*/
 bool Informes::estaCongelado(){
 	bool congelado = false;
 	if ((obtenerNacimientosTurno() == 0) && (obtenerMuertesTurno() == 0)){
