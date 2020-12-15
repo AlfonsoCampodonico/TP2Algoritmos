@@ -22,7 +22,7 @@ void JuegoDeLaVida::jugar(){
     procesarArchivo(archivoInicial);
     Informes* informe = (this->informes);
     Tablero* tablero = (this-> elTablero);
-   /* while(){
+    while(){
     	int turno = 0;
     	cout << "1-Jugar un turno.." << endl;
     	cout << "2- Reiniciar turno" << endl;
@@ -39,8 +39,9 @@ void JuegoDeLaVida::jugar(){
     		tablero-> analizarCondicion(informe);
 
     	}
-    }*/
-}
+    }
+
+ }
 
 void JuegoDeLaVida::ingresarRutaDelArchivo(ifstream& archivo){
     string nombreArchivo;

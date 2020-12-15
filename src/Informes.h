@@ -7,9 +7,9 @@
 
 #ifndef INFORMES_H_
 #define INFORMES_H_
+
 #include "Celula.h"
-
-
+#include "Tablero.h"
 
 class Informes{
 	private:
@@ -22,8 +22,6 @@ class Informes{
 		int promedioNacimiento;
 		int promedioMuertes;
 		int juegoCongelado;
-        int nacimientos;
-        int muertes;
 
 	public:
 		/*
@@ -46,7 +44,7 @@ class Informes{
 		/*Pre:El tablero ya debe estar inicializado para analizarlo
 		 * Post: Devuelve un int con la cantidad de celulas vivas que tiene el tablero
 		 */
-		void contarCelulasVivas();
+		void contarCelulasVivas(Tablero* tablero);
 
 		/*Pre: -
 		 * Post: Analizara si el juego se congelo y sumará uno
