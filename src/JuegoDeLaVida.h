@@ -17,7 +17,14 @@ private:
     Tablero* elTablero;
     Informes* informes;
 public:
+    /* PRE:
+     * POST: pide los recursos necesarios para generar los elementos de los componentes del juego.
+     */
     JuegoDeLaVida();
+
+    /* PRE: ruta del archivo inicial a procesar.
+     * POST: pide los recursos necesarios para generar los elementos de los componentes del juego.
+     */
     void ingresarRutaDelArchivo(ifstream& archivo);
     void procesarArchivo(ifstream& archivo);
     void crearTablero(ifstream& archivo);

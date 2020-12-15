@@ -111,6 +111,8 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
 void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
     std::string informacionGenetica{};
     unsigned int intensidad{};
+
+
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
 
