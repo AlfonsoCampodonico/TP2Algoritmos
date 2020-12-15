@@ -99,6 +99,10 @@ class Informes{
 
 		void sumarMuertesTotales();
 
+		int obtenerMuertesTotales();
+
+		int obtenerNacimientosTotales();
+
 
 };
 
