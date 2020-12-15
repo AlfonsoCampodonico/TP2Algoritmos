@@ -1,6 +1,8 @@
 
 #include "Informes.h"
-#include "Celula.h"
+#include "Tablero.h"
+
+
 Informes::Informes(){
 
 	this->cantidadTurnos = 0;
@@ -16,13 +18,7 @@ unsigned int Informes::obtenerTurnos(){
 	return (this->cantidadTurnos);
 }
 
-void Informes::resetearNacimientos(){
-	(this-> nacimientos) = 0;
-}
 
-void Informes::resetearMuertes(){
-	(this-> muertes) = 0;
-}
 
 void Informes::resetearVivas(){
 	(this->celulasVivas) = 0;
@@ -39,14 +35,23 @@ unsigned int Informes::obtenerMuertesTurno(){
 unsigned int Informes::obtenerNacimientosTurno(){
 	return (this->nacimientosTurnos);
 }
-
+//TODO
 int Informes::obtenerNacimientosTotales(){
 	return (this-> nacimientosTotales);
 }
 
-int Informes::obtenerMuertesTotales(){
-	return (this-> muertesTotales);
+int Informes::obtenerMuertesTotales() {
+    return (this->muertesTotales);
 }
+
+void Informes::resetearNacimientosTurno(){
+	(this-> nacimientos) = 0;
+}
+
+void Informes::resetearMuertes(){
+	(this-> muertes) = 0;
+}
+
 
 void Informes::sumarViva(){
 	this->celulasVivas++;
@@ -95,7 +100,7 @@ void Informes::contarCelulasVivas(Tablero* tablero){
 
 bool Informes::estaCongelado(){
 	bool congelado = false;
-	if ((obtenerNacimientos() == 0) && (obtenerMuertes() == 0)){
+	if ((obtenerNacimientosTurno() == 0) && (obtenerMuertesTurno() == 0)){
 		this-> juegoCongelado++;
 		congelado = ((this->juegoCongelado) == 3);
 		}

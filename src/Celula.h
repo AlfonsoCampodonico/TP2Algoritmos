@@ -89,7 +89,11 @@ public:
     /*Pre:
      * Post:
      */
-    void setearGen();
+    void setearGen(std::string informacionGenetica, unsigned int intensidad);
+    /*Pre:
+     * Post:
+     */
+    void aumentarVecinasVivas();
 };
 
 

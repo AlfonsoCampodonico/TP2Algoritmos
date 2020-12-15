@@ -114,5 +114,7 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
 
+    celula->setearGen(informacionGenetica, intensidad);
+
 
 }

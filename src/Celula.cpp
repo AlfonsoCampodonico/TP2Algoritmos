@@ -26,8 +26,10 @@ int Celula::obtenerX(){
 	return (this-> x);
 }
 
-void Celula::setearGen(){
-
+void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
+    Gen* unGen;
+    unGen = new Gen(informacionGenetica, intensidad);
+    this->genes->agregar(unGen);
 }
 
 
@@ -55,6 +57,11 @@ unsigned int Celula::obtenerVecinasVivas(){
 EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }
+
+void Celula::aumentarVecinasVivas() {
+    this->vecinasVivas++;
+}
+
 Celula::~Celula(){
 
     delete this->informacion;
