@@ -6,7 +6,9 @@
 #define TABLERO_H_
 #include <string>
 #include "Celula.h"
-#include "informes.h"
+#include "Informes.h"
+
+
 /*
  * Matriz bidimensional que sera la encargada de contener los elementos del juego.
  */
@@ -41,11 +43,11 @@ public:
     /*Pre: Tener un tablero inicializado
      * Post: Si se cumplen las condiciones, cambia la condicion de la celula
      */
-    void Tablero::analizarCondicion(Informes* informes);
+    void analizarCondicion(Informes* informes);
     /*Pre:Se debe pasar un objeto a puntero del tipo Celula y las posiciones de la celula
      * Post: Se fija si las vecinas de la celula estan vivas y las cuenta.
      */
-    void Tablero::cantidadDeVecinasVivas(int x,int y);
+    void cantidadDeVecinasVivas(int x,int y);
 
     /*Pre:
      * Post:

@@ -1,8 +1,7 @@
 //
 // Created by alfon on 12/2/2020.
 //
-#include "Celula.h"
-#include "informes.h"
+
 #include "Tablero.h"
 using namespace std;
 
@@ -38,7 +37,7 @@ void Tablero::analizarCelula(Celula* celula,Informes* informes){
 		celula->revivirCelula();
 		informes->sumarNacimiento();
 	}
-	else if((celula->condicion == VIVA )&& (celula->obtenerVecinasVivas() != 2 || celula->obtenerVecinasVivas() != 3) ){
+	else if((celula->obtenerCondicion() == VIVA )&& (celula->obtenerVecinasVivas() != 2 || celula->obtenerVecinasVivas() != 3) ){
 		celula->matarCelula();
 		informes->sumarMuerte();
 	}
@@ -74,28 +73,28 @@ void Tablero::cantidadDeVecinasVivas(int x, int y){
 	Celula* celula = (this->espacio[x][y]);
 
 	if ((celula->obtenerCondicion()) == VIVA && (x-1) != -1 && (y-1) != -1){
-		celula->vecinasVivas ++;
+		celula->aumentarVecinasVivas();
 	      }
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y+1) != contarColumnas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	    }
 	if ((celula->obtenerCondicion())== VIVA && (y+1) != contarColumnas()){
-	    celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	    }
 	if ((celula->obtenerCondicion())== VIVA && (y-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	}
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	      }
 	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1 && (y+1) != contarColumnas()){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y-1) != -1){
-		celula->vecinasVivas ++;
+        celula->aumentarVecinasVivas();
 	        }
 	}
 

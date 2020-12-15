@@ -7,6 +7,7 @@
 
 #include "Gen.h"
 #include "InformacionGenetica.h"
+#include "Lista.h"
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -33,7 +34,7 @@ private:
 	InformacionGenetica* informacion;
 	int vecinasVivas;
     EstadoDeLaCelula condicion;
-    Gen* gen;
+    Lista<Gen*>* genes;
 
 
 public:
@@ -88,7 +89,11 @@ public:
     /*Pre:
      * Post:
      */
-    void setearGen();
+    void setearGen(std::string informacionGenetica, unsigned int intensidad);
+    /*Pre:
+     * Post:
+     */
+    void aumentarVecinasVivas();
 };
 
 

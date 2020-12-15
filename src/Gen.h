@@ -11,7 +11,7 @@ class Gen{
 private:
     unsigned  int edad;
     InformacionGenetica* informacionGenetica;
-    Intensidad* intensidad;
+    unsigned int intensidad;
 public:
 
     /* Pre: -

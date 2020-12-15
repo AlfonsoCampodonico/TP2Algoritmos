@@ -7,8 +7,9 @@
 
 #ifndef INFORMES_H_
 #define INFORMES_H_
+#include "Celula.h"
 
-#include "Tablero.h"
+
 
 class Informes{
 	private:
@@ -21,10 +22,12 @@ class Informes{
 		int promedioNacimiento;
 		int promedioMuertes;
 		int juegoCongelado;
+        int nacimientos;
+        int muertes;
 
 	public:
 		/*
-		 * Post: Crea un informe con todo inicializado en 0.
+		 * Post: Crea un informe con to do inicializado en 0.
 		 */
 		Informes();
 
@@ -104,6 +107,11 @@ class Informes{
 		int obtenerNacimientosTotales();
 
 
+    int obtenerMuertesTotales();
+
+    int obtenerNacimientosTotales();
+
+    void resetearMuertes();
 };
 
 

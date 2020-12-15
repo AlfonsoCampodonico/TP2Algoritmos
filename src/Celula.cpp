@@ -9,13 +9,13 @@ Celula::Celula(int x,int y){
 	this-> y = y;
     this->condicion = MUERTA;
     this->informacion = new InformacionGenetica();
-    this-> gen = new Gen();
+    this-> genes = new Lista<Gen*>();
     this-> vecinasVivas = 0;
 }
 
 Celula::Celula() {
     this->condicion = MUERTA;
-    this->gen = new Gen();
+    this-> genes = new Lista<Gen*>();
 }
 
 int Celula::obtenerY(){
@@ -26,8 +26,10 @@ int Celula::obtenerX(){
 	return (this-> x);
 }
 
-void Celula::setearGen(){
-
+void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
+    Gen* unGen;
+    unGen = new Gen(informacionGenetica, intensidad);
+    this->genes->agregar(unGen);
 }
 
 
@@ -55,9 +57,14 @@ unsigned int Celula::obtenerVecinasVivas(){
 EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }
+
+void Celula::aumentarVecinasVivas() {
+    this->vecinasVivas++;
+}
+
 Celula::~Celula(){
 
     delete this->informacion;
 
-    delete this->gen;
+    delete[] this->genes;
 }

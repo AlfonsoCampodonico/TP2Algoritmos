@@ -13,4 +13,4 @@ add_executable(TP2Algoritmos
         src/JuegoDeLaVida.cpp src/JuegoDeLaVida.h
         src/Nodo.h
         src/Lista.h
-        src/informes.cpp src/informes.h src/Gen.cpp src/Gen.h)
+        src/Informes.cpp src/Informes.h src/Gen.cpp src/Gen.h)

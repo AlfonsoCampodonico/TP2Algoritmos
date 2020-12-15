@@ -3,13 +3,13 @@
 //
 #include "JuegoDeLaVida.h"
 #include "Celula.h"
-#include "informes.h"
+#include "Informes.h"
 // /mnt/c/Users/alfon/Documents/GithubFIUBA/TP2Algoritmos/prueba
 using namespace std;
 
 JuegoDeLaVida::JuegoDeLaVida(){
     unsigned  int fila, columna;
-    this->elTablero = new Tablero();
+    //this->elTablero = new Tablero();
     this->consola = new InterfazUsuario();
     this-> informes = new Informes();
 }
@@ -22,7 +22,7 @@ void JuegoDeLaVida::jugar(){
     procesarArchivo(archivoInicial);
     Informes* informe = (this->informes);
     Tablero* tablero = (this-> elTablero);
-    while(){
+   /* while(){
     	int turno = 0;
     	cout << "1-Jugar un turno.." << endl;
     	cout << "2- Reiniciar turno" << endl;
@@ -38,7 +38,7 @@ void JuegoDeLaVida::jugar(){
     		tablero-> analizarCondicion(informe);
 
     	}
-    }
+    }*/
 }
 
 void JuegoDeLaVida::ingresarRutaDelArchivo(ifstream& archivo){
@@ -99,7 +99,7 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
     laCelula = unTablero->obtenerPosicionCelula(posicionX,posicionY);
     laCelula ->revivirCelula();
 
-    while(!ejecucion.compare("fin")){
+    while(!ejecucion.compare("fin")==0){
         archivo >> ejecucion;
 
         if(ejecucion.compare("gen") == 0){
@@ -111,7 +111,12 @@ void JuegoDeLaVida::agregarCelula(ifstream& archivo){
 void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
     std::string informacionGenetica{};
     unsigned int intensidad{};
+
+
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
-    
+
+    celula->setearGen(informacionGenetica, intensidad);
+
+
 }
