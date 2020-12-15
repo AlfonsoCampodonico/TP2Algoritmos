@@ -65,6 +65,6 @@ void Celula::aumentarVecinasVivas() {
 Celula::~Celula(){
 
     delete this->informacion;
-
     delete[] this->genes;
+
 }

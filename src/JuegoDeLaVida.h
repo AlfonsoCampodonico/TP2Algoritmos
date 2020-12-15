@@ -40,7 +40,7 @@ public:
     /* PRE: TODO
      * POST: TODO
      */
-    void agregarCelula(ifstream& archivo)
+    void agregarCelula(ifstream& archivo);
 
     /* PRE: TODO
      * POST: TODO
@@ -51,6 +51,17 @@ public:
      * POST: TODO
      */
     void jugar();
+
+
+    void comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida);
+
+    unsigned int elegirUnaAccionDelMenuDeJuego();
+
+    void realizarAccionElegida(unsigned int numeroElegido);
+
+    void ejecutarTurno();
+
+    void reiniciarElJuegoDeLaVida();
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

@@ -30,3 +30,28 @@ void InterfazUsuario::mostrarInformacionDelJuego(Informes* informes) {
     //cout << "Celulas vivas: " << informes->contarCelulasVivas() << endl;
     //cout << "Nacimientos: " << informes->obtenerNacimientos() << endl;
 }
+
+void InterfazUsuario::mostrarFinDelJuegoDeLaVida(){
+    cout << endl;
+    cout << "          " << endl;
+    cout << "FIN";
+}
+
+void InterfazUsuario::mostrarCongelado() {
+    cout << endl;
+    cout << "El juego se congelo, no van a seguir naciendo o muriendo celulas!" << endl;
+}
+
+void InterfazUsuario::mostrarMenuDeJuegoDeLaVida(){
+    cout << endl;
+    cout << "Menu Juego de la Vida 1.0 Recargado" << endl;
+    cout << "1. Ejecutar un turno" << endl;
+    cout << "2. Reiniciar" << endl;
+    cout << "3. Terminar" << endl << endl;
+}
+
+void InterfazUsuario::mostrarQueNoEsUnNumeroValido(){
+    cout << endl;
+    cout << "Favor elegir un valor correcto del Menu" << endl;
+
+}

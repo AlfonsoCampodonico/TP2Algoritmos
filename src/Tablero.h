@@ -35,7 +35,7 @@ public:
     /* Pre:-
      * Post: Devuelve el tablero.
      */
-    int obtenerTablero();
+    Tablero obtenerTablero();
 
     /* POST: devuelve la cantidad de filas del tablero */
     unsigned int contarFilas();
@@ -49,8 +49,8 @@ public:
      */
     void cantidadDeVecinasVivas(int x,int y);
 
-    /*Pre:
-     * Post:
+    /*Pre: TODO
+     * Post: TODO
      */
 
     Celula*** obtenerEspacio();
@@ -60,13 +60,13 @@ public:
      */
 
     void contarVecinasVivas();
-    /*PRE:
-     * Post:
+    /*PRE: TODO
+     * Post:TODO
      */
     void analizarCelula(Celula* celula,Informes* informes);
 
-    /* PRE:
-     * POST:
+    /* PRE:TODO
+     * POST:TODO
      */
     Celula* obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila);
 
@@ -74,6 +74,8 @@ public:
     /* POST: libera los recursos utilizados */
 
     ~Tablero();
+
+    void determinarVida();
 };
 
 #endif /* TABLERO_H_ */

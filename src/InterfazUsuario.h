@@ -34,6 +34,14 @@ public:
 
 
     void mostrarInformacionDelJuego(Informes *informes);
+
+    void mostrarFinDelJuegoDeLaVida();
+
+    void mostrarCongelado();
+
+    void mostrarMenuDeJuegoDeLaVida();
+
+    void mostrarQueNoEsUnNumeroValido();
 };
 
 #endif //TP2ALGORITMOS_INTERFAZUSUARIO_H

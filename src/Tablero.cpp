@@ -99,6 +99,52 @@ void Tablero::cantidadDeVecinasVivas(int x, int y){
 	}
 
 
+void  Tablero::determinarVida() {
+    Celula*** tableroAnterior = this->espacio;
+    bool estaEnElTablero{};
+    int filas = this->contarFilas();
+    int columnas = this->contarColumnas();
+    for (int a = 0; a < columnas; a++){
+
+        for (int b = 0; b < filas; b++){
+
+            int estaVivo = 0;
+            for (int c = -1; c <= 1; c++){
+
+                for (int d = -1; d <= 1; d++){
+
+                    /*Si uno de los dos pivotes (c y d) es diferente de 0,
+                     * y la suma de la posicion del array
+                    *para a y para b es mayor o igual que cero*/
+                    estaEnElTablero = ((columnas > a + c)
+                                        && (a + c >= 0)
+                                        && (filas > b+d)
+                                        && (b+d >= 0)
+                                        );
+
+                    if ((c != 0 || d != 0)
+                        && estaEnElTablero
+                        &&(tableroAnterior[a+c][b+d]->estaViva())){
+                        estaVivo++;
+                    }
+                }
+            }
+            if ((estaVivo < 2) && (this->espacio[a][b]->estaMuerta())){
+                this->espacio[a][b]->matarCelula();
+
+            }
+            else if (estaVivo == 3 && (this->espacio[a][b]->estaViva())){
+                this->espacio[a][b]->revivirCelula();
+
+            }
+            else if (estaVivo > 3 && (this->espacio[a][b]->estaMuerta())){
+                this->espacio[a][b]->matarCelula();
+
+            }
+        }
+    }
+}
+
 
 Tablero::~Tablero() {
 	for (int i = 0 ; i < contarFilas() ; i++){
@@ -109,5 +155,6 @@ Tablero::~Tablero() {
 	for (int i = 0 ; i < contarColumnas() ; i++){
 		delete[] this->espacio[i];
 	}
+    delete[] this->espacio;
 }
 

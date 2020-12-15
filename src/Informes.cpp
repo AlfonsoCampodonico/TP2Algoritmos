@@ -102,9 +102,10 @@ bool Informes::estaCongelado(){
 	bool congelado = false;
 	if ((obtenerNacimientosTurno() == 0) && (obtenerMuertesTurno() == 0)){
 		this-> juegoCongelado++;
-		congelado = ((this->juegoCongelado) == 3);
+		congelado = ((this->juegoCongelado) == 2);
 		}
 	else {
 		this->juegoCongelado = 0;
 	}
+	return congelado;
 }

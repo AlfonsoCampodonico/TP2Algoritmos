@@ -20,26 +20,10 @@ void JuegoDeLaVida::jugar(){
     ifstream archivoInicial;
     ingresarRutaDelArchivo(archivoInicial);
     procesarArchivo(archivoInicial);
-    Informes* informe = (this->informes);
-    Tablero* tablero = (this-> elTablero);
-   /* while(){
-    	int turno = 0;
-    	cout << "1-Jugar un turno.." << endl;
-    	cout << "2- Reiniciar turno" << endl;
-    	cout << "3- Finalizar juego." << endl;
-    	cout << "Ingrese la opcion correcta: " << endl;
-    	cin >> turno;
-
-    	if (turno == 1){
-    		informe->resetearMuertesTurno();
-    		informe->resetearNacimientosTurno();
-    		informe->resetearVivas();
-    		informe->sumarTurno();
-    		tablero-> contarVecinasVivas();
-    		tablero-> analizarCondicion(informe);
-
-    	}
-    }*/
+    bool terminaElJuegoDeLaVida{};
+    do{
+        comenzarElJuegoDeLaVida(terminaElJuegoDeLaVida);
+    }while(!terminaElJuegoDeLaVida);
 }
 
 void JuegoDeLaVida::ingresarRutaDelArchivo(ifstream& archivo){
@@ -113,11 +97,68 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
     std::string informacionGenetica{};
     unsigned int intensidad{};
 
-
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
 
     celula->setearGen(informacionGenetica, intensidad);
 
 
+}
+
+void JuegoDeLaVida::comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida){
+    bool reiniciarElJuegoDeLaVida {};
+    do{
+        unsigned int numeroUsuario = elegirUnaAccionDelMenuDeJuego();
+        reiniciarElJuegoDeLaVida = (numeroUsuario == 2);
+        terminaElJuegoDeLaVida = (numeroUsuario == 3);
+        realizarAccionElegida(numeroUsuario);
+    }while((!terminaElJuegoDeLaVida) && (!reiniciarElJuegoDeLaVida));
+}
+
+
+unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
+    unsigned int valorIngresado;
+    bool esUnValorValido = false;
+    do{
+        this->consola->mostrarMenuDeJuegoDeLaVida();
+        cin >> valorIngresado;
+        esUnValorValido = !((valorIngresado <= 0) || (valorIngresado > 3));
+        if(!esUnValorValido){
+            this->consola->mostrarQueNoEsUnNumeroValido();
+        }
+    }while(!esUnValorValido);
+    return valorIngresado;
+}
+
+void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido){
+    switch(numeroElegido){
+        case 1:
+            if(!this->informes->estaCongelado()){
+                ejecutarTurno();
+            }
+            else{
+                this->consola->mostrarCongelado();
+            }
+            break;
+        case 2:
+            reiniciarElJuegoDeLaVida();
+            break;
+        case 3:
+            this->consola->mostrarFinDelJuegoDeLaVida();
+            break;
+    }
+}
+
+void JuegoDeLaVida::ejecutarTurno(){
+
+    this->elTablero->determinarVida();
+    this->informes->sumarTurno();
+    //this->consola TODO
+}
+
+void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
+    //Liberar Tableros TODO
+    ifstream nuevoArchivoInicial;
+    ingresarRutaDelArchivo(nuevoArchivoInicial);
+    procesarArchivo(nuevoArchivoInicial);
 }

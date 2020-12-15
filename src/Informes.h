@@ -107,10 +107,6 @@ class Informes{
 		int obtenerNacimientosTotales();
 
 
-    int obtenerMuertesTotales();
-
-    int obtenerNacimientosTotales();
-
     void resetearMuertes();
 };
 
