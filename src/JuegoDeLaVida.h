@@ -23,13 +23,33 @@ public:
     JuegoDeLaVida();
 
     /* PRE: ruta del archivo inicial a procesar.
-     * POST: pide los recursos necesarios para generar los elementos de los componentes del juego.
+     * POST: TODO
      */
     void ingresarRutaDelArchivo(ifstream& archivo);
+
+    /* PRE: TODO
+     * POST: TODO
+     */
     void procesarArchivo(ifstream& archivo);
+
+    /* PRE: TODO
+     * POST: TODO
+     */
     void crearTablero(ifstream& archivo);
-    void agregarCelula(ifstream& archivo);
+
+    /* PRE: TODO
+     * POST: TODO
+     */
+    void agregarCelula(ifstream& archivo)
+
+    /* PRE: TODO
+     * POST: TODO
+     */
     void anadirGen(ifstream& archivo,Celula* celula);
+
+    /* PRE: TODO
+     * POST: TODO
+     */
     void jugar();
 };
 
