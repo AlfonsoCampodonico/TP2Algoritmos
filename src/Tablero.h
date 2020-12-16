@@ -82,6 +82,14 @@ public:
     Celula ***clonarCelulas();
 
     Celula ***clonarCelulas(Celula ***espacio);
+
+    void actualizarUnTablero(Informes *elInforme);
+
+    void dictarVida();
+
+    bool existeEnElTablero(unsigned int columna, unsigned int fila);
+
+    unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila);
 };
 
 #endif /* TABLERO_H_ */

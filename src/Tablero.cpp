@@ -32,7 +32,6 @@ unsigned int Tablero::contarFilas(){
     return this->cantidadDeFilas;
 }
 
-
 Celula* Tablero::obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila){
     return this-> espacio[numeroDeColumna-1][numeroDeFila-1];
 }
@@ -42,76 +41,71 @@ Celula*** Tablero::obtenerEspacio(){
 }
 
 
-void  Tablero::determinarVida(Informes* informes,Tablero* otroTablero) {
-    Celula*** tableroAnterior = otroTablero->obtenerEspacio();
-    bool estaEnElTablero{};
-    int filas = this->contarFilas();
-    int columnas = this->contarColumnas();
-    for (int a = 0; a < columnas; a++){
+void Tablero::actualizarUnTablero(Informes* elInforme){
+    for(unsigned int columna = 1; columna < this->contarColumnas() + 1; columna++){
 
-        for (int b = 0; b < filas; b++){
+        for(unsigned int fila = 1; fila < this->contarFilas() + 1; fila++){
 
-            int estaVivo = 0;
-            for (int c = -1; c <= 1; c++){
+            Celula* unaCelula = this->obtenerPosicionCelula(columna,fila);
+            if(unaCelula->estaCasiViva()){
+                unaCelula->revivirCelula();
+                elInforme->sumarNacimiento();
+            }
+            else if(unaCelula->estaCasiMuerta()){
+                unaCelula->matarCelula();
+                elInforme->sumarMuerte();
+            }
+        }
+    }
+}
+void Tablero::dictarVida(){
 
-                for (int d = -1; d <= 1; d++){
+    for(unsigned int columna = 1; columna <= this->contarColumnas(); columna++){
+        for(unsigned int fila = 1; fila <= this->contarFilas(); fila++){
+            Celula* unaCelula = this->obtenerPosicionCelula(columna,fila);
+            unsigned int vecinasVivas = this->determinarCuantasVecinasVivas(columna, fila);
 
-                    /*Si uno de los dos pivotes (c y d) es diferente de 0,
-                     * y la suma de la posicion del array
-                    *para a y para b es mayor o igual que cero*/
-                    estaEnElTablero = ((columnas > a + c)
-                                        && (a + c >= 0)
-                                        && (filas > b+d)
-                                        && (b+d >= 0)
-                                        );
+            if(unaCelula->estaViva() && vecinasVivas != 3){
+                unaCelula->vaAMorir();
+            }
+            else if(unaCelula->estaMuerta() && vecinasVivas==3) {
+                    unaCelula->vaAVivir();
+                }
 
-                    if ((c != 0 || d != 0)
-                        && estaEnElTablero
-                        &&(tableroAnterior[a+c][b+d]->estaViva())){
-                        estaVivo++;
-                    }
+        }
+    }
+}
+
+unsigned  int Tablero::determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila){
+
+    unsigned int vecinasVivas{}, primeraFilaAAnalizar = fila - 1, ultimaFilaAAnalizar = fila + 1 ;
+
+    for(unsigned int i = primeraFilaAAnalizar; i <= ultimaFilaAAnalizar; i++){
+
+        unsigned int primeraColumnaAAnalizar = columna - 1, ultimaColumnaAAnalizar = columna + 1;
+
+        for(unsigned int j = primeraColumnaAAnalizar; j <= ultimaColumnaAAnalizar; j++){
+
+            bool esLaMismaCelula = ((fila != i) || (columna != j));
+
+            if((existeEnElTablero(j, i))&&(esLaMismaCelula)){
+
+                Celula* unaCelula = this->obtenerPosicionCelula(j,i);
+
+                if(unaCelula->estaViva()||unaCelula->estaCasiMuerta()){
+                    vecinasVivas++;
                 }
             }
-            if ((estaVivo < 2) && (this->espacio[a][b]->estaViva())){
-
-                informes->sumarMuerte();
-                this->espacio[a][b]->matarCelula();
-                informes->sumarMuertesTotales();
-
-
-            }
-            else if (estaVivo == 3 && (this->espacio[a][b]->estaMuerta())){
-                this->espacio[a][b]->revivirCelula();
-                informes->sumarNacimiento();
-                informes->sumarNacimientosTotales();
-                //Todo Transferencia
-
-            }
-            else if (estaVivo > 3 && (this->espacio[a][b]->estaViva())){
-                this->espacio[a][b]->matarCelula();
-                informes->sumarMuertesTotales();
-
-
-            }
         }
     }
+    return vecinasVivas;
 }
 
-Celula*** Tablero::clonarCelulas(Celula*** espacio){
-    Celula*** nuevoEspacio = new Celula**[cantidadDeColumnas];
-    for(unsigned int i = 0; i<cantidadDeColumnas; i++){
-        nuevoEspacio[i] = new Celula*[cantidadDeFilas];
-    }
-    for(unsigned int x = 0; x < cantidadDeColumnas; x++){
-        for(unsigned int j = 0; j<cantidadDeFilas; j++){
-            *nuevoEspacio[x][j] = *espacio[x][j];
-        }
-    }
-    return nuevoEspacio;
+bool Tablero::existeEnElTablero(unsigned int columna, unsigned int fila){
+    bool esValidaLaFila = fila>0 && fila <= this->cantidadDeFilas;
+    bool esValidaLaColumna = columna > 0 && columna <= this->cantidadDeColumnas;
+    return esValidaLaFila && esValidaLaColumna;
 }
-
-
-
 
 Tablero::~Tablero() {
 	for (int i = 0 ; i < contarFilas() ; i++){
