@@ -38,6 +38,7 @@ void JuegoDeLaVida::jugar(){
     		tablero-> contarVecinasVivas();
     		tablero-> analizarCondicion(informe);
 
+
     	}
     }
 
