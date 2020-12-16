@@ -11,16 +11,14 @@
 
 class Informes;
 /*
- * Matriz bidimensional que sera la encargada de contener los elementos del juego.
+ * Matriz bidimensional que sera la encargada de contener el espacio del juego.
  */
 class Tablero {
 
 private:
-
     unsigned int cantidadDeFilas;
     unsigned int cantidadDeColumnas;
     Celula*** espacio;
-
 
 public:
     /*
@@ -29,67 +27,57 @@ public:
      */
     Tablero(unsigned int cantidadDeColumnas, unsigned int cantidadDeFilas);
 
-    /* POST: devuelve la cantidad de columnas del tablero */
+    /* Pre:
+     * POST: devuelve la cantidad de columnas del tablero
+     * */
     unsigned int contarColumnas();
 
-    /* Pre:-
+    /* Pre:
      * Post: Devuelve el tablero.
      */
     Tablero obtenerTablero();
 
-    /* POST: devuelve la cantidad de filas del tablero */
+    /* Pre:
+     * POST: devuelve la cantidad de filas del tablero
+     */
     unsigned int contarFilas();
 
-    /*Pre: Tener un tablero inicializado
-     * Post: Si se cumplen las condiciones, cambia la condicion de la celula
+    /* Pre:
+     * Post: Devuelve el espacio (matriz bidemensional conformado por celulas)
      */
-    void analizarCondicion(Informes *informes);
-
-    /*Pre:Se debe pasar un objeto a puntero del tipo Celula y las posiciones de la celula
-     * Post: Se fija si las vecinas de la celula estan vivas y las cuenta.
-     */
-    void cantidadDeVecinasVivas(int x, int y);
-
-    /*Pre: TODO
-     * Post: TODO
-     */
-
     Celula ***obtenerEspacio();
 
-    /* PRE: Tener un tablero inicializado
-     * POST: Recorre todo el tablero para contar las vecinas vivas de cada celula
-     */
-
-    void contarVecinasVivas();
-
-    /*PRE: TODO
-     * Post:TODO
-     */
-    void analizarCelula(Celula *celula, Informes *informes);
-
-    /* PRE:TODO
-     * POST:TODO
+    /* PRE:  Parametros de posicion de la columna y la fila.
+     * POST: Devuelve una celula que esta contenida en el espacio del tablero)
      */
     Celula *obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila);
 
-
-    /* POST: libera los recursos utilizados */
-
-    ~Tablero();
-
-    void determinarVida(Informes *informes, Tablero* otroTablero);
-
-    Celula ***clonarCelulas();
-
-    Celula ***clonarCelulas(Celula ***espacio);
-
+    /* PRE:
+     * POST: Recorre el espacio del tablero modificando la condicion de la celula para viva o muerta
+     *       y actualiza el informe
+     */
     void actualizarUnTablero(Informes *elInforme);
 
+    /* PRE:
+     * POST: Recorre el espacio del tablero indicando que celula va a morir o vivir en el turno
+     */
     void dictarVida();
 
+    /* PRE: Parametros de posicion de la columna y la fila.
+     * POST: Indica si la posicion indicada existe o no en el Tablero
+     */
     bool existeEnElTablero(unsigned int columna, unsigned int fila);
 
+    /* PRE: Parametros de posicion de la columna y la fila.
+     * POST: Devuelve la cantidad de celulas vecinas a la posicion indica que se encuentran con
+     *       condicion de VIVA.
+     */
     unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila);
+
+    /* PRE:
+    * POST: libera los recursos utilizados
+    */
+    ~Tablero();
 };
 
 #endif /* TABLERO_H_ */
