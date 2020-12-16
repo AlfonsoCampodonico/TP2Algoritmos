@@ -11,7 +11,9 @@
 
 enum EstadoDeLaCelula {
     MUERTA,
-    VIVA
+    VIVA,
+    CASIMUERTA,
+    CASIVIVA
 };
 
 /* Unidad basica que compone un organismo.
@@ -22,28 +24,10 @@ enum EstadoDeLaCelula {
 class Celula{
 
 private:
-
-/* Es la posicion x de la celula
-	 *
-	 */
-	int x;
-	/*
-	 * Es la posicion y de la celula
-	 */
-	int y;
-	InformacionGenetica* informacion;
-	int vecinasVivas;
     EstadoDeLaCelula condicion;
     Lista<Gen*>* genes;
-
-
 public:
 
-    /* Pre: -.
-     * Post: Se inicializa una celula con la condicion MUERTA y su posicion X y su posicion Y.
-     *
-     */
-    Celula(int x,int y);
 
     Celula();
 
@@ -72,14 +56,7 @@ public:
      */
     EstadoDeLaCelula obtenerCondicion();
 
-    int obtenerX();
 
-    int obtenerY();
-
-    /* Pre:-
-     * Post devuelve la cantidad de celulas vecinas vivas que tiene la celula
-     */
-    unsigned int obtenerVecinasVivas();
 
     /* PRE: -.
      * POST: Libera la memoria pedida.
@@ -93,7 +70,16 @@ public:
     /*Pre:
      * Post:
      */
-    void aumentarVecinasVivas();
+
+    void vaAVivir();
+
+    void vaAMorir();
+
+    bool estaCasiViva();
+
+    bool estaCasiMuerta();
+
+    Lista<Gen *> *obtenerListaGen();
 };
 
 
