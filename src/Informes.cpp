@@ -21,7 +21,6 @@ unsigned int Informes::obtenerTurnos(){
 }
 
 
-
 void Informes::resetearVivas(){
 	(this->celulasVivas) = 0;
 }
@@ -47,11 +46,11 @@ int Informes::obtenerMuertesTotales() {
 }
 
 void Informes::resetearNacimientosTurno(){
-	(this-> nacimientos) = 0;
+	(this-> nacimientosTurnos) = 0;
 }
 
 void Informes::resetearMuertes(){
-	(this-> muertes) = 0;
+	(this-> muertesTurnos) = 0;
 }
 
 
@@ -65,6 +64,7 @@ void Informes::sumarTurno(){
 
 void Informes::sumarNacimiento(){
 	this->nacimientosTurnos++;
+
 }
 
 void Informes::sumarNacimientosTotales(){
@@ -88,6 +88,13 @@ void Informes::promediarMuertes(){
 	this->promedioMuertes = (float)obtenerMuertesTotales() / (float)obtenerTurnos();
 }
 
+float Informes::obtenerPromedioNacimiento(){
+    return this->promedioNacimiento;
+}
+
+float Informes::obtenerPromedioMuertes(){
+    return this->promedioMuertes;
+}
 void Informes::contarCelulasVivas(Tablero* tablero){
 
 	for (int x = 0 ; x < tablero->contarFilas() ; x++){
@@ -98,6 +105,9 @@ void Informes::contarCelulasVivas(Tablero* tablero){
 			}
 		}
 	}
+}
+unsigned int Informes::obtenerCelulasVivas(){
+    return this->celulasVivas;
 }
 
 bool Informes::estaCongelado(){

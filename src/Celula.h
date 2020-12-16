@@ -23,16 +23,7 @@ class Celula{
 
 private:
 
-/* Es la posicion x de la celula
-	 *
-	 */
-	int x;
-	/*
-	 * Es la posicion y de la celula
-	 */
-	int y;
 	InformacionGenetica* informacion;
-	int vecinasVivas;
     EstadoDeLaCelula condicion;
     Lista<Gen*>* genes;
 

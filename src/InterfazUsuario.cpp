@@ -25,12 +25,6 @@ void InterfazUsuario::mostrarArchivoInexistente(){
 }
 
 
-void InterfazUsuario::mostrarInformacionDelJuego(Informes* informes) {
-    cout << endl;
-    //cout << "Celulas vivas: " << informes->contarCelulasVivas() << endl;
-    //cout << "Nacimientos: " << informes->obtenerNacimientos() << endl;
-}
-
 void InterfazUsuario::mostrarFinDelJuegoDeLaVida(){
     cout << endl;
     cout << "          " << endl;
@@ -54,4 +48,14 @@ void InterfazUsuario::mostrarQueNoEsUnNumeroValido(){
     cout << endl;
     cout << "Favor elegir un valor correcto del Menu" << endl;
 
+}
+
+void InterfazUsuario::mostrarInformeDelJuego(Informes* informes){
+    cout << endl;
+    cout << "Turno: " << informes->obtenerTurnos() << endl;
+    cout << "Celulas vivas: " << informes->obtenerCelulasVivas() << endl;
+    cout << "Nacimientos: " << informes->obtenerNacimientosTurno()<< endl;
+    cout << "Promedio de nacimientos Totales: " << informes->obtenerPromedioNacimiento()  << endl;
+    cout << "Muertes: " << informes->obtenerMuertesTurno() << endl;
+    cout << "Promedio de muertes totales: " << informes->obtenerPromedioMuertes() << endl;
 }

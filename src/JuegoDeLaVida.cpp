@@ -151,9 +151,10 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido){
 
 void JuegoDeLaVida::ejecutarTurno(){
 
-    this->elTablero->determinarVida();
+    Tablero* otroTablero = clonarTablero(this->elTablero);
+    this->elTablero->determinarVida(this->informes,otroTablero);
     this->informes->sumarTurno();
-    //this->consola TODO
+    this->consola->mostrarInformeDelJuego(this->informes);
 }
 
 void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
@@ -161,4 +162,15 @@ void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
     ifstream nuevoArchivoInicial;
     ingresarRutaDelArchivo(nuevoArchivoInicial);
     procesarArchivo(nuevoArchivoInicial);
+}
+
+
+Tablero* JuegoDeLaVida::clonarTablero(Tablero* tablero){
+
+    Tablero* nuevoTablero = new Tablero(tablero->contarColumnas(),tablero->contarFilas());
+
+    std::copy(tablero->obtenerEspacio()[0][0],
+              tablero->obtenerEspacio()[0][0]+tablero->contarFilas()*tablero->contarColumnas(),
+              &favint[0][0])
+    return nuevoTablero;
 }

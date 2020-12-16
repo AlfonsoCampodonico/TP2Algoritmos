@@ -4,11 +4,12 @@
 
 #ifndef TABLERO_H_
 #define TABLERO_H_
+
 #include <string>
 #include "Celula.h"
 #include "Informes.h"
 
-
+class Informes;
 /*
  * Matriz bidimensional que sera la encargada de contener los elementos del juego.
  */
@@ -19,7 +20,6 @@ private:
     unsigned int cantidadDeFilas;
     unsigned int cantidadDeColumnas;
     Celula*** espacio;
-
 
 
 public:
@@ -43,39 +43,45 @@ public:
     /*Pre: Tener un tablero inicializado
      * Post: Si se cumplen las condiciones, cambia la condicion de la celula
      */
-    void analizarCondicion(Informes* informes);
+    void analizarCondicion(Informes *informes);
+
     /*Pre:Se debe pasar un objeto a puntero del tipo Celula y las posiciones de la celula
      * Post: Se fija si las vecinas de la celula estan vivas y las cuenta.
      */
-    void cantidadDeVecinasVivas(int x,int y);
+    void cantidadDeVecinasVivas(int x, int y);
 
     /*Pre: TODO
      * Post: TODO
      */
 
-    Celula*** obtenerEspacio();
+    Celula ***obtenerEspacio();
 
     /* PRE: Tener un tablero inicializado
      * POST: Recorre todo el tablero para contar las vecinas vivas de cada celula
      */
 
     void contarVecinasVivas();
+
     /*PRE: TODO
      * Post:TODO
      */
-    void analizarCelula(Celula* celula,Informes* informes);
+    void analizarCelula(Celula *celula, Informes *informes);
 
     /* PRE:TODO
      * POST:TODO
      */
-    Celula* obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila);
+    Celula *obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila);
 
 
     /* POST: libera los recursos utilizados */
 
     ~Tablero();
 
-    void determinarVida();
+    void determinarVida(Informes *informes, Tablero* otroTablero);
+
+    Celula ***clonarCelulas();
+
+    Celula ***clonarCelulas(Celula ***espacio);
 };
 
 #endif /* TABLERO_H_ */

@@ -10,7 +10,7 @@
 
 #include "Celula.h"
 #include "Tablero.h"
-
+class Tablero;
 class Informes{
 	private:
 		int cantidadTurnos;
@@ -106,6 +106,12 @@ class Informes{
 
 
     void resetearMuertes();
+
+    float obtenerPromedioNacimiento();
+
+    float obtenerPromedioMuertes();
+
+    unsigned int obtenerCelulasVivas();
 };
 
 

@@ -32,16 +32,6 @@ unsigned int Tablero::contarFilas(){
     return this->cantidadDeFilas;
 }
 
-void Tablero::analizarCelula(Celula* celula,Informes* informes){
-	if ((celula->obtenerCondicion() == MUERTA) && (celula->obtenerVecinasVivas() == 3)){
-		celula->revivirCelula();
-		informes->sumarNacimiento();
-	}
-	else if((celula->obtenerCondicion() == VIVA )&& (celula->obtenerVecinasVivas() != 2 || celula->obtenerVecinasVivas() != 3) ){
-		celula->matarCelula();
-		informes->sumarMuerte();
-	}
-}
 
 Celula* Tablero::obtenerPosicionCelula(unsigned int numeroDeColumna, unsigned numeroDeFila){
     return this-> espacio[numeroDeColumna-1][numeroDeFila-1];
@@ -51,56 +41,9 @@ Celula*** Tablero::obtenerEspacio(){
 	return (this->espacio);
 }
 
-void Tablero::contarVecinasVivas(){
-	for (int x = 0 ; x < contarColumnas() ; x++){
-	    for (int y = 0 ; y < contarFilas() ; y++){
-	    	cantidadDeVecinasVivas(x,y);
-	    }
-	}
-}
 
-void Tablero::analizarCondicion(Informes* informes){
-	for (int x = 0 ; x < contarColumnas() ; x++){
-		for (int y = 0 ; y < contarFilas() ; y++){
-			Celula* celula = (obtenerEspacio()[x][y]);
-			analizarCelula(celula,informes);
-
-		}
-	}
-}
-
-void Tablero::cantidadDeVecinasVivas(int x, int y){
-	Celula* celula = (this->espacio[x][y]);
-
-	if ((celula->obtenerCondicion()) == VIVA && (x-1) != -1 && (y-1) != -1){
-		celula->aumentarVecinasVivas();
-	      }
-	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y+1) != contarColumnas()){
-        celula->aumentarVecinasVivas();
-	    }
-	if ((celula->obtenerCondicion())== VIVA && (y+1) != contarColumnas()){
-        celula->aumentarVecinasVivas();
-	    }
-	if ((celula->obtenerCondicion())== VIVA && (y-1) != -1){
-        celula->aumentarVecinasVivas();
-	}
-	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas()){
-        celula->aumentarVecinasVivas();
-	      }
-	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1){
-        celula->aumentarVecinasVivas();
-	        }
-	if ((celula->obtenerCondicion())== VIVA && (x-1) != -1 && (y+1) != contarColumnas()){
-        celula->aumentarVecinasVivas();
-	        }
-	if ((celula->obtenerCondicion())== VIVA && (x+1) != contarFilas() && (y-1) != -1){
-        celula->aumentarVecinasVivas();
-	        }
-	}
-
-
-void  Tablero::determinarVida() {
-    Celula*** tableroAnterior = this->espacio;
+void  Tablero::determinarVida(Informes* informes,Tablero* otroTablero) {
+    Celula*** tableroAnterior = otroTablero->obtenerEspacio();
     bool estaEnElTablero{};
     int filas = this->contarFilas();
     int columnas = this->contarColumnas();
@@ -129,25 +72,45 @@ void  Tablero::determinarVida() {
                     }
                 }
             }
-            if ((estaVivo < 2) && (this->espacio[a][b]->estaMuerta())){
+            if ((estaVivo < 2) && (this->espacio[a][b]->estaViva())){
+
+                informes->sumarMuerte();
                 this->espacio[a][b]->matarCelula();
-                //Todo Agregar a Informes
+                informes->sumarMuertesTotales();
+
 
             }
-            else if (estaVivo == 3 && (this->espacio[a][b]->estaViva())){
+            else if (estaVivo == 3 && (this->espacio[a][b]->estaMuerta())){
                 this->espacio[a][b]->revivirCelula();
-                //Todo Agregar a Informes
+                informes->sumarNacimiento();
+                informes->sumarNacimientosTotales();
                 //Todo Transferencia
 
             }
-            else if (estaVivo > 3 && (this->espacio[a][b]->estaMuerta())){
+            else if (estaVivo > 3 && (this->espacio[a][b]->estaViva())){
                 this->espacio[a][b]->matarCelula();
-                //Todo Agregar a Informes
+                informes->sumarMuertesTotales();
+
 
             }
         }
     }
 }
+
+Celula*** Tablero::clonarCelulas(Celula*** espacio){
+    Celula*** nuevoEspacio = new Celula**[cantidadDeColumnas];
+    for(unsigned int i = 0; i<cantidadDeColumnas; i++){
+        nuevoEspacio[i] = new Celula*[cantidadDeFilas];
+    }
+    for(unsigned int x = 0; x < cantidadDeColumnas; x++){
+        for(unsigned int j = 0; j<cantidadDeFilas; j++){
+            *nuevoEspacio[x][j] = *espacio[x][j];
+        }
+    }
+    return nuevoEspacio;
+}
+
+
 
 
 Tablero::~Tablero() {

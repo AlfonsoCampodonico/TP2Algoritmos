@@ -62,6 +62,10 @@ public:
     void ejecutarTurno();
 
     void reiniciarElJuegoDeLaVida();
+
+    Tablero crearOtroTablero();
+
+    Tablero *clonarTablero(Tablero *tablero);
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

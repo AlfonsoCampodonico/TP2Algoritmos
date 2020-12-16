@@ -42,6 +42,8 @@ public:
     void mostrarMenuDeJuegoDeLaVida();
 
     void mostrarQueNoEsUnNumeroValido();
+
+    void mostrarInformeDelJuego(Informes *informes);
 };
 
 #endif //TP2ALGORITMOS_INTERFAZUSUARIO_H
