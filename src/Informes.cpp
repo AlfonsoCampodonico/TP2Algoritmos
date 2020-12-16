@@ -104,6 +104,8 @@ void Informes::contarCelulasVivas(Tablero* tablero){
 
             if(unaCelula->estaViva()){
                 sumarViva();
+                Lista<Gen*>* listaGenes = unaCelula->obtenerListaGen();
+                actualizarEdadGen(listaGenes);
             }
 
 
@@ -141,3 +143,11 @@ void Informes::actualizarInformeTurno(Tablero* tablero){
     this->promediarMuertes();
 }
 
+void Informes::actualizarEdadGen(Lista<Gen*>* listaGenes){
+    listaGenes->iniciarCursor();
+    while(listaGenes->avanzarCursor()){
+        Gen* unGen;
+        unGen = listaGenes->obtenerCursor();
+        unGen->anadirEdadGen();
+    }
+}

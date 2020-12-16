@@ -22,3 +22,10 @@ unsigned int Gen::ObtenerEdadGen() {
 void Gen::anadirEdadGen() {
     this->edad++;
 }
+
+InformacionGenetica* Gen::obtenerInformacioGeneticaDelGen(){
+    return this->informacionGenetica;
+}
+bool Gen::estaActivoElGen(){
+    return (this->intensidad != 0);
+}

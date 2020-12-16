@@ -42,14 +42,6 @@ bool Celula::estaCasiViva(){
     return (this->condicion == CASIVIVA);
 }
 
-
-
-
-
-EstadoDeLaCelula Celula::obtenerCondicion(){
-	return (this->condicion);
-}
-
 Lista<Gen*>* Celula::obtenerListaGen(){
     return this->genes;
 }

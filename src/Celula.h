@@ -26,11 +26,13 @@ class Celula{
 private:
     EstadoDeLaCelula condicion;
     Lista<Gen*>* genes;
+
 public:
-
-
+    /*
+     *
+     *
+     */
     Celula();
-
 
     /* Pre: Que el estado de la celula este muerta
      * Post: La celula pasa a estar viva.
@@ -51,17 +53,7 @@ public:
      * POST: Indica si la celula esta viva.
      */
     bool estaViva();
-    /*Pre:-
-     * Post: Devuelve el estado de la celula
-     */
-    EstadoDeLaCelula obtenerCondicion();
 
-
-
-    /* PRE: -.
-     * POST: Libera la memoria pedida.
-     */
-    ~Celula();
 
     /*Pre:
      * Post:
@@ -75,11 +67,22 @@ public:
 
     void vaAMorir();
 
+    /* PRE: -.
+     * POST: Indica si la celula esta casi viva.
+     */
     bool estaCasiViva();
 
+    /* PRE: -.
+     * POST: Indica si la celula esta casi muerta.
+     */
     bool estaCasiMuerta();
 
     Lista<Gen *> *obtenerListaGen();
+
+    /* PRE: -.
+     * POST: Libera la memoria pedida.
+     */
+    ~Celula();
 };
 
 

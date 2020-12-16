@@ -116,6 +116,8 @@ class Informes{
     void resetearInformeTurno();
 
     void actualizarInformeTurno(Tablero *tablero);
+
+    void actualizarEdadGen(Lista<Gen *> *listaGenes);
 };
 
 

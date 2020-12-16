@@ -34,5 +34,8 @@ public:
      */
     void anadirEdadGen();
 
+    InformacionGenetica * obtenerInformacioGeneticaDelGen();
+
+    bool estaActivoElGen();
 };
 #endif //TP2ALGORITMOS_GEN_H
