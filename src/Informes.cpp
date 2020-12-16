@@ -49,7 +49,7 @@ void Informes::resetearNacimientosTurno(){
 	(this-> nacimientosTurnos) = 0;
 }
 
-void Informes::resetearMuertes(){
+void Informes::resetearMuertesTurno(){
 	(this-> muertesTurnos) = 0;
 }
 
@@ -97,14 +97,18 @@ float Informes::obtenerPromedioMuertes(){
 }
 void Informes::contarCelulasVivas(Tablero* tablero){
 
-	for (int x = 0 ; x < tablero->contarFilas() ; x++){
-		for (int y = 0 ; y < tablero->contarColumnas() ; y++){
-			Celula* celula = (tablero->obtenerEspacio())[x][y];
-			if ((celula->obtenerCondicion()) == VIVA){
-					sumarViva();
-			}
-		}
-	}
+    for(unsigned int columna = 1; columna <= tablero->contarColumnas(); columna++){
+        for(unsigned int fila = 1; fila <= tablero->contarFilas(); fila++){
+
+            Celula* unaCelula = tablero->obtenerPosicionCelula(columna,fila);
+
+            if(unaCelula->estaViva()){
+                sumarViva();
+            }
+
+
+        }
+    }
 }
 unsigned int Informes::obtenerCelulasVivas(){
     return this->celulasVivas;
@@ -121,3 +125,19 @@ bool Informes::estaCongelado(){
 	}
 	return congelado;
 }
+
+void Informes::resetearInformeTurno() {
+    this->resetearNacimientosTurno();
+    this->resetearMuertesTurno();
+    this->resetearVivas();
+}
+
+void Informes::actualizarInformeTurno(Tablero* tablero){
+    this->sumarTurno();
+    this->contarCelulasVivas(tablero);
+    this->sumarMuertesTotales();
+    this->sumarNacimientosTotales();
+    this->promediarNacimiento();
+    this->promediarMuertes();
+}
+

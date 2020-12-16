@@ -112,6 +112,10 @@ class Informes{
     float obtenerPromedioMuertes();
 
     unsigned int obtenerCelulasVivas();
+
+    void resetearInformeTurno();
+
+    void actualizarInformeTurno(Tablero *tablero);
 };
 
 
