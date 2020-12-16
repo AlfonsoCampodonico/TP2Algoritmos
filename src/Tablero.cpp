@@ -131,14 +131,18 @@ void  Tablero::determinarVida() {
             }
             if ((estaVivo < 2) && (this->espacio[a][b]->estaMuerta())){
                 this->espacio[a][b]->matarCelula();
+                //Todo Agregar a Informes
 
             }
             else if (estaVivo == 3 && (this->espacio[a][b]->estaViva())){
                 this->espacio[a][b]->revivirCelula();
+                //Todo Agregar a Informes
+                //Todo Transferencia
 
             }
             else if (estaVivo > 3 && (this->espacio[a][b]->estaMuerta())){
                 this->espacio[a][b]->matarCelula();
+                //Todo Agregar a Informes
 
             }
         }
