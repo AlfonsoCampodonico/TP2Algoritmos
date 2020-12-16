@@ -50,6 +50,9 @@ EstadoDeLaCelula Celula::obtenerCondicion(){
 	return (this->condicion);
 }
 
+Lista<Gen*>* Celula::obtenerListaGen(){
+    return this->genes;
+}
 
 Celula::~Celula(){
 

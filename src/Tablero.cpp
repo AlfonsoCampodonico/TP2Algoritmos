@@ -65,7 +65,7 @@ void Tablero::dictarVida(){
             Celula* unaCelula = this->obtenerPosicionCelula(columna,fila);
             unsigned int vecinasVivas = this->determinarCuantasVecinasVivas(columna, fila);
 
-            if(unaCelula->estaViva() && vecinasVivas != 3){
+            if(unaCelula->estaViva() && vecinasVivas != 3 && vecinasVivas != 2){
                 unaCelula->vaAMorir();
             }
             else if(unaCelula->estaMuerta() && vecinasVivas==3) {

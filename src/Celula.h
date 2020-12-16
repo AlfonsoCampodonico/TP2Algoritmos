@@ -78,6 +78,8 @@ public:
     bool estaCasiViva();
 
     bool estaCasiMuerta();
+
+    Lista<Gen *> *obtenerListaGen();
 };
 
 
