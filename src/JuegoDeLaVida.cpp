@@ -20,6 +20,8 @@ void JuegoDeLaVida::jugar(){
     ifstream archivoInicial;
     ingresarRutaDelArchivo(archivoInicial);
     procesarArchivo(archivoInicial);
+    Informes* informe = (this->informes);
+    Tablero* tablero = (this-> elTablero);
     bool terminaElJuegoDeLaVida{};
     do{
         comenzarElJuegoDeLaVida(terminaElJuegoDeLaVida);
