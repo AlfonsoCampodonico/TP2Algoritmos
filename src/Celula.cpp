@@ -23,7 +23,7 @@ bool Celula::estaViva(){
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
-    delete[] this->genes;
+    liberarGenes();
 }
 bool Celula::estaMuerta(){
     return (this->condicion == MUERTA);
