@@ -83,6 +83,8 @@ public:
      * POST: Libera la memoria pedida.
      */
     ~Celula();
+
+    void liberarGenes();
 };
 
 

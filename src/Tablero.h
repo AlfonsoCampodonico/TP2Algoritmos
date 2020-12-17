@@ -78,6 +78,8 @@ public:
     * POST: libera los recursos utilizados
     */
     ~Tablero();
+
+    unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila, Lista<Gen *> *listaDeGenes);
 };
 
 #endif /* TABLERO_H_ */

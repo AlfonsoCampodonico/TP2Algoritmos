@@ -63,20 +63,22 @@ void Tablero::dictarVida(){
     for(unsigned int columna = 1; columna <= this->contarColumnas(); columna++){
         for(unsigned int fila = 1; fila <= this->contarFilas(); fila++){
             Celula* unaCelula = this->obtenerPosicionCelula(columna,fila);
-            unsigned int vecinasVivas = this->determinarCuantasVecinasVivas(columna, fila);
+            Lista<Gen*>* listaDeGenes = new Lista<Gen*>();
+            unsigned int vecinasVivas = this->determinarCuantasVecinasVivas(columna, fila,listaDeGenes);
 
             if(unaCelula->estaViva() && vecinasVivas != 3 && vecinasVivas != 2){
                 unaCelula->vaAMorir();
             }
             else if(unaCelula->estaMuerta() && vecinasVivas==3) {
                     unaCelula->vaAVivir();
+                    unaCelula->obtenerListaGen()->agregar(*listaDeGenes);
                 }
 
         }
     }
 }
 
-unsigned  int Tablero::determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila){
+unsigned  int Tablero::determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila,Lista<Gen*>* listaDeGenes){
 
     unsigned int vecinasVivas{}, primeraFilaAAnalizar = fila - 1, ultimaFilaAAnalizar = fila + 1 ;
 
@@ -94,6 +96,8 @@ unsigned  int Tablero::determinarCuantasVecinasVivas(unsigned int columna, unsig
 
                 if(unaCelula->estaViva()||unaCelula->estaCasiMuerta()){
                     vecinasVivas++;
+                    Lista<Gen*>* lista = unaCelula->obtenerListaGen();
+                    listaDeGenes->agregar(*lista);
                 }
             }
         }

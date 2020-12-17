@@ -23,6 +23,7 @@ bool Celula::estaViva(){
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
+    delete[] this->genes;
 }
 bool Celula::estaMuerta(){
     return (this->condicion == MUERTA);
@@ -44,6 +45,14 @@ bool Celula::estaCasiViva(){
 
 Lista<Gen*>* Celula::obtenerListaGen(){
     return this->genes;
+}
+
+void Celula::liberarGenes(){
+    while(!this->genes->estaVacia()){
+        Gen* unGen = this->genes->obtener(1);
+        this->genes->remover(1);
+        delete unGen;
+    }
 }
 
 Celula::~Celula(){
