@@ -85,6 +85,8 @@ public:
     ~Celula();
 
     void liberarGenes();
+
+    void completarTransferencia();
 };
 
 

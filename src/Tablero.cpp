@@ -71,7 +71,9 @@ void Tablero::dictarVida(){
             }
             else if(unaCelula->estaMuerta() && vecinasVivas==3) {
                     unaCelula->vaAVivir();
+                    listaDeGenes->contarElementos();
                     unaCelula->obtenerListaGen()->agregar(*listaDeGenes);
+                    unaCelula->completarTransferencia();
                 }
 
         }

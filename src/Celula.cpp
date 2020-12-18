@@ -55,6 +55,42 @@ void Celula::liberarGenes(){
     }
 }
 
+void Celula::completarTransferencia(){
+    Lista<Gen*>* listaGenes = this->genes;
+    Lista<Gen*>* nuevaLista = new Lista<Gen*>();
+    bool esIgual{};
+    listaGenes->iniciarCursor();
+
+    while (listaGenes->avanzarCursor()) {
+
+        Gen* genActual = listaGenes->obtenerCursor();
+        bool esIgual{};
+        if (nuevaLista->estaVacia() ){
+            nuevaLista->agregar(genActual);
+        }
+        else {
+            nuevaLista->iniciarCursor();
+            unsigned int tamanoLista = nuevaLista->contarElementos();
+            unsigned int recorrido = 0;
+            while (nuevaLista->avanzarCursor() && (recorrido<tamanoLista) ) {
+                Gen *genNuevo = nuevaLista->obtenerCursor();
+                esIgual = genActual->obtenerInformacioGeneticaDelGen()
+                                ->esIgualA(genNuevo->obtenerInformacioGeneticaDelGen());
+                if(esIgual){
+                    //genNuevo
+                }
+                else{
+                 nuevaLista->agregar(genActual);
+
+                }
+            }
+
+        }
+
+    }
+
+}
+
 Celula::~Celula(){
 
     delete[] this->genes;
