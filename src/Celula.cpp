@@ -78,9 +78,11 @@ void Celula::completarTransferencia(){
                                 ->esIgualA(genNuevo->obtenerInformacioGeneticaDelGen());
                 if(esIgual){
                     //genNuevo
+                    recorrido++;
                 }
                 else{
                  nuevaLista->agregar(genActual);
+                 recorrido++;
 
                 }
             }

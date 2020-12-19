@@ -75,6 +75,7 @@ void Tablero::dictarVida(){
                     unaCelula->obtenerListaGen()->agregar(*listaDeGenes);
                     unaCelula->completarTransferencia();
                 }
+            delete listaDeGenes;
 
         }
     }
