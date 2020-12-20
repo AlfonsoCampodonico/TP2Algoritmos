@@ -52,5 +52,7 @@ public:
      unsigned int contarBits();
 
     std::string devolverCadena();
+
+    void cambiarInformacionGenetica(std::string nuevaCadena);
 };
 #endif //TP2ALGORITMOS_INFORMACIONGENETICA_H

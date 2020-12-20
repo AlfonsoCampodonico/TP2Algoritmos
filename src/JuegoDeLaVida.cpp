@@ -13,7 +13,7 @@ JuegoDeLaVida::JuegoDeLaVida(){
     this-> informes = new Informes();
 }
 
-void JuegoDeLaVida::jugar(){
+void JuegoDeLaVida::jugarElJuegoDeLaVida(){
 
     this->consola->enviarMensajeInicioJuego();
     ifstream archivoInicial;

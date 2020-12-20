@@ -27,7 +27,7 @@ private:
     Lista<Gen*>* genes;
 
 public:
-    /*
+    /*Constructor de la Celula
      *
      *
      */

@@ -68,18 +68,17 @@ public:
      */
     bool existeEnElTablero(unsigned int columna, unsigned int fila);
 
-    /* PRE: Parametros de posicion de la columna y la fila.
-     * POST: Devuelve la cantidad de celulas vecinas a la posicion indica que se encuentran con
-     *       condicion de VIVA.
-     */
-    unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila);
+
+    /* PRE: Parametros de posicion de la columna y la fila y una lista de punteros de Genes.
+    * POST: Devuelve la cantidad de celulas vecinas a la posicion indica que se encuentran con
+    *       condicion de VIVA.
+    */
+    unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila, Lista<Gen *> *listaDeGenes);
 
     /* PRE:
-    * POST: libera los recursos utilizados
+    * POST: libera los recursos utilizados del tablero. Liberando el espacio.
     */
     ~Tablero();
-
-    unsigned int determinarCuantasVecinasVivas(unsigned int columna, unsigned int fila, Lista<Gen *> *listaDeGenes);
 };
 
 #endif /* TABLERO_H_ */

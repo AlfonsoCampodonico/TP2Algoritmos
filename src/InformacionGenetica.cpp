@@ -75,3 +75,7 @@ std::string InformacionGenetica::devolverCadena(){
     return this->cadenaDeBits;
 }
 
+void InformacionGenetica::cambiarInformacionGenetica(std::string nuevaCadena){
+    this->cadenaDeBits = nuevaCadena;
+    this->tamano = contarBits();
+}

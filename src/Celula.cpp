@@ -165,15 +165,41 @@ void Celula::mutar(){
     Lista<Gen*>* listaGenes = this->genes;
     listaGenes->iniciarCursor();
     Gen* nuevoGen = new Gen();
-    while (listaGenes->avanzarCursor()) {
+    bool encontreUnoParaMutar{};
+    while (listaGenes->avanzarCursor() && !encontreUnoParaMutar) {
 
         Gen *genActual = listaGenes->obtenerCursor();
         Intensidad* intensidadFinal = genActual->obtenerIntensidad();
         if(intensidadFinal == 0){
-            nuevoGen->obtenerInformacioGeneticaDelGen()
-            ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());
+            std::string nuevaCadena = genActual->
+                                        obtenerInformacioGeneticaDelGen()->
+                                            devolverCadena();
+            nuevoGen->
+                obtenerInformacioGeneticaDelGen()->
+                    cambiarInformacionGenetica(nuevaCadena);
+
+            encontreUnoParaMutar = true;
+            /*nuevoGen->obtenerInformacioGeneticaDelGen()
+            ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());*/
         }
     }
+    listaGenes->iniciarCursor();
+    while (listaGenes->avanzarCursor() ) {
+
+        Gen *genActual = listaGenes->obtenerCursor();
+        Intensidad *intensidadFinal = genActual->obtenerIntensidad();
+        InformacionGenetica *informacionGeneticaFinal = genActual->
+                obtenerInformacioGeneticaDelGen();
+        if (intensidadFinal == 0
+            && !informacionGeneticaFinal->
+                esIgualA(nuevoGen->obtenerInformacioGeneticaDelGen())) {
+
+            nuevoGen->obtenerInformacioGeneticaDelGen()
+                    ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());
+        }
+    }
+
+
     if(nuevoGen->obtenerInformacioGeneticaDelGen()->devolverCadena()!="0"){
         listaGenes->agregar(nuevoGen);
     }

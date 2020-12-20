@@ -7,7 +7,7 @@ using namespace  std;
 int main () {
     JuegoDeLaVida* elJuegoDeLaVida;
     elJuegoDeLaVida = new JuegoDeLaVida();
-    elJuegoDeLaVida->jugar();
+    elJuegoDeLaVida->jugarElJuegoDeLaVida();
     delete elJuegoDeLaVida;
     return 0;
 }
