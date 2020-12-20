@@ -1,7 +1,6 @@
 
 #include "Celula.h"
-#include "Tablero.h"
-#include "InformacionGenetica.h"
+
 
 
 Celula::Celula() {
@@ -10,9 +9,9 @@ Celula::Celula() {
 }
 
 void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
-    Gen* unGen;
-    unGen = new Gen(informacionGenetica, intensidad);
+    Gen* unGen = new Gen(informacionGenetica, intensidad);
     this->genes->agregar(unGen);
+
 }
 
 void Celula::revivirCelula(){
@@ -23,7 +22,7 @@ bool Celula::estaViva(){
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
-    liberarGenes();
+
 }
 bool Celula::estaMuerta(){
     return (this->condicion == MUERTA);
@@ -58,7 +57,6 @@ void Celula::liberarGenes(){
 void Celula::completarTransferencia(){
     Lista<Gen*>* listaGenes = this->genes;
     Lista<Gen*>* nuevaLista = new Lista<Gen*>();
-    bool esIgual{};
     listaGenes->iniciarCursor();
 
     while (listaGenes->avanzarCursor()) {
@@ -80,9 +78,11 @@ void Celula::completarTransferencia(){
                 Gen *genNuevo = nuevaLista->obtenerCursor();
                 esIgual = genActual->obtenerInformacioGeneticaDelGen()
                                 ->esIgualA(genNuevo->obtenerInformacioGeneticaDelGen());
-
+                Lista<Intensidad*>* listaIntensidades = genNuevo->obtenerIntensidades();
                 if(esIgual){
-                    //genNuevo
+                    Intensidad * intensidadActual = genActual->obtenerIntensidad();
+
+                    listaIntensidades->agregar(intensidadActual);
 
                 }
                 else{
@@ -101,12 +101,91 @@ void Celula::completarTransferencia(){
         }
 
     }
+    delete this->genes;
     this->genes = nuevaLista;
 
 }
 
-Celula::~Celula(){
+void Celula::calcularIntensidad(){
+    Lista<Gen*>* listaGenes = this->genes;
+    listaGenes->iniciarCursor();
 
-    delete[] this->genes;
+    while (listaGenes->avanzarCursor()) {
+
+        Gen *genActual = listaGenes->obtenerCursor();
+        Lista<Intensidad*>* listaIntensidades = genActual->obtenerIntensidades();
+        unsigned  int cantidadDeCargas= listaIntensidades->contarElementos();
+        if (cantidadDeCargas == 3){
+            Intensidad* cargaUno = listaIntensidades->obtener(1);
+            Intensidad* cargaDos = listaIntensidades->obtener(2);
+            Intensidad* cargaTres = listaIntensidades->obtener(3);
+
+            if (cargaUno->estaActiva() || cargaDos->estaActiva() || cargaTres->estaActiva()){
+
+                if ((cargaDos->obtenerCantidadIntensidad() >= cargaUno->obtenerCantidadIntensidad())
+                && (cargaDos->obtenerCantidadIntensidad() >= cargaTres->obtenerCantidadIntensidad())){
+                    listaIntensidades->asignar(cargaDos,1);
+                }
+                else{
+                    listaIntensidades->asignar(cargaTres,1);
+                }
+
+                listaIntensidades->remover(2); listaIntensidades->remover(3);
+            }
+            else{
+                //TODO TURNOS
+            }
+
+        }
+        else if(cantidadDeCargas == 2){
+            Intensidad* cargaUno = listaIntensidades->obtener(1);
+            Intensidad* cargaDos = listaIntensidades->obtener(2);
+            if (cargaUno->estaActiva() && cargaDos->estaActiva()){
+                unsigned int cantidadIntensidadUno = cargaUno->obtenerCantidadIntensidad();
+                unsigned int cantidadIntensidadDos = cargaDos->obtenerCantidadIntensidad();
+                unsigned int promedio = (cantidadIntensidadUno+cantidadIntensidadDos) /2;
+                cargaUno->cambiarIntensidad(promedio);
+            }
+            else if(cargaDos->estaActiva()){
+                cargaUno->cambiarIntensidad(cargaDos->obtenerCantidadIntensidad());
+            }
+            else{
+                //TODO turnos
+            }
+            listaIntensidades->remover(2);
+        }
+        else{
+            Intensidad* carga = listaIntensidades->obtener(1);
+            carga->cambiarIntensidad(0);
+        }
+    }
+}
+
+void Celula::mutar(){
+    Lista<Gen*>* listaGenes = this->genes;
+    listaGenes->iniciarCursor();
+    Gen* nuevoGen = new Gen();
+    while (listaGenes->avanzarCursor()) {
+
+        Gen *genActual = listaGenes->obtenerCursor();
+        Intensidad* intensidadFinal = genActual->obtenerIntensidad();
+        if(intensidadFinal == 0){
+            nuevoGen->obtenerInformacioGeneticaDelGen()
+            ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());
+        }
+    }
+    if(nuevoGen->obtenerInformacioGeneticaDelGen()->devolverCadena()!="0"){
+        listaGenes->agregar(nuevoGen);
+    }
+    else{
+        delete nuevoGen;
+    }
+
+}
+
+
+Celula::~Celula(){
+    //liberarGenes();
+    delete this->genes;
 
 }

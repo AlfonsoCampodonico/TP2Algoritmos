@@ -27,5 +27,9 @@ public:
      * Post: devuelve la cantidad de carga genetica.
      */
     unsigned  int obtenerCantidadIntensidad();
+
+    void cambiarIntensidad(unsigned int carga);
+
+    bool estaActiva();
 };
 #endif //TP2ALGORITMOS_INTENSIDAD_H

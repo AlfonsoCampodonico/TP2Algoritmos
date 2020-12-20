@@ -10,3 +10,11 @@ Intensidad::Intensidad(unsigned int intensidad) {
 unsigned  Intensidad::obtenerCantidadIntensidad() {
     return this->cargaGeneticaTotal;
 }
+
+void Intensidad::cambiarIntensidad(unsigned int carga){
+    this->cargaGeneticaTotal = carga;
+}
+
+bool Intensidad::estaActiva(){
+    return (this->cargaGeneticaTotal!=0);
+}

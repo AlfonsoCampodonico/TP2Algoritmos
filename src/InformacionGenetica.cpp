@@ -71,4 +71,7 @@ unsigned int InformacionGenetica::contarBits() {
     return this->cadenaDeBits.size();
 }
 
+std::string InformacionGenetica::devolverCadena(){
+    return this->cadenaDeBits;
+}
 

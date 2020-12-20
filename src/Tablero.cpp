@@ -71,9 +71,11 @@ void Tablero::dictarVida(){
             }
             else if(unaCelula->estaMuerta() && vecinasVivas==3) {
                     unaCelula->vaAVivir();
-                    listaDeGenes->contarElementos();
                     unaCelula->obtenerListaGen()->agregar(*listaDeGenes);
                     unaCelula->completarTransferencia();
+                    unaCelula->calcularIntensidad();
+                    unaCelula->mutar();
+
                 }
             delete listaDeGenes;
 
@@ -117,7 +119,7 @@ bool Tablero::existeEnElTablero(unsigned int columna, unsigned int fila){
 Tablero::~Tablero() {
 	for (int i = 0 ; i < contarFilas() ; i++){
 		for (int j = 0 ; i < contarColumnas() ; j++){
-			delete[] (this-> espacio[i][j]);
+			delete this-> espacio[i][j];
 		}
 	}
 	for (int i = 0 ; i < contarColumnas() ; i++){

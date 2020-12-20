@@ -8,8 +8,7 @@
 using namespace std;
 
 JuegoDeLaVida::JuegoDeLaVida(){
-    unsigned  int fila, columna;
-    //this->elTablero = new Tablero();
+    this->elTablero = new Tablero(0,0);
     this->consola = new InterfazUsuario();
     this-> informes = new Informes();
 }
@@ -20,8 +19,6 @@ void JuegoDeLaVida::jugar(){
     ifstream archivoInicial;
     ingresarRutaDelArchivo(archivoInicial);
     procesarArchivo(archivoInicial);
-    Informes* informe = (this->informes);
-    Tablero* tablero = (this-> elTablero);
     bool terminaElJuegoDeLaVida{};
     do{
         comenzarElJuegoDeLaVida(terminaElJuegoDeLaVida);
@@ -71,6 +68,7 @@ void JuegoDeLaVida::crearTablero(ifstream& archivo){
     archivo >> alto;
     Tablero* nuevoTablero;
     nuevoTablero = new Tablero(ancho, alto);
+    delete this->elTablero;
     this->elTablero = nuevoTablero;
 }
 
@@ -168,12 +166,9 @@ void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
 }
 
 
-Tablero* JuegoDeLaVida::clonarTablero(Tablero* tablero){
 
-    Tablero* nuevoTablero = new Tablero(tablero->contarColumnas(),tablero->contarFilas());
-
-    std::copy(&tablero->obtenerEspacio()[0][0],
-              &tablero->obtenerEspacio()[0][0]+tablero->contarFilas()*tablero->contarColumnas(),
-              &nuevoTablero->obtenerEspacio()[0][0]);
-    return nuevoTablero;
+JuegoDeLaVida::~JuegoDeLaVida(){
+    delete this->informes;
+    delete this->consola;
+    delete this->elTablero;
 }

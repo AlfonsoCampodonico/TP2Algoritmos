@@ -7,10 +7,12 @@
 
 #include "InformacionGenetica.h"
 #include "Intensidad.h"
+#include "Lista.h"
 class Gen{
 private:
     unsigned  int edad;
     InformacionGenetica* informacionGenetica;
+    Lista<Intensidad*>* intensidades;
     unsigned int intensidad;
 public:
 
@@ -37,5 +39,11 @@ public:
     InformacionGenetica * obtenerInformacioGeneticaDelGen();
 
     bool estaActivoElGen();
+
+    ~Gen();
+
+    Lista<Intensidad *> *obtenerIntensidades();
+
+    Intensidad *obtenerIntensidad();
 };
 #endif //TP2ALGORITMOS_GEN_H

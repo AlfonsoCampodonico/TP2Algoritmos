@@ -1,6 +1,5 @@
 
 #include "Informes.h"
-#include "Tablero.h"
 
 
 Informes::Informes(){

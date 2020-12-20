@@ -6,7 +6,6 @@
 #define TP2ALGORITMOS_CELULA_H
 
 #include "Gen.h"
-#include "InformacionGenetica.h"
 #include "Lista.h"
 
 enum EstadoDeLaCelula {
@@ -87,6 +86,10 @@ public:
     void liberarGenes();
 
     void completarTransferencia();
+
+    void calcularIntensidad();
+
+    void mutar();
 };
 
 

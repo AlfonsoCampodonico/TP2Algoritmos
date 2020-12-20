@@ -50,5 +50,7 @@ public:
      * la instancia.
     */
      unsigned int contarBits();
+
+    std::string devolverCadena();
 };
 #endif //TP2ALGORITMOS_INFORMACIONGENETICA_H
