@@ -28,8 +28,14 @@ public:
      */
     unsigned  int obtenerCantidadIntensidad();
 
+    /* Pre: Un entero positivo
+     * Post: A partir de un nuevo valor, cambia la intensidad de un gen
+     */
     void cambiarIntensidad(unsigned int carga);
 
+    /* Pre:
+     * Post: Si el valor de la intensidad es mayor que 0 devuelve true, si es 0 devuelve false
+     */
     bool estaActiva();
 };
 #endif //TP2ALGORITMOS_INTENSIDAD_H
