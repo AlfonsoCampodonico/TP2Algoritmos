@@ -65,7 +65,7 @@ void Celula::completarTransferencia(){
 
         Gen* genActual = listaGenes->obtenerCursor();
         bool esIgual{};
-        unsigned int verificar{};
+
         if (nuevaLista->estaVacia() ){
             nuevaLista->agregar(genActual);
         }
@@ -73,9 +73,10 @@ void Celula::completarTransferencia(){
             nuevaLista->iniciarCursor();
             unsigned int tamanoLista = nuevaLista->contarElementos();
             unsigned int recorrido = 0;
+            unsigned int verificar = 0;
             while (nuevaLista->avanzarCursor()
                                         && (recorrido<tamanoLista)
-                                        && !esIgual) {
+                                        && (!esIgual)) {
                 Gen *genNuevo = nuevaLista->obtenerCursor();
                 esIgual = genActual->obtenerInformacioGeneticaDelGen()
                                 ->esIgualA(genNuevo->obtenerInformacioGeneticaDelGen());
@@ -88,9 +89,12 @@ void Celula::completarTransferencia(){
                     verificar++;
                 }
                 recorrido++;
+                if (verificar == tamanoLista){
+                    nuevaLista->agregar(genActual);
+                }
 
             }
-            if verificar
+
 
 
 
