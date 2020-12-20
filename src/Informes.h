@@ -88,13 +88,10 @@ class Informes{
 
 		void resetearNacimientosTurno();
 
-		void resetearTurnos();
 
 		void resetearVivas();
 
-		void resetearNacimientosTotales();
 
-		void resetearMuertesTotales();
 
 		void sumarNacimientosTotales();
 
@@ -104,20 +101,20 @@ class Informes{
 
 		int obtenerNacimientosTotales();
 
+        void resetearMuertes();
 
-    void resetearMuertes();
 
-    float obtenerPromedioNacimiento();
+        float obtenerPromedioNacimiento();
 
-    float obtenerPromedioMuertes();
+        float obtenerPromedioMuertes();
 
-    unsigned int obtenerCelulasVivas();
+        unsigned int obtenerCelulasVivas();
 
-    void resetearInformeTurno();
+        void resetearInformeTurno();
 
-    void actualizarInformeTurno(Tablero *tablero);
+        void actualizarInformeTurno(Tablero *tablero);
+        void actualizarEdadGen(Lista<Gen *> *listaGenes);
 
-    void actualizarEdadGen(Lista<Gen *> *listaGenes);
 };
 
 

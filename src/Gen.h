@@ -40,10 +40,12 @@ public:
 
     bool estaActivoElGen();
 
-    ~Gen();
+
 
     Lista<Intensidad *> *obtenerIntensidades();
 
     Intensidad *obtenerIntensidad();
+
+    ~Gen();
 };
 #endif //TP2ALGORITMOS_GEN_H
