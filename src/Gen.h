@@ -16,13 +16,15 @@ private:
     unsigned int intensidad;
 public:
 
-    /* PRE: -.
-     * POST: TODO
+    /*Constructor de la Celula
+     *
+     *
      */
     Gen();
 
-    /* PRE: -.
-     * POST: TODO
+    /* PRE: A partir de datos cargados desde un archivo, recibe una cadenaDeBits
+     * y una cargaGenetica
+     * POST: Crea un Gen con Informacion Genetica y Carga Genetica
      */
     Gen(std::string cadenaDeBits, unsigned int cargaGenetica);
 
