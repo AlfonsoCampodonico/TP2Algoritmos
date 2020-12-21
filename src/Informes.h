@@ -124,7 +124,7 @@ class Informes{
          * Post: Devuelve la cantidad de nacimientos totales */
 		int obtenerNacimientosTotales();
 
-    \
+
 
         /*Pre:
          * Post: Devuelve el promedio de nacimientos del turno */
