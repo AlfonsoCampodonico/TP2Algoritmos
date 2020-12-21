@@ -7,6 +7,9 @@
 
 #include "Gen.h"
 #include "Lista.h"
+#include "Informes.h"
+
+class Informes;
 
 enum EstadoDeLaCelula {
     MUERTA,
@@ -99,7 +102,7 @@ public:
     /* PRE: -.
      * POST: Calcula la intensidad de los nuevos genes de las celulas padres
      */
-    void calcularIntensidad();
+    void calcularIntensidad(Informes* informes);
 
     /* PRE: -.
      * POST: Genera la mutacion de celulas en base a las celulas que no tienen carga genetica activa.

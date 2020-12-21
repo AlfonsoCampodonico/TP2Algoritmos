@@ -152,7 +152,7 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido){
 void JuegoDeLaVida::ejecutarTurno(){
 
     this->informes->resetearInformeTurno();
-    this->elTablero->dictarVida();
+    this->elTablero->dictarVida(this->informes);
     this->elTablero->actualizarUnTablero(this->informes);
     this->informes->actualizarInformeTurno(this->elTablero);
     this->consola->mostrarInformeDelJuego(this->informes);

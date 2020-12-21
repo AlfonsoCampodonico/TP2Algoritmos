@@ -99,7 +99,7 @@ void Celula::completarTransferencia(){
 
 }
 
-void Celula::calcularIntensidad(){
+void Celula::calcularIntensidad(Informes* informes){
     Lista<Gen*>* listaGenes = this->genes;
     listaGenes->iniciarCursor();
 
@@ -124,9 +124,15 @@ void Celula::calcularIntensidad(){
                 }
 
                 listaIntensidades->remover(2); listaIntensidades->remover(3);
+
             }
             else{
-                //TODO TURNOS
+
+                unsigned  int turnos = informes->obtenerTurnos();
+                unsigned int edadGen = genActual->ObtenerEdadGen();
+                unsigned int nuevaIntensidad = ((edadGen/turnos )* 100) +1;
+                cargaUno->cambiarIntensidad(nuevaIntensidad);
+                listaIntensidades->remover(2); listaIntensidades->remover(3);
             }
 
         }
@@ -143,7 +149,10 @@ void Celula::calcularIntensidad(){
                 cargaUno->cambiarIntensidad(cargaDos->obtenerCantidadIntensidad());
             }
             else{
-                //TODO turnos
+                unsigned  int turnos = informes->obtenerTurnos();
+                unsigned int edadGen = genActual->ObtenerEdadGen();
+                unsigned int nuevaIntensidad = ((edadGen/turnos )* 100) +1;
+                cargaUno->cambiarIntensidad(nuevaIntensidad);
             }
             listaIntensidades->remover(2);
         }
@@ -151,6 +160,7 @@ void Celula::calcularIntensidad(){
             Intensidad* carga = listaIntensidades->obtener(1);
             carga->cambiarIntensidad(0);
         }
+
     }
 }
 

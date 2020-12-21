@@ -36,9 +36,7 @@ void Gen::anadirEdadGen() {
 InformacionGenetica* Gen::obtenerInformacioGeneticaDelGen(){
     return this->informacionGenetica;
 }
-bool Gen::estaActivoElGen(){
-    return (this->intensidad != 0);
-}
+
 
 Lista<Intensidad*>* Gen::obtenerIntensidades(){
     return this->intensidades;

@@ -10,6 +10,7 @@
 
 #include "Celula.h"
 #include "Tablero.h"
+class Celula;
 class Tablero;
 class Informes{
 	private:

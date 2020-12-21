@@ -10,6 +10,7 @@
 #include "Informes.h"
 
 class Informes;
+class Celula;
 /*
  * Matriz bidimensional que sera la encargada de contener el espacio del juego.
  */
@@ -61,7 +62,7 @@ public:
     /* PRE:
      * POST: Recorre el espacio del tablero indicando que celula va a morir o vivir en el turno
      */
-    void dictarVida();
+    void dictarVida(Informes *elInforme);
 
     /* PRE: Parametros de posicion de la columna y la fila.
      * POST: Indica si la posicion indicada existe o no en el Tablero

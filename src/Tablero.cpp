@@ -58,7 +58,7 @@ void Tablero::actualizarUnTablero(Informes* elInforme){
         }
     }
 }
-void Tablero::dictarVida(){
+void Tablero::dictarVida(Informes* elInforme){
 
     for(unsigned int columna = 1; columna <= this->contarColumnas(); columna++){
         for(unsigned int fila = 1; fila <= this->contarFilas(); fila++){
@@ -73,7 +73,7 @@ void Tablero::dictarVida(){
                     unaCelula->vaAVivir();
                     unaCelula->obtenerListaGen()->agregar(*listaDeGenes);
                     unaCelula->completarTransferencia();
-                    unaCelula->calcularIntensidad();
+                    unaCelula->calcularIntensidad(elInforme);
                     unaCelula->mutar();
 
                 }
