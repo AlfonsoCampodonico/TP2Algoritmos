@@ -79,22 +79,40 @@ class Informes{
 		 *
 		 */
 		void sumarViva();
+
 		/*Pre:-
 		 * Post: Devuelve si el juego está congelado o no
 		 */
 		bool estaCongelado();
 
+        /* Pre:
+         * Post: devuelve a 0 el valor de muertes por turno
+         */
 		void resetearMuertesTurno();
 
+        /* Pre:
+         * Post: devuelve a 0 el valor de nacimientos por turno
+         */
 		void resetearNacimientosTurno();
 
-
+        /* Pre:
+         * Post: devuelve a 0 el valor de celulas vivas en el tablero
+         */
 		void resetearVivas();
 
+        /* Pre:
+         * Post: devuelve a 0 el valor de cantidad de turnos
+         */
+        void resetearTurnos();
 
-
+        /* Pre:
+         * Post: suma el valor de nacimientos en el turno al acumulado de nacimientos totales
+         */
 		void sumarNacimientosTotales();
 
+        /* Pre:
+         * Post: suma el valor de muertes en el turno al acumulado de muertes totales
+         */
 		void sumarMuertesTotales();
 
 		int obtenerMuertesTotales();

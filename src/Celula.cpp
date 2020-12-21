@@ -46,13 +46,6 @@ Lista<Gen*>* Celula::obtenerListaGen(){
     return this->genes;
 }
 
-void Celula::liberarGenes(){
-    while(!this->genes->estaVacia()){
-        Gen* unGen = this->genes->obtener(1);
-        this->genes->remover(1);
-        delete unGen;
-    }
-}
 
 void Celula::completarTransferencia(){
     Lista<Gen*>* listaGenes = this->genes;
@@ -211,7 +204,7 @@ void Celula::mutar(){
 
 
 Celula::~Celula(){
-    //liberarGenes();
+
     delete this->genes;
 
 }

@@ -54,16 +54,21 @@ public:
     bool estaViva();
 
 
-    /*Pre:
-     * Post:
+    /* PRE: cadena de caracteres de informacionGenetica la cual se introduce desde un archivo
+     * y un entero de intensidad. Tambien la celula necesita de estar viva para tener un gen.
+     * POST: Modifica el gen de una celula para asignarle su informacion genetica y intensidad.
      */
     void setearGen(std::string informacionGenetica, unsigned int intensidad);
-    /*Pre:
-     * Post:
-     */
 
+
+    /* PRE: -.
+     * POST: Cambia el estado de la celula a CASIVIVA
+     */
     void vaAVivir();
 
+    /* PRE: -.
+     * POST: Cambia el estado de la celula a CASIMUERTA
+     */
     void vaAMorir();
 
     /* PRE: -.
@@ -76,6 +81,9 @@ public:
      */
     bool estaCasiMuerta();
 
+    /* PRE: -.
+     * POST: Devuelve la lista de Genes que puede tener una celula
+     */
     Lista<Gen *> *obtenerListaGen();
 
     /* PRE: -.
@@ -83,12 +91,19 @@ public:
      */
     ~Celula();
 
-    void liberarGenes();
-
+    /* PRE: -.
+     * POST: Vuelve unico a la informacion genetica de los genes al momento de nacer la celula
+     */
     void completarTransferencia();
 
+    /* PRE: -.
+     * POST: Calcula la intensidad de los nuevos genes de las celulas padres
+     */
     void calcularIntensidad();
 
+    /* PRE: -.
+     * POST: Genera la mutacion de celulas en base a las celulas que no tienen carga genetica activa.
+     */
     void mutar();
 };
 

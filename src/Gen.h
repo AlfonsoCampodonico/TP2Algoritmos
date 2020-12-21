@@ -16,36 +16,46 @@ private:
     unsigned int intensidad;
 public:
 
-    /* Pre: -
-     * Post:
+    /* PRE: -.
+     * POST: TODO
      */
     Gen();
 
-    /* Pre:
-     * Post:
+    /* PRE: -.
+     * POST: TODO
      */
     Gen(std::string cadenaDeBits, unsigned int cargaGenetica);
 
-    /* Pre: -
-     * Post:
+    /* PRE: -.
+     * POST: Devuelve a edad del Gen
      */
     unsigned int ObtenerEdadGen();
 
-    /* Pre: -
-     * Post:
+    /* PRE: -.
+     * POST: Le suma 1 a la edad del Gen
      */
     void anadirEdadGen();
 
+    /* PRE: -.
+     * POST: Devuelve la Informacion Genetica de un Gen
+     */
     InformacionGenetica * obtenerInformacioGeneticaDelGen();
 
-    bool estaActivoElGen();
 
-
-
+    /* PRE: -.
+     * POST: Devvuelve la lista de Intensidades de un Gen
+     * a la hora de la transferencia
+     */
     Lista<Intensidad *> *obtenerIntensidades();
 
+    /* PRE: -.
+     * POST: Devuelve la Intensidad de un Gen
+     */
     Intensidad *obtenerIntensidad();
 
+    /* PRE: -.
+     * POST: Libera los recursos tomados por el Gen
+     */
     ~Gen();
 };
 #endif //TP2ALGORITMOS_GEN_H

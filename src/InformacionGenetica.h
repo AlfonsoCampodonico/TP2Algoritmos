@@ -51,8 +51,14 @@ public:
     */
      unsigned int contarBits();
 
+    /* PRE: -.
+    * POST: Devuelve la cadena de bits de la Informacion Genetica
+    */
     std::string devolverCadena();
 
+    /* PRE: Una cadena de bits nueva
+     * POST: A partir de una nueva cadena de bits, reemplaza la anterior
+     */
     void cambiarInformacionGenetica(std::string nuevaCadena);
 };
 #endif //TP2ALGORITMOS_INFORMACIONGENETICA_H

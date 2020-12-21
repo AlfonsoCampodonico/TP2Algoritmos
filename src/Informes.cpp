@@ -35,7 +35,6 @@ unsigned int Informes::obtenerMuertesTurno(){
 unsigned int Informes::obtenerNacimientosTurno(){
 	return (this->nacimientosTurnos);
 }
-//TODO
 int Informes::obtenerNacimientosTotales(){
 	return (this-> nacimientosTotales);
 }

@@ -33,16 +33,31 @@ public:
     void mostrarArchivoInexistente();
 
 
-    void mostrarInformacionDelJuego(Informes *informes);
+   \
 
+    /* PRE: -.
+     * POST: Muestra por consola el final del Juego de la vida
+     */
     void mostrarFinDelJuegoDeLaVida();
 
+    /* PRE: -.
+     * POST: Muestra por consola si el juego de la vida se encuentra congelado
+     */
     void mostrarCongelado();
 
+    /* PRE: -.
+     * POST: Muestra por consola el menu del juego de la vida
+     */
     void mostrarMenuDeJuegoDeLaVida();
 
+    /* PRE: -.
+     * POST: Muestra por consola al usuario de que el numero introducio no es valido
+     */
     void mostrarQueNoEsUnNumeroValido();
 
+    /* PRE: -.
+     * POST: Muestra el informe del juego
+     */
     void mostrarInformeDelJuego(Informes *informes);
 };
 
