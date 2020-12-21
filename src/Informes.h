@@ -116,28 +116,48 @@ class Informes{
          */
 		void sumarMuertesTotales();
 
+        /*Pre:
+        * Post: Devuelve la cantidad de muertes totales */
 		int obtenerMuertesTotales();
 
+        /*Pre:
+         * Post: Devuelve la cantidad de nacimientos totales */
 		int obtenerNacimientosTotales();
 
-        void resetearMuertes();
+    \
 
-
+        /*Pre:
+         * Post: Devuelve el promedio de nacimientos del turno */
         float obtenerPromedioNacimiento();
 
+        /*Pre:
+        * Post: Devuelve el promedio de muertes del turno */
         float obtenerPromedioMuertes();
 
+        /*Pre:
+         * Post: Devuelve la cantidad de celulas vivas en un turno */
         unsigned int obtenerCelulasVivas();
 
+        /*Pre:
+         * Post: Devuelve a 0 los datos de turnos
+         * */
         void resetearInformeTurno();
 
+        /*Pre: recibe un tablero para actualizar la informacion de un gen
+         * Post: Actualiza la informacion en el informe despues de ejecutar un turno
+         */
         void actualizarInformeTurno(Tablero *tablero);
+
+        /*Pre: recibe una listaGenes de una celula en especifica
+         * Post: Actualiza la edad de los genes sumandole 1
+         *
+         */
         void actualizarEdadGen(Lista<Gen *> *listaGenes);
 
         /*PRE:
-         * POST Reinicia los informes
+         * POST Reinicia el informe
          * */
-    void reiniciarInforme();
+        void reiniciarInforme();
 };
 
 
