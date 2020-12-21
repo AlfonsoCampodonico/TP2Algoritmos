@@ -5,7 +5,7 @@
 #include "Gen.h"
 Gen::Gen() {
     this->edad = 1;
-    this->intensidad=0;
+
     this->informacionGenetica= new InformacionGenetica();
     this->intensidades = new Lista<Intensidad*>();
 }
@@ -13,12 +13,6 @@ Gen::Gen() {
 Gen::Gen(std::string cadenaDeBits, unsigned int cargaGenetica){
     this->edad = 1;
     this->informacionGenetica = new InformacionGenetica(cadenaDeBits);
-    if (cargaGenetica<100 & cargaGenetica >= 0){
-        this->intensidad = cargaGenetica;
-    }
-    else{
-        throw std::string ("Error  la carga genetica no es un valor correcto");
-    }
     this->intensidades = new Lista<Intensidad*>();
     Intensidad* intensidadNueva = new Intensidad(cargaGenetica);
     this->intensidades->agregar(intensidadNueva);

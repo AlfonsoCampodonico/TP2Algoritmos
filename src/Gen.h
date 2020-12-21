@@ -13,7 +13,6 @@ private:
     unsigned  int edad;
     InformacionGenetica* informacionGenetica;
     Lista<Intensidad*>* intensidades;
-    unsigned int intensidad;
 public:
 
     /*Constructor de la Celula

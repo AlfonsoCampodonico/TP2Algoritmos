@@ -47,10 +47,7 @@ class Informes{
 		 */
 		void contarCelulasVivas(Tablero* tablero);
 
-		/*Pre: -
-		 * Post: Analizara si el juego se congelo y sumará uno
-		 */
-		void seCongelo();
+
 		/* Pre:cantidadTurnos debe ser mayor a 0
 		 * Post: Promedia los nacimientos
 		 */
