@@ -134,6 +134,10 @@ class Informes{
         void actualizarInformeTurno(Tablero *tablero);
         void actualizarEdadGen(Lista<Gen *> *listaGenes);
 
+        /*PRE:
+         * POST Reinicia los informes
+         * */
+    void reiniciarInforme();
 };
 
 

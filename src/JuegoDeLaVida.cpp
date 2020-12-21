@@ -159,7 +159,8 @@ void JuegoDeLaVida::ejecutarTurno(){
 }
 
 void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
-    //Liberar Tableros TODO
+    delete this->elTablero;
+    this->informes->reiniciarInforme();
     ifstream nuevoArchivoInicial;
     ingresarRutaDelArchivo(nuevoArchivoInicial);
     procesarArchivo(nuevoArchivoInicial);

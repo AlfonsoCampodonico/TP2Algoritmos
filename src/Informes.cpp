@@ -149,3 +149,13 @@ void Informes::actualizarEdadGen(Lista<Gen*>* listaGenes){
         unGen->anadirEdadGen();
     }
 }
+
+void Informes::reiniciarInforme(){
+    this->cantidadTurnos = 0;
+    this->celulasVivas = 0;
+    this->nacimientosTurnos = 0;
+    this->nacimientosTotales = 0;
+    this->muertesTurnos = 0;
+    this->muertesTotales = 0;
+    this->juegoCongelado = 0;
+}
