@@ -130,7 +130,7 @@ void Celula::calcularIntensidad(Informes* informes){
 
                 unsigned  int turnos = informes->obtenerTurnos();
                 unsigned int edadGen = genActual->ObtenerEdadGen();
-                unsigned int nuevaIntensidad = ((edadGen/turnos )* 100) +1;
+                unsigned int nuevaIntensidad = ((edadGen/(turnos+1) )* 100) +1;
                 cargaUno->cambiarIntensidad(nuevaIntensidad);
                 listaIntensidades->remover(2); listaIntensidades->remover(3);
             }

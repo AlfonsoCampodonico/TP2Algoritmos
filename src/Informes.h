@@ -155,6 +155,10 @@ class Informes{
          * POST Reinicia el informe
          * */
         void reiniciarInforme();
+        /* Pre: Se le debe pasar un tablero  como parametro
+         * Post: Imprime una foto del tablero en formato bmp
+         */
+        void imprimirBmpTablero(Tablero* tablero);
 };
 
 
