@@ -10,6 +10,7 @@
 
 #include "Celula.h"
 #include "Tablero.h"
+#include "EasyBMP.h"
 class Celula;
 class Tablero;
 class BMP;
