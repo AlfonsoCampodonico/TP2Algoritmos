@@ -162,9 +162,9 @@ void Informes::reiniciarInforme(){
     this->juegoCongelado = 0;
 }
 void Informes::imprimirBmpTablero(Tablero* tablero){
-	BMP* Imagen = new BMP();
-	Imagen->SetSize(tablero->contarColumnas(),tablero->contarFilas());
-	Imagen->SetBitDepth(8);
+	BMP Imagen;
+	Imagen.SetSize(tablero->contarColumnas(),tablero->contarFilas());
+	Imagen.SetBitDepth(8);
 	for (int x = 0 ; x < (tablero->contarColumnas()); x++){
 		for (int y = 0 ; y < (tablero->contarFilas()) ; y++){
 			Celula* posicionTablero = tablero->obtenerPosicionCelula(x,y);
@@ -173,17 +173,17 @@ void Informes::imprimirBmpTablero(Tablero* tablero){
 				RGBApixel Yellow;
 				Yellow.Green = 255;
 				Yellow.Red = 255;
-				Imagen->SetPixel(x,y,Yellow);
+				Imagen.SetPixel(x,y,Yellow);
 			}
 			else{
 				RGBApixel Negro;
 				Negro.Alpha = 255;
-				Imagen->SetPixel(x,y,Negro);
+				Imagen.SetPixel(x,y,Negro);
 			}
 		}
 	}
 	//char* nombreArchivo = (char*)('0000000' + (char)this->cantidadTurnos);
-	Imagen->WriteToFile("0000.bmp");
+	Imagen.WriteToFile("0000.bmp");
 }
 
 
