@@ -161,7 +161,7 @@ void Informes::reiniciarInforme(){
     this->muertesTotales = 0;
     this->juegoCongelado = 0;
 }
-
+/*
 void Informes::imprimirBmpTablero(Tablero* tablero){
 	BMP Imagen;
 	Imagen.SetSize(tablero->contarColumnas(),tablero->contarFilas());
@@ -186,7 +186,7 @@ void Informes::imprimirBmpTablero(Tablero* tablero){
 	//char* nombreArchivo = (char*)('0000000' + (char)this->cantidadTurnos);
 	Imagen.WriteToFile("0000.bmp");
 }
-
+*/
 
 
 
