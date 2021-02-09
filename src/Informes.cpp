@@ -2,6 +2,7 @@
 #include "Informes.h"
 #include "EasyBMP.h"
 #include <string>
+class BMP;
 Informes::Informes(){
 
 	this->cantidadTurnos = 0;
