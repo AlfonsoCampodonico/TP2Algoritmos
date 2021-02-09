@@ -12,6 +12,7 @@
 #include "Tablero.h"
 class Celula;
 class Tablero;
+class BMP;
 class Informes{
 	private:
 		int cantidadTurnos;
