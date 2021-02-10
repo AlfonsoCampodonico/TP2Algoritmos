@@ -108,6 +108,14 @@ public:
      * POST: Genera la mutacion de celulas en base a las celulas que no tienen carga genetica activa.
      */
     void mutar();
+
+    void liberarGenes();
+
+    void casoTresActiva(Lista<Intensidad *> *listaIntensidades);
+
+    void casoTresActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
+
+    void casoDosActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 };
 
 

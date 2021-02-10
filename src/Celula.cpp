@@ -55,7 +55,7 @@ void Celula::completarTransferencia(){
     while (listaGenes->avanzarCursor()) {
 
         Gen* genActual = listaGenes->obtenerCursor();
-        bool esIgual{};
+        bool esIgual = false;
 
         if (nuevaLista->estaVacia() ){
             nuevaLista->agregar(genActual);
@@ -66,31 +66,21 @@ void Celula::completarTransferencia(){
             unsigned int recorrido = 0;
             unsigned int verificar = 0;
             while (nuevaLista->avanzarCursor()
-                                        && (recorrido<tamanoLista)
-                                        && (!esIgual)) {
+                                        && (recorrido<tamanoLista)) {
                 Gen *genNuevo = nuevaLista->obtenerCursor();
                 esIgual = genActual->obtenerInformacioGeneticaDelGen()
                                 ->esIgualA(genNuevo->obtenerInformacioGeneticaDelGen());
-                Lista<Intensidad*>* listaIntensidades = genNuevo->obtenerIntensidades();
+                recorrido++;
                 if(esIgual){
-                    Intensidad * intensidadActual = genActual->obtenerIntensidad();
-
-                    listaIntensidades->agregar(intensidadActual);
-
+                    genNuevo->agregarIntensidad(genActual->obtenerValorIntensidad());
                 }
                 else{
                     verificar++;
                 }
-                recorrido++;
                 if (verificar == tamanoLista){
                     nuevaLista->agregar(genActual);
                 }
-
             }
-
-
-
-
         }
 
     }
@@ -102,66 +92,80 @@ void Celula::completarTransferencia(){
 void Celula::calcularIntensidad(Informes* informes){
     Lista<Gen*>* listaGenes = this->genes;
     listaGenes->iniciarCursor();
+    unsigned int cantidadTurnos = informes->obtenerTurnos();
 
+    //Recorro la lista de genes que tiene la celula
     while (listaGenes->avanzarCursor()) {
 
+        //Obtengo un Gen para analizar
         Gen *genActual = listaGenes->obtenerCursor();
         Lista<Intensidad*>* listaIntensidades = genActual->obtenerIntensidades();
         unsigned  int cantidadDeCargas= listaIntensidades->contarElementos();
+
+        //Si La cantidad es 3 pasa a la funcion de 3 cargas
         if (cantidadDeCargas == 3){
-            Intensidad* cargaUno = listaIntensidades->obtener(1);
-            Intensidad* cargaDos = listaIntensidades->obtener(2);
-            Intensidad* cargaTres = listaIntensidades->obtener(3);
 
-            if (cargaUno->estaActiva() || cargaDos->estaActiva() || cargaTres->estaActiva()){
-
-                if ((cargaDos->obtenerCantidadIntensidad() >= cargaUno->obtenerCantidadIntensidad())
-                && (cargaDos->obtenerCantidadIntensidad() >= cargaTres->obtenerCantidadIntensidad())){
-                    listaIntensidades->asignar(cargaDos,1);
-                }
-                else{
-                    listaIntensidades->asignar(cargaTres,1);
-                }
-
-                listaIntensidades->remover(2); listaIntensidades->remover(3);
-
-            }
-            else{
-
-                unsigned  int turnos = informes->obtenerTurnos();
-                unsigned int edadGen = genActual->ObtenerEdadGen();
-                unsigned int nuevaIntensidad = ((edadGen/turnos )* 100) +1;
-                cargaUno->cambiarIntensidad(nuevaIntensidad);
-                listaIntensidades->remover(2); listaIntensidades->remover(3);
-            }
+            casoTresActiva(listaIntensidades,genActual,cantidadTurnos);
 
         }
         else if(cantidadDeCargas == 2){
-            Intensidad* cargaUno = listaIntensidades->obtener(1);
-            Intensidad* cargaDos = listaIntensidades->obtener(2);
-            if (cargaUno->estaActiva() && cargaDos->estaActiva()){
-                unsigned int cantidadIntensidadUno = cargaUno->obtenerCantidadIntensidad();
-                unsigned int cantidadIntensidadDos = cargaDos->obtenerCantidadIntensidad();
-                unsigned int promedio = (cantidadIntensidadUno+cantidadIntensidadDos) /2;
-                cargaUno->cambiarIntensidad(promedio);
-            }
-            else if(cargaDos->estaActiva()){
-                cargaUno->cambiarIntensidad(cargaDos->obtenerCantidadIntensidad());
-            }
-            else{
-                unsigned  int turnos = informes->obtenerTurnos();
-                unsigned int edadGen = genActual->ObtenerEdadGen();
-                unsigned int nuevaIntensidad = ((edadGen/turnos )* 100) +1;
-                cargaUno->cambiarIntensidad(nuevaIntensidad);
-            }
-            listaIntensidades->remover(2);
+
+            casoDosActiva(listaIntensidades,genActual,cantidadTurnos);
         }
+
         else{
-            Intensidad* carga = listaIntensidades->obtener(1);
-            carga->cambiarIntensidad(0);
+            genActual->cambiarIntensidadPrincipal(0);
         }
 
     }
+}
+
+void Celula::casoTresActiva(Lista<Intensidad*>* listaIntensidades, Gen* genActual,unsigned int turnos){
+    Intensidad* cargaUno = listaIntensidades->obtener(1);
+    Intensidad* cargaDos = listaIntensidades->obtener(2);
+    Intensidad* cargaTres = listaIntensidades->obtener(3);
+
+
+    if (cargaUno->estaActiva() || cargaDos->estaActiva() || cargaTres->estaActiva()){
+
+        if ((cargaDos->obtenerCantidadIntensidad() >= cargaUno->obtenerCantidadIntensidad())
+            && (cargaDos->obtenerCantidadIntensidad() >= cargaTres->obtenerCantidadIntensidad())){
+
+            genActual->cambiarIntensidadPrincipal(cargaDos->obtenerCantidadIntensidad());
+
+        }
+        else{
+            genActual->cambiarIntensidadPrincipal(cargaTres->obtenerCantidadIntensidad());
+        }
+    }
+    else{
+        unsigned int edadGen = genActual->ObtenerEdadGen();
+        unsigned int nuevaIntensidad = ((edadGen/turnos)* 100) +1;
+        genActual->cambiarIntensidadPrincipal(nuevaIntensidad);
+
+}}
+
+void Celula::casoDosActiva(Lista<Intensidad*>* listaIntensidades, Gen* genActual,unsigned int turnos){
+    Intensidad* cargaUno = listaIntensidades->obtener(1);
+    Intensidad* cargaDos = listaIntensidades->obtener(2);
+    if (cargaUno->estaActiva() && cargaDos->estaActiva()){
+        unsigned int cantidadIntensidadUno = cargaUno->obtenerCantidadIntensidad();
+        unsigned int cantidadIntensidadDos = cargaDos->obtenerCantidadIntensidad();
+        unsigned int promedio = (cantidadIntensidadUno+cantidadIntensidadDos) /2;
+        genActual->cambiarIntensidadPrincipal(promedio);
+    }
+    else if(cargaUno->estaActiva()){
+        genActual->cambiarIntensidadPrincipal(cargaUno->obtenerCantidadIntensidad());
+    }
+    else if (cargaDos->estaActiva()){
+        genActual->cambiarIntensidadPrincipal(cargaDos->obtenerCantidadIntensidad());
+    }
+    else{
+        unsigned int edadGen = genActual->ObtenerEdadGen();
+        unsigned int nuevaIntensidad = ((edadGen/turnos)* 100) +1;
+        genActual->cambiarIntensidadPrincipal(nuevaIntensidad);
+    }
+
 }
 
 void Celula::mutar(){
@@ -211,6 +215,7 @@ void Celula::mutar(){
     }
 
 }
+
 
 
 Celula::~Celula(){

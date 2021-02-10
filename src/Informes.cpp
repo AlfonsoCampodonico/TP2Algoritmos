@@ -4,7 +4,7 @@
 
 Informes::Informes(){
 
-	this->cantidadTurnos = 0;
+	this->cantidadTurnos = 1;
 	this-> celulasVivas = 0;
 	this-> nacimientosTurnos = 0;
 	this-> nacimientosTotales = 0;

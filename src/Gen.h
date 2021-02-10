@@ -13,6 +13,7 @@ private:
     unsigned  int edad;
     InformacionGenetica* informacionGenetica;
     Lista<Intensidad*>* intensidades;
+    unsigned int intensidad;
 public:
 
     /*Constructor de la Celula
@@ -58,5 +59,15 @@ public:
      * POST: Libera los recursos tomados por el Gen
      */
     ~Gen();
+
+    void liberarIntensidades();
+
+    void agregarIntensidad(unsigned int cargaGenetica);
+
+    unsigned int obtenerValorIntensidad();
+
+    unsigned int obtenerValorIntensidadPrincipal();
+
+    void cambiarIntensidadPrincipal(unsigned int intensidadNueva);
 };
 #endif //TP2ALGORITMOS_GEN_H
