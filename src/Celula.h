@@ -116,6 +116,8 @@ public:
     void casoTresActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
     void casoDosActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
+
+    void generarMutacion();
 };
 
 

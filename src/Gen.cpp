@@ -65,13 +65,17 @@ void Gen::liberarIntensidades() {
     }
 }
 
-void Gen::cambiarIntensidadPrincipal(unsigned int intensidadNueva){    this->intensidad = intensidadNueva;
+void Gen::cambiarIntensidadPrincipal(unsigned int intensidadNueva){
+    this->intensidad = intensidadNueva;
     liberarIntensidades();
+    delete this->intensidades;
+    this->intensidades = new Lista<Intensidad*>();
     agregarIntensidad(intensidadNueva);}
 
 
 
 Gen::~Gen() {
     delete this->informacionGenetica;
+    liberarIntensidades();
     delete this->intensidades;
 }

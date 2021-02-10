@@ -84,7 +84,7 @@ void Celula::completarTransferencia(){
         }
 
     }
-    delete this->genes;
+    delete listaGenes;
     this->genes = nuevaLista;
 
 }
@@ -168,58 +168,57 @@ void Celula::casoDosActiva(Lista<Intensidad*>* listaIntensidades, Gen* genActual
 
 }
 
-void Celula::mutar(){
+
+
+void Celula::generarMutacion(){
     Lista<Gen*>* listaGenes = this->genes;
     listaGenes->iniciarCursor();
-    Gen* nuevoGen = new Gen();
-    bool encontreUnoParaMutar{};
-    while (listaGenes->avanzarCursor() && !encontreUnoParaMutar) {
-
+    Lista<Gen*>* listaParaMezclar = new Lista<Gen*>();
+    while (listaGenes->avanzarCursor()) {
         Gen *genActual = listaGenes->obtenerCursor();
-        Intensidad* intensidadFinal = genActual->obtenerIntensidad();
-        if(intensidadFinal == 0){
-            std::string nuevaCadena = genActual->
-                                        obtenerInformacioGeneticaDelGen()->
-                                            devolverCadena();
-            nuevoGen->
-                obtenerInformacioGeneticaDelGen()->
-                    cambiarInformacionGenetica(nuevaCadena);
-
-            encontreUnoParaMutar = true;
-            /*nuevoGen->obtenerInformacioGeneticaDelGen()
-            ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());*/
+        if ( genActual->obtenerValorIntensidadPrincipal() == 0){
+            std::string cadenaDeBits = genActual->obtenerInformacioGeneticaDelGen()->devolverCadena();
+            Gen *genNuevoParaMezclar = new Gen(cadenaDeBits,genActual->obtenerValorIntensidadPrincipal());
+            listaParaMezclar->agregar(genNuevoParaMezclar);
         }
     }
-    listaGenes->iniciarCursor();
-    while (listaGenes->avanzarCursor() ) {
+    if (listaParaMezclar->contarElementos() > 1){
+        listaParaMezclar->iniciarCursor();listaParaMezclar->avanzarCursor();
+        Gen* primerGen = listaParaMezclar->obtenerCursor();
+        std::string cadenaDeBits = primerGen->obtenerInformacioGeneticaDelGen()->devolverCadena();
+        Gen *genNuevo = new Gen(cadenaDeBits,primerGen->obtenerValorIntensidadPrincipal());
 
-        Gen *genActual = listaGenes->obtenerCursor();
-        Intensidad *intensidadFinal = genActual->obtenerIntensidad();
-        InformacionGenetica *informacionGeneticaFinal = genActual->
-                obtenerInformacioGeneticaDelGen();
-        if (intensidadFinal == 0
-            && !informacionGeneticaFinal->
-                esIgualA(nuevoGen->obtenerInformacioGeneticaDelGen())) {
+        while (listaParaMezclar->avanzarCursor()){
+            Gen* GenSiguiente =listaParaMezclar->obtenerCursor();
+            genNuevo->obtenerInformacioGeneticaDelGen()
+                    ->combinarCon(GenSiguiente->obtenerInformacioGeneticaDelGen());
 
-            nuevoGen->obtenerInformacioGeneticaDelGen()
-                    ->combinarCon(genActual->obtenerInformacioGeneticaDelGen());
+
         }
+        listaGenes->agregar(genNuevo);
     }
 
-
-    if(nuevoGen->obtenerInformacioGeneticaDelGen()->devolverCadena()!="0"){
-        listaGenes->agregar(nuevoGen);
-    }
-    else{
-        delete nuevoGen;
-    }
+    while(!listaParaMezclar->estaVacia()){
+            Gen* unGen;
+            unGen = listaParaMezclar->obtener(1);
+            listaParaMezclar->remover(1);
+            delete unGen;
+        }
+    delete listaParaMezclar;
 
 }
 
-
+void Celula::liberarGenes() {
+    while(!this->genes->estaVacia()){
+        Gen* unGen;
+        unGen = this->genes->obtener(1);
+        this->genes->remover(1);
+        delete unGen;
+    }
+}
 
 Celula::~Celula(){
-
+    liberarGenes();
     delete this->genes;
 
 }
