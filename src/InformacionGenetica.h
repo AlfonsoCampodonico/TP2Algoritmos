@@ -6,7 +6,6 @@
 #define TP2ALGORITMOS_INFORMACIONGENETICA_H
 
 #include <string>
-#include "Intensidad.h"
 
 /* La Informacion Genetica está conformada por una secuencia de bits.
 * Un bit es la mínima expresión de información, que puede tomar dos únicos valores posibles: 0/1,

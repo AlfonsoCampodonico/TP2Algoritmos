@@ -5,7 +5,7 @@
 #include "Gen.h"
 Gen::Gen() {
     this->edad = 1;
-    this->informacionGenetica= new InformacionGenetica();
+    this->informacionGenetica = new InformacionGenetica();
     this->intensidades = new Lista<Intensidad*>();
     this->intensidad = 0;
 }
@@ -75,7 +75,7 @@ void Gen::cambiarIntensidadPrincipal(unsigned int intensidadNueva){
 
 
 Gen::~Gen() {
-    delete this->informacionGenetica;
     liberarIntensidades();
     delete this->intensidades;
+    delete this->informacionGenetica;
 }

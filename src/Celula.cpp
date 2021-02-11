@@ -214,6 +214,7 @@ void Celula::liberarGenes() {
         unGen = this->genes->obtener(1);
         this->genes->remover(1);
         delete unGen;
+
     }
 }
 
