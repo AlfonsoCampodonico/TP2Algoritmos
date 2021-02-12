@@ -1,0 +1,2 @@
+g++ -o aplicacion main.cpp Celula.cpp Gen.cpp Tablero.cpp Informes.cpp InformacionGenetica.cpp Lista.h Nodo.h Intensidad.cpp InterfazUsuario.cpp JuegoDeLaVida.cpp
+
