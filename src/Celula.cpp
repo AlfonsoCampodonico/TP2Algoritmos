@@ -220,7 +220,7 @@ void Celula::liberarGenes() {
 }
 
 Celula::~Celula(){
-    liberarGenes();
+    //liberarGenes();
     delete this->genes;
 
 }
