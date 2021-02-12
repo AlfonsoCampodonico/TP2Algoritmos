@@ -177,6 +177,7 @@ void Celula::generarMutacion(){
     while (listaGenes->avanzarCursor()) {
         Gen *genActual = listaGenes->obtenerCursor();
         if ( genActual->obtenerValorIntensidadPrincipal() == 0){
+
             std::string cadenaDeBits = genActual->obtenerInformacioGeneticaDelGen()->devolverCadena();
             Gen *genNuevoParaMezclar = new Gen(cadenaDeBits,genActual->obtenerValorIntensidadPrincipal());
             listaParaMezclar->agregar(genNuevoParaMezclar);

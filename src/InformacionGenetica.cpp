@@ -27,13 +27,13 @@ void InformacionGenetica::combinarCon(InformacionGenetica *otra) {
     std::string nuevaCadena{}, nuevaOtraCadena{}, nuevaInformacionGenetica{};
 
     if (this->tamano > otra->tamano){
-        nuevaOtraCadena = std::string(this->tamano - otra->tamano, '0') + otra->cadenaDeBits;
+        nuevaOtraCadena = std::string(this->tamano - otra->tamano, '0') + otra->devolverCadena();
         nuevaCadena = this->cadenaDeBits;
 
     }
     else if (this->tamano < otra->tamano){
         nuevaOtraCadena = otra->cadenaDeBits;
-        nuevaCadena = std::string(otra->tamano - this->tamano, '0') + this->cadenaDeBits;
+        nuevaCadena = std::string(otra->tamano - this->tamano, '0') + this->devolverCadena();
     }
     else {
         nuevaOtraCadena = otra->cadenaDeBits;
