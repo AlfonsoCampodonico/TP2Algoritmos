@@ -11,7 +11,8 @@ Celula::Celula() {
 
 void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
     Gen* unGen = new Gen(informacionGenetica, intensidad);
-    this->genes->agregar(unGen);
+    Lista<Gen*>* listaGenes = (this->genes);
+    listaGenes->agregar(unGen);
 
 }
 
@@ -193,12 +194,10 @@ void Celula::generarMutacion(){
         Gen* primerGen = listaParaMezclar->obtenerCursor();
         std::string cadenaDeBits = primerGen->obtenerInformacioGeneticaDelGen()->devolverCadena();
         Gen *genNuevo = new Gen(cadenaDeBits,primerGen->obtenerValorIntensidadPrincipal());
-
         while (listaParaMezclar->avanzarCursor()){
             Gen* GenSiguiente =listaParaMezclar->obtenerCursor();
             genNuevo->obtenerInformacioGeneticaDelGen()
                     ->combinarCon(GenSiguiente->obtenerInformacioGeneticaDelGen());
-
 
         }
         listaGenes->agregar(genNuevo);
@@ -229,7 +228,7 @@ void Celula::liberarGenes() {
 }
 
 Celula::~Celula(){
-    liberarGenes();
+    //liberarGenes();
     delete this->genes;
     delete this->color;
 

@@ -10,14 +10,14 @@ Tablero::Tablero( unsigned int cantidadDeColumnas, unsigned int cantidadDeFilas)
 
     this-> cantidadDeFilas = cantidadDeFilas;
     this-> cantidadDeColumnas = cantidadDeColumnas;
-    this-> espacio = new Celula**[cantidadDeColumnas];
+    this-> espacio = new Celula**[cantidadDeColumnas]();
     for(unsigned int i = 0; i<cantidadDeColumnas; i++){
-        this-> espacio[i] = new Celula*[cantidadDeFilas];
+        this-> espacio[i] = new Celula*[cantidadDeFilas]();
     }
     for(unsigned int x = 0; x < cantidadDeColumnas; x++){
         for(unsigned int j = 0; j<cantidadDeFilas; j++){
-            Celula* celulaNueva = new Celula();
-            this-> espacio[x][j] = celulaNueva;
+            //Celula* celulaNueva = new Celula();
+            this-> espacio[x][j] = new Celula();
         }
     }
 }
@@ -117,7 +117,6 @@ bool Tablero::existeEnElTablero(unsigned int columna, unsigned int fila){
 }
 
 Tablero::~Tablero() {
-
     for (int i = 0 ; i < contarColumnas() ; i++){
         for (int j = 0 ; j < contarFilas() ; j++){
             delete this-> espacio[i][j];
