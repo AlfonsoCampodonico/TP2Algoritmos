@@ -59,3 +59,8 @@ void InterfazUsuario::mostrarInformeDelJuego(Informes* informes){
     cout << "Muertes: " << informes->obtenerMuertesTurno() << endl;
     cout << "Promedio de muertes totales: " << informes->obtenerPromedioMuertes() << endl;
 }
+
+void InterfazUsuario::mostrarPedidoSeguimientoGen(){
+    cout << endl;
+    cout << "Favor introducir el Gen a realizar el seguimiento" << endl;
+}

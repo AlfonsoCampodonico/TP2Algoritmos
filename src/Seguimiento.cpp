@@ -14,13 +14,6 @@ Seguimiento::Seguimiento() {
 
 }
 
-Seguimiento::Seguimiento(std::string cadenaDeBits, unsigned int turnoInicio){
-    this->informacionGeneticaDelGen = cadenaDeBits;
-    this->turnoDeComienzo = turnoInicio;
-    this->turnoDeFinalizacion = 1;
-    this->listadoPorTurno = new Lista<GenSeguimiento*>();
-    this->mayorAcumulado = 0;
-}
 
 void Seguimiento::modificarTurnoInicio(unsigned int turnoInicio){
     this->turnoDeComienzo = turnoInicio;
@@ -81,4 +74,8 @@ std::string Seguimiento::devolverCadenaGen(){
 
 unsigned int Seguimiento::devolverMayorAcumulado(){
     return this->mayorAcumulado;
+}
+
+void Seguimiento::modificarInformacionGenetica(std::string informacionGenetica){
+    this->informacionGeneticaDelGen = informacionGenetica;
 }

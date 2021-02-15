@@ -99,6 +99,8 @@ public:
      * POST: Comienza el seguimiento de un gen
      */
     void comenzarSeguimiento(bool &seguimiento);
+
+
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

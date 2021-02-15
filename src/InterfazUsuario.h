@@ -32,9 +32,6 @@ public:
      */
     void mostrarArchivoInexistente();
 
-
-
-
     /* PRE: -.
      * POST: Muestra por consola el final del Juego de la vida
      */
@@ -59,6 +56,11 @@ public:
      * POST: Muestra el informe del juego
      */
     void mostrarInformeDelJuego(Informes *informes);
+
+    /* PRE: -.
+     * POST: Muestra el mensaje de pedido de Seguimiento del Gen
+     */
+    void mostrarPedidoSeguimientoGen();
 };
 
 #endif //TP2ALGORITMOS_INTERFAZUSUARIO_H

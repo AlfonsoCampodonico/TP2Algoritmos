@@ -165,12 +165,17 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
 
 void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
 
+    std::string valorIngresado;
+    this->consola->mostrarPedidoSeguimientoGen();
+    cin >> valorIngresado;
 
     if (!seguimiento){
         if(!informes->estaCongelado()){
 
             ejecutarTurno();
-            JuegoDeLaVida::seguimiento->buscarTablero(this->elTablero, this->informes->obtenerTurnos());
+            this->seguimiento->modificarInformacionGenetica(valorIngresado);
+            this->seguimiento->modificarTurnoInicio(this->informes->obtenerTurnos());
+            this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
         }
         else{
             consola->mostrarCongelado();
