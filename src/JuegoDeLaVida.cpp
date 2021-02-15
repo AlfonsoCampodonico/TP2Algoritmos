@@ -108,6 +108,8 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
 
 void JuegoDeLaVida::comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida){
     bool reiniciarElJuegoDeLaVida {};
+    Tablero* tablero = this->elTablero;
+    this->impresora->dibujarUnTablero(tablero,0);
     do{
         unsigned int numeroUsuario = elegirUnaAccionDelMenuDeJuego();
         reiniciarElJuegoDeLaVida = (numeroUsuario == 2);

@@ -6,7 +6,7 @@
 Celula::Celula() {
     this-> condicion = MUERTA;
     this-> genes = new Lista<Gen*>();
-    this-> color =new Colores(0,0,0);
+    this-> color =new Colores(255,0,0);
 }
 
 void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
@@ -18,12 +18,14 @@ void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad)
 void Celula::revivirCelula(){
     this->condicion = VIVA;
     this->color->asignarAzul(255);
+    this->color->asignarRojo(0);
 }
 bool Celula::estaViva(){
     return (this->condicion == VIVA);
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
+    this->color->asignarRojo(255);
     this->color->asignarAzul(0);
 
 }
@@ -143,7 +145,7 @@ void Celula::casoTresActiva(Lista<Intensidad*>* listaIntensidades, Gen* genActua
     }
     else{
         unsigned int edadGen = genActual->ObtenerEdadGen();
-        unsigned int nuevaIntensidad = ((edadGen/turnos)* 100) +1;
+        unsigned int nuevaIntensidad = ((edadGen/(turnos+1))* 100) +1;
         genActual->cambiarIntensidadPrincipal(nuevaIntensidad);
 
 }}
