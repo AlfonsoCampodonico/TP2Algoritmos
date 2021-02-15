@@ -168,7 +168,7 @@ void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
         if(!informes->estaCongelado()){
 
             ejecutarTurno();
-            JuegoDeLaVida::seguimiento->buscarTablero(elTablero, informes->obtenerTurnos());
+            JuegoDeLaVida::seguimiento->buscarTablero(this->elTablero, this->informes->obtenerTurnos());
         }
         else{
             consola->mostrarCongelado();
@@ -176,7 +176,8 @@ void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
         seguimiento = true;
     }
     else{
-        impresora->dibujarMapaCartesiano(JuegoDeLaVida::seguimiento);
+        this->seguimiento->modificarTurnoFin(this->informes->obtenerTurnos());
+        this->impresora->dibujarMapaCartesiano(this->seguimiento);
         ejecutarTurno();
     }
 }

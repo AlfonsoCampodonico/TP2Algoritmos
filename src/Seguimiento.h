@@ -16,6 +16,7 @@ private:
     unsigned int turnoDeComienzo;
     unsigned int turnoDeFinalizacion;
     Lista<GenSeguimiento*>* listadoPorTurno;
+    unsigned int mayorAcumulado;
 public:
     Seguimiento();
 
@@ -36,6 +37,8 @@ public:
     unsigned int devolverTurnoFin();
 
     std::string devolverCadenaGen();
+
+    unsigned int devolverMayorAcumulado();
 };
 
 

@@ -8,6 +8,9 @@
 #include "Tablero.h"
 #include "Bits.h"
 #include "Seguimiento.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 /*
  * Se encarga de generar un archivo .BMP que representa un tablero con los elementos
@@ -17,6 +20,7 @@ class ImpresoraDeImagenes {
 
 private:
     unsigned int tamanodeUnaCelula;
+    unsigned int tamanoPunto;
 
 public:
     /* PRE: -.
@@ -55,6 +59,8 @@ private:
     void dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY);
 
+    void dibujarLineasVerticales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas);
 
+    void dibujarLineasHorizontales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas) ;
 };
 #endif //TP2ALGORITMOS_IMPRESORADEIMAGENES_H

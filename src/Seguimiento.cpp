@@ -10,6 +10,7 @@ Seguimiento::Seguimiento() {
     this->turnoDeComienzo = 1;
     this->turnoDeFinalizacion = 1;
     this->listadoPorTurno = new Lista<GenSeguimiento*>();
+    this->mayorAcumulado = 0;
 
 }
 
@@ -18,6 +19,7 @@ Seguimiento::Seguimiento(std::string cadenaDeBits, unsigned int turnoInicio){
     this->turnoDeComienzo = turnoInicio;
     this->turnoDeFinalizacion = 1;
     this->listadoPorTurno = new Lista<GenSeguimiento*>();
+    this->mayorAcumulado = 0;
 }
 
 void Seguimiento::modificarTurnoInicio(unsigned int turnoInicio){
@@ -31,6 +33,9 @@ void Seguimiento::modificarTurnoFin(unsigned int turnoFin){
 void Seguimiento::agregarTurnoAGen(unsigned int cargaAcumulada, unsigned int turno){
     GenSeguimiento* nuevoTurno = new GenSeguimiento(cargaAcumulada,turno);
     this->listadoPorTurno->agregar(nuevoTurno);
+    if (cargaAcumulada > this->mayorAcumulado){
+        this->mayorAcumulado = cargaAcumulada;
+    }
 }
 
 void Seguimiento::buscarTablero(Tablero* unTablero, unsigned int turno){
@@ -72,4 +77,8 @@ unsigned int Seguimiento::devolverTurnoFin(){
 
 std::string Seguimiento::devolverCadenaGen(){
     return this->informacionGeneticaDelGen;
+}
+
+unsigned int Seguimiento::devolverMayorAcumulado(){
+    return this->mayorAcumulado;
 }

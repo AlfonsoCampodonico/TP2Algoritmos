@@ -3,15 +3,12 @@
 //
 
 #include "ImpresoraDeImagenes.h"
-#include "Seguimiento.h"
-#include <string>
-#include <sstream>
-#include <iostream>
 
 using namespace std;
 
 ImpresoraDeImagenes::ImpresoraDeImagenes(){
     this->tamanodeUnaCelula = 30;
+    this->tamanoPunto = 4;
 }
 
 void ImpresoraDeImagenes::dibujarUnTablero(Tablero* unTablero, unsigned int numeroDeTurno){
@@ -41,19 +38,28 @@ void ImpresoraDeImagenes::dibujarContenidoDelTablero(Tablero* unTablero, Bits* i
 void ImpresoraDeImagenes::dibujarCuadricula(Bits* unaImagen, unsigned int ancho, unsigned int alto){
 
     Colores* colorDeLineas = new Colores(0, 0, 0);
-    //Dibuja Lineas verticales.
-    for(unsigned int x = (this->tamanodeUnaCelula - 1); x < (ancho); x+=this->tamanodeUnaCelula){
+    dibujarLineasVerticales(unaImagen, ancho, alto, colorDeLineas);
+    dibujarLineasHorizontales(unaImagen, ancho, alto, colorDeLineas);
+
+    delete colorDeLineas;
+}
+
+void ImpresoraDeImagenes::dibujarLineasHorizontales(Bits *unaImagen, unsigned int ancho, unsigned int alto,
+                                                    Colores *colorDeLineas)  {
+    for(unsigned int x = 0; x < ancho; x++){
+        for(unsigned int y = (tamanodeUnaCelula - 1); y < (alto); y+= tamanodeUnaCelula){
+            unaImagen->asignar(x, y, colorDeLineas);
+        }
+    }
+}
+
+void ImpresoraDeImagenes::dibujarLineasVerticales(Bits *unaImagen, unsigned int ancho, unsigned int alto,
+                                                  Colores *colorDeLineas)  {
+    for(unsigned int x = (tamanodeUnaCelula - 1); x < (ancho); x+= tamanodeUnaCelula){
         for(unsigned int y = 0; y<alto; y++){
             unaImagen->asignar(x, y, colorDeLineas);
         }
     }
-    //Dibuja Lineas Hotizontales.
-    for(unsigned int x = 0; x<ancho; x++){
-        for(unsigned int y = (this->tamanodeUnaCelula - 1); y < (alto); y+=this->tamanodeUnaCelula){
-            unaImagen->asignar(x, y, colorDeLineas);
-        }
-    }
-    delete colorDeLineas;
 }
 
 void ImpresoraDeImagenes::dibujarUnaCelula(Colores* colorDeCelula, Bits* imagen, unsigned int pixelX,
@@ -74,6 +80,13 @@ void ImpresoraDeImagenes::dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, un
     }
 }
 
-void ImpresoraDeImagenes::dibujarMapaCartesiano(Seguimiento* unseguimiento){
-
+void ImpresoraDeImagenes::dibujarMapaCartesiano(Seguimiento* unSeguimiento){
+    unsigned int ancho = (unSeguimiento->devolverTurnoFin()*this->tamanoPunto);
+    unsigned int alto = (unSeguimiento->devolverMayorAcumulado()*this->tamanoPunto);
+    Bits* imagen = new Bits(ancho, alto);
+    string nombre = "gen-"+unSeguimiento->devolverCadenaGen()+"-"+
+            to_string(unSeguimiento->devolverTurnoInicio())+"-"+
+            to_string(unSeguimiento->devolverTurnoFin());
+    imagen->escribir(nombre);
+    delete imagen;
 }
