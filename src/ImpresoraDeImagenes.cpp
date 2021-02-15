@@ -81,12 +81,52 @@ void ImpresoraDeImagenes::dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, un
 }
 
 void ImpresoraDeImagenes::dibujarMapaCartesiano(Seguimiento* unSeguimiento){
-    unsigned int ancho = (unSeguimiento->devolverTurnoFin()*this->tamanoPunto);
+    unsigned int ancho = (unSeguimiento->devolverListaAcumulado()->contarElementos()*this->tamanoPunto);
     unsigned int alto = (unSeguimiento->devolverMayorAcumulado()*this->tamanoPunto);
     Bits* imagen = new Bits(ancho, alto);
     string nombre = "gen-"+unSeguimiento->devolverCadenaGen()+"-"+
             to_string(unSeguimiento->devolverTurnoInicio())+"-"+
             to_string(unSeguimiento->devolverTurnoFin());
+    dibujarFondo(imagen,ancho,alto);
+    dibujarContenidoMapa(unSeguimiento, imagen);
     imagen->escribir(nombre);
     delete imagen;
+}
+
+
+void ImpresoraDeImagenes::dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits* imagen){
+
+
+    Lista<GenSeguimiento*>* listaGenPorTurno =  unSeguimiento->devolverListaAcumulado();
+    listaGenPorTurno->iniciarCursor();
+    unsigned int posicionX = 0;
+    while (listaGenPorTurno->avanzarCursor()){
+        GenSeguimiento* genporTurno = listaGenPorTurno->obtenerCursor();
+        unsigned int posicionY = genporTurno->devolverTurnoCarga();
+        unsigned int desdeX = (posicionX*this->tamanoPunto);
+        unsigned int desdeY = (posicionY*this->tamanoPunto);
+        Colores* colorMapa = new Colores(0, 0, 255);
+        dibujarUnaCelula(colorMapa, imagen, desdeX, desdeY);
+        delete colorMapa;
+        posicionX++;
+    }
+
+}
+
+void ImpresoraDeImagenes::dibujarFondo(Bits* unaImagen, unsigned int ancho, unsigned int alto){
+
+    Colores* colorDeFondo = new Colores(0, 0, 0);
+        for(unsigned int x = 0; x <= ancho; x++){
+            for(unsigned int y = 0; y <= alto; y++){
+                unaImagen->asignar(x, y, colorDeFondo);
+            }
+        }
+    delete colorDeFondo;
+}
+
+void ImpresoraDeImagenes::dibujarUnPuntoMapa(Colores* colorMapa, Bits* imagen, unsigned int pixelX,
+                                           unsigned int pixelY){
+    unsigned int hastaX = (pixelX+this->tamanoPunto)-2;
+    unsigned int hastaY = (pixelY+this->tamanoPunto)-2;
+    dibujarEnAnchoYalto(colorMapa, imagen, pixelX, hastaX, pixelY, hastaY);
 }

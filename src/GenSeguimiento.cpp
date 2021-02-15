@@ -8,3 +8,10 @@ GenSeguimiento::GenSeguimiento(unsigned int cargaAcumulada, unsigned int turno) 
     this->turno = turno;
 
 }
+
+unsigned int GenSeguimiento::devolverCargaAcumuladaTurno() {
+    return this->cargaAcumuladaTurno;
+}
+unsigned  int  GenSeguimiento::devolverTurnoCarga(){
+    return this->turno;
+}

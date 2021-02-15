@@ -15,6 +15,8 @@ private:
 public:
     GenSeguimiento();
     GenSeguimiento(unsigned int cargaAcumulada, unsigned int turno);
+    unsigned int devolverCargaAcumuladaTurno();
+    unsigned int devolverTurnoCarga();
 };
 
 
