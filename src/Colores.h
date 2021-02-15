@@ -64,9 +64,4 @@ public:
 
 };
 
-
-
-
-
-
 #endif /* COLORES_H_ */

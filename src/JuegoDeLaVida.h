@@ -90,7 +90,6 @@ public:
      */
     ~JuegoDeLaVida();
 
-    void realizarAccionElegida(unsigned int numeroElegido, bool seguimiento);
 
     void realizarAccionElegida(unsigned int numeroElegido, bool &seguimiento);
 

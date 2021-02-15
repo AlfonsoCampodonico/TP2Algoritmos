@@ -114,13 +114,22 @@ public:
      */
     void liberarGenes();
 
-    /* PRE:
-     * POST:
+    /* PRE:Recibe una lista de intensidades para completar la transferencia de genes, en caso de que los 3 genes
+     * esten activos, tambien recibe la cantidad de turnos y el gen actual que se esta transfiriendo
+     * POST:Modifica la intensidad del gen si las tres células vecinas tienen
+     * el mismo gen depeendiendo de la carga genetica de esos genes,el máximo
+     * de las cargas genéticas de esos genes, si al menos una delas cargas está activada, o
+     * el promedio de turnos que ese gen tiene de vida más uno, en caso de
+     * que todas las cargas estén desactivadas (edad del gen / cantidad de turnos * 100 + 1).
      */
     void casoTresActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
-    /* PRE:
-     * POST:
+    /* PRE:Recibe una lista de intensidades para completar la transferencia de genes, en caso de que dos genes
+     * esten activos, tambien recibe la cantidad de turnos y el gen actual que se esta transfiriendo
+     * POST:Dependiendo cuantas esten activas usa ,el promedio de las cargas genéticas de esos genes, si ambas cargas
+     * genéticas están activadas, la carga genética de aquella célula que la tenga activada, o
+     * el promedio de turnos que ese gen tiene de vida más uno, en caso de
+     * que ambas cargas están desactivadas (edad del gen / cantidad de turnos * 100 + 1).
      */
     void casoDosActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
@@ -130,7 +139,7 @@ public:
     void generarMutacion();
 
     /* PRE:
-     * POST:
+     * POST: Obtiene el color de una celula
      */
     Colores *obtenerColor();
 };

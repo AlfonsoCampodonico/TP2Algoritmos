@@ -106,7 +106,7 @@ void ImpresoraDeImagenes::dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits*
         unsigned int desdeX = (posicionX*this->tamanoPunto);
         unsigned int desdeY = (posicionY*this->tamanoPunto);
         Colores* colorMapa = new Colores(0, 0, 255);
-        dibujarUnaCelula(colorMapa, imagen, desdeX, desdeY);
+        dibujarUnPuntoMapa(colorMapa, imagen, desdeX, desdeY);
         delete colorMapa;
         posicionX++;
     }

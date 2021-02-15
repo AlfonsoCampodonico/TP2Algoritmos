@@ -72,17 +72,17 @@ public:
     void agregarIntensidad(unsigned int cargaGenetica);
 
     /* PRE:
-     * POST:
+     * POST: Devuelve el valor de la intensidad del gen
      */
     unsigned int obtenerValorIntensidad();
 
     /* PRE:
-     * POST:
+     * POST:Devuelve el valor de la intensidad pruncipal del gen
      */
     unsigned int obtenerValorIntensidadPrincipal();
 
-    /* PRE:
-     * POST:
+    /* PRE: recibe un entero que modifica el valor de la intensidad
+     * POST: Modifica el valor de la intensidad principal del gen
      */
     void cambiarIntensidadPrincipal(unsigned int intensidadNueva);
 };

@@ -59,14 +59,30 @@ private:
     void dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY);
 
+    /* PRE:
+     * POST:
+     */
     void dibujarLineasVerticales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas);
 
+    /* PRE:
+     * POST:
+     */
     void dibujarLineasHorizontales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas) ;
 
+    /* PRE:
+     * POST:
+     */
     void dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits *imagen);
 
+
+    /* PRE:
+     * POST:
+     */
     void dibujarFondo(Bits *unaImagen, unsigned int ancho, unsigned int alto);
 
+    /* PRE:
+     * POST:
+     */
     void dibujarUnPuntoMapa(Colores *colorMapa, Bits *imagen, unsigned int pixelX, unsigned int pixelY);
 };
 #endif //TP2ALGORITMOS_IMPRESORADEIMAGENES_H
