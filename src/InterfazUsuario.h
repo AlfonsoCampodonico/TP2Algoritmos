@@ -33,7 +33,7 @@ public:
     void mostrarArchivoInexistente();
 
 
-   \
+
 
     /* PRE: -.
      * POST: Muestra por consola el final del Juego de la vida

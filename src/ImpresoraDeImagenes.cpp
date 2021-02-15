@@ -3,6 +3,7 @@
 //
 
 #include "ImpresoraDeImagenes.h"
+#include "Seguimiento.h"
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -71,4 +72,8 @@ void ImpresoraDeImagenes::dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, un
             imagen->asignar(x, y, unColor);
         }
     }
+}
+
+void ImpresoraDeImagenes::dibujarMapaCartesiano(Seguimiento* unseguimiento){
+
 }

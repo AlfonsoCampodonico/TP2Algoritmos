@@ -91,6 +91,10 @@ public:
     ~JuegoDeLaVida();
 
     void realizarAccionElegida(unsigned int numeroElegido, bool seguimiento);
+
+    void realizarAccionElegida(unsigned int numeroElegido, bool &seguimiento);
+
+    void comenzarSeguimiento(bool &seguimiento);
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

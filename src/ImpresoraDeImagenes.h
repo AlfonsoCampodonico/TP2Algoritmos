@@ -7,6 +7,7 @@
 #include "Lista.h"
 #include "Tablero.h"
 #include "Bits.h"
+#include "Seguimiento.h"
 
 /*
  * Se encarga de generar un archivo .BMP que representa un tablero con los elementos
@@ -29,6 +30,7 @@ public:
      * Post: Crea una imagen de unTablero y la guarda como formato .BMP.
      */
     void dibujarUnTablero(Tablero* unTablero, unsigned int numeroDeTurno);
+    void dibujarMapaCartesiano(Seguimiento *unseguimiento);
 
 private:
 
@@ -52,5 +54,7 @@ private:
  */
     void dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY);
+
+
 };
 #endif //TP2ALGORITMOS_IMPRESORADEIMAGENES_H

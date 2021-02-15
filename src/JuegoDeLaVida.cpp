@@ -137,7 +137,7 @@ unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
     return valorIngresado;
 }
 
-void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool seguimiento){
+void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &seguimiento){
     switch(numeroElegido){
         case 1:
             if(!this->informes->estaCongelado()){
@@ -158,21 +158,26 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool segui
             this->consola->mostrarFinDelJuegoDeLaVida();
             break;
         case 4:
-            if (!seguimiento){
-                if(!this->informes->estaCongelado()){
-
-                    ejecutarTurno();
-                    this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
-                }
-                else{
-                    this->consola->mostrarCongelado();
-                }
-                seguimiento = true;
-            }
-            else{
-                //Terminar seguimiento
-            }
+            comenzarSeguimiento(seguimiento);
             break;
+    }
+}
+
+void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
+    if (!seguimiento){
+        if(!informes->estaCongelado()){
+
+            ejecutarTurno();
+            JuegoDeLaVida::seguimiento->buscarTablero(elTablero, informes->obtenerTurnos());
+        }
+        else{
+            consola->mostrarCongelado();
+        }
+        seguimiento = true;
+    }
+    else{
+        impresora->dibujarMapaCartesiano(JuegoDeLaVida::seguimiento);
+        ejecutarTurno();
     }
 }
 
