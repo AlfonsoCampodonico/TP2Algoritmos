@@ -30,11 +30,15 @@ public:
     ImpresoraDeImagenes();
 
 
-    /* Pre: unTablero es un tablero inicializado y numeroDeTurno >0;
+    /* Pre: Requiere de un tablero y un numero de turno para dibujar
      * Post: Crea una imagen de unTablero y la guarda como formato .BMP.
      */
     void dibujarUnTablero(Tablero* unTablero, unsigned int numeroDeTurno);
-    void dibujarMapaCartesiano(Seguimiento *unseguimiento);
+
+    /* Pre: Requiere de un seguimiento para dibujar el mapa cartesiano
+     * Post: Crea una imagen de un mapa cartesiano a partir de unseguimiento y la guarda como formato .BMP.
+     */
+    void dibujarMapaCartesiano(Seguimiento *unSeguimiento);
 
 private:
 
@@ -43,45 +47,45 @@ private:
      */
     void dibujarContenidoDelTablero(Tablero* unTablero, Bits* imagen);
 
-    /* Pre: unaImagen es un mapa de bits inicializado, ancho>0, alto>0.
-     * Post: dibuja en unaImagen una cuadricula.
+    /* Pre: unaImagen es un mapa de bits
+     * Post: dibuja una cuadricula en el mapa de bits
      */
     void dibujarCuadricula(Bits* unaImagen, unsigned int ancho, unsigned int alto);
 
-    /* Pre: pixelX y pixelY representan un pixel de imagen.
-     * POST: dibuja la parcela ubicada en (pixelX, pixelY).
+    /* Pre: colorDeCelula es el color de la celula
+     * POST: dibuja un cuadrado en el mapa de bits
      */
     void dibujarUnaCelula(Colores* colorDeCelula, Bits* imagen, unsigned int pixelX, unsigned int pixelY);
 
-    /* pre: desdeX>=0, hastaX>=0,  desdeY>=0, hastaY>=0.
+    /* pre: dibuja en el mapa de bits desde posiciones X e Y
  * post: Dibuja una seccion rectangular en la imagen determinada.
  */
     void dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY);
 
-    /* PRE:
-     * POST:
+    /* PRE:unaImagen es un mapa de bits
+     * POST: Dibuja las lineas verticales de la cuadricula
      */
     void dibujarLineasVerticales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas);
 
-    /* PRE:
-     * POST:
+    /* PRE:unaImagen es un mapa de bits
+     * POST:Dibuja las lineas horizontales de la cuadricula
      */
     void dibujarLineasHorizontales(Bits *unaImagen, unsigned int ancho, unsigned int alto, Colores *colorDeLineas) ;
 
-    /* PRE:
-     * POST:
+    /* PRE: unSeguimiento es el seguimiento del gen
+     * POST: dibuja el contenido del mapa cartesiano
      */
     void dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits *imagen);
 
 
-    /* PRE:
-     * POST:
+    /* PRE:unaImagen es un mapa de bits
+     * POST: Dibuja el fondo del mapa cartesiano
      */
     void dibujarFondo(Bits *unaImagen, unsigned int ancho, unsigned int alto);
 
-    /* PRE:
-     * POST:
+    /* PRE: colorMapa es un color para dibujar el punto
+     * POST: Dibuja la intensidad acumulada de un gen como un punto en el mapa cartesiano
      */
     void dibujarUnPuntoMapa(Colores *colorMapa, Bits *imagen, unsigned int pixelX, unsigned int pixelY);
 };

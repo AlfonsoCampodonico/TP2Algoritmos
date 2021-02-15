@@ -164,6 +164,8 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
 }
 
 void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
+
+
     if (!seguimiento){
         if(!informes->estaCongelado()){
 

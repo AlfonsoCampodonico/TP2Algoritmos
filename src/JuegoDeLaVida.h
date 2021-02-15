@@ -90,9 +90,14 @@ public:
      */
     ~JuegoDeLaVida();
 
-
+    /* PRE: un numero introducido por el usuario del 1 al 4.
+     * POST: Realiza la accion indicada por el usuario
+     */
     void realizarAccionElegida(unsigned int numeroElegido, bool &seguimiento);
 
+    /* PRE:
+     * POST: Comienza el seguimiento de un gen
+     */
     void comenzarSeguimiento(bool &seguimiento);
 };
 
