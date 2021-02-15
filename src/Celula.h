@@ -22,6 +22,9 @@ enum EstadoDeLaCelula {
  * Su condicion esta representada por un tipo de valor enumerado que puede variar entre:
  * 	 MUERTA: una celula sin vida.
  *	 VIVA: una celula con vida.
+ *	 CASIMUERTA: esta proxima a morir.
+ *	 CASI VIVA: esta proxima a vivir.
+ * La celula ademas posee colores, ya sea negra para muerte, o azul para viva.
  */
 class Celula{
 
@@ -106,12 +109,19 @@ public:
     void calcularIntensidad(Informes* informes);
 
 
-
+    /* PRE: -.
+     * POST: Libera los recursos pedidos por la lista de Genes
+     */
     void liberarGenes();
 
-
+    /* PRE:
+     * POST:
+     */
     void casoTresActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
+    /* PRE:
+     * POST:
+     */
     void casoDosActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
     /* PRE: -.
@@ -119,6 +129,9 @@ public:
      */
     void generarMutacion();
 
+    /* PRE:
+     * POST:
+     */
     Colores *obtenerColor();
 };
 

@@ -71,10 +71,19 @@ public:
      */
     void agregarIntensidad(unsigned int cargaGenetica);
 
+    /* PRE:
+     * POST:
+     */
     unsigned int obtenerValorIntensidad();
 
+    /* PRE:
+     * POST:
+     */
     unsigned int obtenerValorIntensidadPrincipal();
 
+    /* PRE:
+     * POST:
+     */
     void cambiarIntensidadPrincipal(unsigned int intensidadNueva);
 };
 #endif //TP2ALGORITMOS_GEN_H
