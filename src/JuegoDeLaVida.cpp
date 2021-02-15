@@ -140,7 +140,7 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool segui
             if(!this->informes->estaCongelado()){
                 ejecutarTurno();
                 if (seguimiento){
-                    this->seguimiento
+                    this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
                 }
 
             }
@@ -159,7 +159,7 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool segui
                 if(!this->informes->estaCongelado()){
 
                     ejecutarTurno();
-                    this->seguimiento
+                    this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
                 }
                 else{
                     this->consola->mostrarCongelado();

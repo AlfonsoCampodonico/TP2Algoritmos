@@ -18,8 +18,6 @@ Seguimiento::Seguimiento(std::string cadenaDeBits, unsigned int turnoInicio){
     this->turnoDeComienzo = turnoInicio;
     this->turnoDeFinalizacion = 1;
     this->listadoPorTurno = new Lista<GenSeguimiento*>();
-
-
 }
 
 void Seguimiento::modificarTurnoInicio(unsigned int turnoInicio){
@@ -56,5 +54,22 @@ void Seguimiento::buscarTablero(Tablero* unTablero, unsigned int turno){
         }
 
     }
-    GenSeguimiento* nuevoGen = new GenSeguimiento(acumulado,turno);
+
+    this->agregarTurnoAGen(acumulado,turno);
+}
+
+Lista<GenSeguimiento*>* Seguimiento::devolverListaAcumulado(){
+    return this->listadoPorTurno;
+}
+
+unsigned int Seguimiento::devolverTurnoInicio(){
+    return this->turnoDeComienzo;
+}
+
+unsigned int Seguimiento::devolverTurnoFin(){
+    return this->turnoDeComienzo;
+}
+
+std::string Seguimiento::devolverCadenaGen(){
+    return this->informacionGeneticaDelGen;
 }

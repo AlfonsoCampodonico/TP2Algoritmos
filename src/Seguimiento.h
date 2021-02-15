@@ -28,6 +28,14 @@ public:
     void agregarTurnoAGen(unsigned int cargaAcumulada, unsigned int turno);
 
     void buscarTablero(Tablero *unTablero, unsigned int turno);
+
+    Lista<GenSeguimiento *> *devolverListaAcumulado();
+
+    unsigned int devolverTurnoInicio();
+
+    unsigned int devolverTurnoFin();
+
+    std::string devolverCadenaGen();
 };
 
 
