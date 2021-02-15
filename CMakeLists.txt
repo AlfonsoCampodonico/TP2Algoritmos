@@ -13,4 +13,12 @@ add_executable(TP2Algoritmos
         src/JuegoDeLaVida.cpp src/JuegoDeLaVida.h
         src/Nodo.h
         src/Lista.h
-        src/Informes.cpp src/Informes.h src/Gen.cpp src/Gen.h src/Bits.cpp src/Bits.h src/ImpresoraDeImagenes.cpp src/ImpresoraDeImagenes.h)
+        src/Informes.cpp src/Informes.h
+        src/Gen.cpp src/Gen.h
+        src/Bits.cpp src/Bits.h
+        src/Colores.h src/Colores.cpp
+        src/ImpresoraDeImagenes.cpp src/ImpresoraDeImagenes.h
+        src/EasyBMP.cpp src/EasyBMP.h
+        src/EasyBMP_BMP.h
+        src/EasyBMP_DataStructures.h
+        src/EasyBMP_VariousBMPutilities.h)

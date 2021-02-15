@@ -7,6 +7,7 @@
 #include "InterfazUsuario.h"
 #include "Tablero.h"
 #include "Informes.h"
+#include "ImpresoraDeImagenes.h"
 #include <iostream>
 #include <fstream>
 
@@ -16,6 +17,7 @@ private:
     InterfazUsuario* consola;
     Tablero* elTablero;
     Informes* informes;
+    ImpresoraDeImagenes* impresora;
 public:
     /* PRE:
      * POST: pide los recursos necesarios para generar los elementos de los componentes del juego.

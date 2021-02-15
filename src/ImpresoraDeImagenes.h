@@ -45,12 +45,12 @@ private:
     /* Pre: pixelX y pixelY representan un pixel de imagen.
      * POST: dibuja la parcela ubicada en (pixelX, pixelY).
      */
-    void dibujarUnaCelula(Color* colorDeParcela, Bits* imagen, unsigned int pixelX, unsigned int pixelY);
+    void dibujarUnaCelula(Colores* colorDeCelula, Bits* imagen, unsigned int pixelX, unsigned int pixelY);
 
     /* pre: desdeX>=0, hastaX>=0,  desdeY>=0, hastaY>=0.
  * post: Dibuja una seccion rectangular en la imagen determinada.
  */
-    void dibujarEnAnchoYalto(Color* unColor, Bits* imagen, unsigned int desdeX,
+    void dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY);
 };
 #endif //TP2ALGORITMOS_IMPRESORADEIMAGENES_H

@@ -6,6 +6,7 @@
 Celula::Celula() {
     this-> condicion = MUERTA;
     this-> genes = new Lista<Gen*>();
+    this-> color =new Colores(0,0,0);
 }
 
 void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
@@ -16,12 +17,14 @@ void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad)
 
 void Celula::revivirCelula(){
     this->condicion = VIVA;
+    this->color->asignarAzul(255);
 }
 bool Celula::estaViva(){
     return (this->condicion == VIVA);
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
+    this->color->asignarAzul(0);
 
 }
 bool Celula::estaMuerta(){
@@ -209,6 +212,10 @@ void Celula::generarMutacion(){
 
 }
 
+Colores * Celula::obtenerColor(){
+    return this->color;
+}
+
 void Celula::liberarGenes() {
     while(!this->genes->estaVacia()){
         Gen* unGen;
@@ -222,5 +229,6 @@ void Celula::liberarGenes() {
 Celula::~Celula(){
     liberarGenes();
     delete this->genes;
+    delete this->color;
 
 }

@@ -16,9 +16,9 @@ private:
     unsigned int intensidad;
 public:
 
-    /*Constructor de la Celula
-     *
-     *
+    /*Constructor de un Gen, crea un Gen con una lista de intensadidades vacia
+     * y una informacion genetica que contiene una cadena de caracteres de bits
+
      */
     Gen();
 
@@ -60,8 +60,15 @@ public:
      */
     ~Gen();
 
+
+    /* PRE: -.
+     * POST: Libera los recursos tomados en la lista de intensidad que posee el gen
+     */
     void liberarIntensidades();
 
+    /* PRE: Tiene que estar vivo el gen
+     * POST: Agrega una intensidad a la lista de intensidad
+     */
     void agregarIntensidad(unsigned int cargaGenetica);
 
     unsigned int obtenerValorIntensidad();

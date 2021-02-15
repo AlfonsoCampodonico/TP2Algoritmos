@@ -11,6 +11,7 @@ JuegoDeLaVida::JuegoDeLaVida(){
     this->elTablero = new Tablero(0,0);
     this->consola = new InterfazUsuario();
     this-> informes = new Informes();
+    this->impresora = new ImpresoraDeImagenes();
 }
 
 void JuegoDeLaVida::jugarElJuegoDeLaVida(){
@@ -156,10 +157,12 @@ void JuegoDeLaVida::ejecutarTurno(){
     this->elTablero->actualizarUnTablero(this->informes);
     this->informes->actualizarInformeTurno(this->elTablero);
     this->consola->mostrarInformeDelJuego(this->informes);
+    this->impresora->dibujarUnTablero(elTablero,informes->obtenerTurnos());
 }
 
 void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
     delete this->elTablero;
+
     this->informes->reiniciarInforme();
     ifstream nuevoArchivoInicial;
     ingresarRutaDelArchivo(nuevoArchivoInicial);
@@ -172,4 +175,5 @@ JuegoDeLaVida::~JuegoDeLaVida(){
     delete this->informes;
     delete this->consola;
     delete this->elTablero;
+    delete this->impresora;
 }

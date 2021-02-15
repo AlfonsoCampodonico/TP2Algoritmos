@@ -8,7 +8,7 @@
 #include "Gen.h"
 #include "Lista.h"
 #include "Informes.h"
-
+#include "Colores.h"
 class Informes;
 
 enum EstadoDeLaCelula {
@@ -28,6 +28,7 @@ class Celula{
 private:
     EstadoDeLaCelula condicion;
     Lista<Gen*>* genes;
+    Colores* color;
 
 public:
     /*Constructor de la Celula
@@ -104,20 +105,21 @@ public:
      */
     void calcularIntensidad(Informes* informes);
 
-    /* PRE: -.
-     * POST: Genera la mutacion de celulas en base a las celulas que no tienen carga genetica activa.
-     */
-    void mutar();
+
 
     void liberarGenes();
 
-    void casoTresActiva(Lista<Intensidad *> *listaIntensidades);
 
     void casoTresActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
     void casoDosActiva(Lista<Intensidad *> *listaIntensidades, Gen *genActual, unsigned int turnos);
 
+    /* PRE: -.
+     * POST: Genera la mutacion de celulas en base a las celulas que no tienen carga genetica activa.
+     */
     void generarMutacion();
+
+    Colores *obtenerColor();
 };
 
 

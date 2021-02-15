@@ -14,7 +14,7 @@ Bits::Bits(unsigned int ancho, unsigned int alto){
     this->imagen->SetBitDepth(24);
 }
 
-void Bits::asignar(unsigned int pixelX, unsigned int pixelY, Color* nuevoColor){
+void Bits::asignar(unsigned int pixelX, unsigned int pixelY, Colores* nuevoColor){
     this->imagen->SetPixel(pixelX, pixelY, nuevoColor->obtenerPixel());
 }
 

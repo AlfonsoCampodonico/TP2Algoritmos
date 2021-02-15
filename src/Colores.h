@@ -5,14 +5,13 @@
  *      Author: usuario
  */
 
+
 #ifndef COLORES_H_
 #define COLORES_H_
-#ifndef COLOR_H_
-#define COLOR_H_
 
 #include "EasyBMP.h"
 
-class Color {
+class Colores {
 
 private:
 
@@ -23,7 +22,7 @@ public:
     /* PRE: rojo, verde y azul son enteros entre 0 y 255.
      * Post: genera un color del modelo RGB.
      */
-    Color(ebmpBYTE rojo, ebmpBYTE verde, ebmpBYTE azul);
+    Colores(ebmpBYTE rojo, ebmpBYTE verde, ebmpBYTE azul);
 
     /* Pre: -.
      * POST: devuelve la cantidad de rojo.
@@ -61,11 +60,11 @@ public:
     RGBApixel obtenerPixel();
 
     /* POST: libera los recursos utilizados */
-    ~Color();
+    ~Colores();
 
 };
 
-#endif /* COLOR_H_ */
+
 
 
 

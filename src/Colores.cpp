@@ -2,50 +2,50 @@
 #include "Colores.h"
 #include "EasyBMP.h"
 
-Color::Color(ebmpBYTE rojo, ebmpBYTE verde, ebmpBYTE azul){
+Colores::Colores(ebmpBYTE rojo, ebmpBYTE verde, ebmpBYTE azul){
     this->colores = new RGBApixel;
     this->colores->Red = rojo;
     this->colores->Green = verde;
     this->colores->Blue = azul;
 }
 
-ebmpBYTE Color::obtenerRojo(){
+ebmpBYTE Colores::obtenerRojo(){
 
     return this->colores->Red;
 }
 
-ebmpBYTE Color::obtenerVerde(){
+ebmpBYTE Colores::obtenerVerde(){
 
     return this->colores->Green;
 }
 
-ebmpBYTE Color::obtenerAzul(){
+ebmpBYTE Colores::obtenerAzul(){
 
     return this->colores->Blue;
 }
 
-void Color::asignarRojo(ebmpBYTE nuevoRojo){
+void Colores::asignarRojo(ebmpBYTE nuevoRojo){
 
     this->colores->Red = nuevoRojo;
 }
 
-void Color::asignarVerde(ebmpBYTE nuevoVerde){
+void Colores::asignarVerde(ebmpBYTE nuevoVerde){
 
     this->colores->Green = nuevoVerde;
 }
 
-void Color::asignarAzul(ebmpBYTE nuevoAzul){
+void Colores::asignarAzul(ebmpBYTE nuevoAzul){
 
     this->colores->Blue = nuevoAzul;
 }
 
-RGBApixel Color::obtenerPixel(){
+RGBApixel Colores::obtenerPixel(){
 
     return *(this->colores);
 }
 
 
-Color::~Color(){
+Colores::~Colores() {
     delete this->colores;
 }
 

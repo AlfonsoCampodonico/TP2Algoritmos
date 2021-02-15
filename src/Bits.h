@@ -4,8 +4,6 @@
 
 #ifndef TP2ALGORITMOS_BITS_H
 #define TP2ALGORITMOS_BITS_H
-#ifndef MAPADEBITS_H_
-#define MAPADEBITS_H_
 
 #include "EasyBMP.h"
 #include "Colores.h"
@@ -31,7 +29,7 @@ public:
     /* PRE:
      * POST: asigna al pixel ubicado en (pixelX, pixelY) el color indicado.
      */
-    void asignar(unsigned int pixelX, unsigned int pixelY, Color* nuevoColor);
+    void asignar(unsigned int pixelX, unsigned int pixelY, Colores* nuevoColor);
 
     /* PRE:
      * POST: genera un archivo de imagen con extension .bmp"
@@ -44,7 +42,5 @@ public:
     ~Bits();
 
 };
-
-#endif /* MAPADEBITS_H_ */
 
 #endif //TP2ALGORITMOS_BITS_H

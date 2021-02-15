@@ -1,5 +1,5 @@
 //
-// Created by alfon on 2/14/2021.
+// Created by alfon on 2/6/2021.
 //
 
 #include "ImpresoraDeImagenes.h"
@@ -9,7 +9,7 @@
 using namespace std;
 
 ImpresoraDeImagenes::ImpresoraDeImagenes(){
-    this->tamanodeUnaCelula = 30;	// 30x30 pixeles
+    this->tamanodeUnaCelula = 30;
 }
 
 void ImpresoraDeImagenes::dibujarUnTablero(Tablero* unTablero, unsigned int numeroDeTurno){
@@ -18,7 +18,7 @@ void ImpresoraDeImagenes::dibujarUnTablero(Tablero* unTablero, unsigned int nume
     Bits* imagen = new Bits(ancho, alto);
     dibujarCuadricula(imagen, ancho, alto);
     dibujarContenidoDelTablero(unTablero, imagen);
-    string nombre = +"Turno"+static_cast<ostringstream*>(&(ostringstream() << numeroDeTurno))->str();
+    string nombre = "Turno"+static_cast<ostringstream*>(&(ostringstream() << numeroDeTurno))->str();
     imagen->escribir(nombre);
     delete imagen;
 }
@@ -29,7 +29,7 @@ void ImpresoraDeImagenes::dibujarContenidoDelTablero(Tablero* unTablero, Bits* i
 
             unsigned int desdeX = ((columna-1)*this->tamanodeUnaCelula);
             unsigned int desdeY = ((fila-1)*this->tamanodeUnaCelula);
-            Color* colorDeUnaCelula;
+            Colores* colorDeUnaCelula;
             colorDeUnaCelula = unTablero->obtenerPosicionCelula(columna, fila)->obtenerColor();
             dibujarUnaCelula(colorDeUnaCelula, imagen, desdeX, desdeY);
         }
@@ -38,7 +38,7 @@ void ImpresoraDeImagenes::dibujarContenidoDelTablero(Tablero* unTablero, Bits* i
 
 void ImpresoraDeImagenes::dibujarCuadricula(Bits* unaImagen, unsigned int ancho, unsigned int alto){
 
-    Color* colorDeLineas = new Color(0, 0, 0);
+    Colores* colorDeLineas = new Colores(0, 0, 0);
     //Dibuja Lineas verticales.
     for(unsigned int x = (this->tamanodeUnaCelula - 1); x < (ancho); x+=this->tamanodeUnaCelula){
         for(unsigned int y = 0; y<alto; y++){
@@ -54,17 +54,17 @@ void ImpresoraDeImagenes::dibujarCuadricula(Bits* unaImagen, unsigned int ancho,
     delete colorDeLineas;
 }
 
-void ImpresoraDeImagenes::dibujarUnaCelula(Color* colorDeParcela, Bits* imagen, unsigned int pixelX,
-                                  unsigned int pixelY){
+void ImpresoraDeImagenes::dibujarUnaCelula(Colores* colorDeCelula, Bits* imagen, unsigned int pixelX,
+                                           unsigned int pixelY){
     unsigned int hastaX = (pixelX+this->tamanodeUnaCelula) - 2;
     unsigned int hastaY = (pixelY+this->tamanodeUnaCelula) - 2;
-    dibujarEnAnchoYalto(colorDeParcela, imagen, pixelX, hastaX, pixelY, hastaY);
+    dibujarEnAnchoYalto(colorDeCelula, imagen, pixelX, hastaX, pixelY, hastaY);
 }
 
 
 
-void ImpresoraDeImagenes::dibujarEnAnchoYalto(Color* unColor, Bits* imagen, unsigned int desdeX,
-                                    unsigned int hastaX, unsigned int desdeY, unsigned int hastaY){
+void ImpresoraDeImagenes::dibujarEnAnchoYalto(Colores* unColor, Bits* imagen, unsigned int desdeX,
+                                              unsigned int hastaX, unsigned int desdeY, unsigned int hastaY){
     for(unsigned int x = desdeX; x<=hastaX; x++){
         for(unsigned int y = desdeY; y<=hastaY; y++){
             imagen->asignar(x, y, unColor);
