@@ -102,7 +102,8 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
 
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
-
+    std::cout << informacionGenetica << std::endl;
+    std::cout << intensidad << std::endl;
     celula->setearGen(informacionGenetica, intensidad);
 
 
@@ -110,6 +111,8 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
 
 void JuegoDeLaVida::comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida){
     bool reiniciarElJuegoDeLaVida {}, seguimiento {};
+    Tablero* tablero = this->elTablero;
+    this->impresora->dibujarUnTablero(tablero,0);
     do{
         unsigned int numeroUsuario = elegirUnaAccionDelMenuDeJuego();
         reiniciarElJuegoDeLaVida = (numeroUsuario == 2);

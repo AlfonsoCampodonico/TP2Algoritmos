@@ -1,7 +1,7 @@
 //
 // Created by alfon on 12/7/2020.
 //
-
+#include <iostream>
 #include "InformacionGenetica.h"
 
 InformacionGenetica::InformacionGenetica(std::string bits) {
@@ -33,38 +33,30 @@ void InformacionGenetica::combinarCon(InformacionGenetica *otra) {
     }
     else if (this->tamano < otra->tamano){
         nuevaOtraCadena = otra->cadenaDeBits;
-        nuevaCadena = std::string(otra->tamano - this->tamano, '0') + this->devolverCadena();
+        nuevaCadena = std::string((otra->tamano - this->tamano), '0') + this->devolverCadena();
     }
     else {
         nuevaOtraCadena = otra->cadenaDeBits;
         nuevaCadena = this->cadenaDeBits;
     }
-
     nuevaInformacionGenetica = nuevaCadena;
-    for (unsigned int i = 0; i < nuevaCadena.size(); i++) {
-
-        if (nuevaOtraCadena[i] == nuevaCadena[i]){
-            nuevaInformacionGenetica[i] = '0';
+    for (unsigned int i = 1; i <= nuevaCadena.length(); i++) {
+        if (nuevaOtraCadena[i-1] == nuevaCadena[i-1]){
+            nuevaInformacionGenetica[i-1] = '0';
         }
         else{
-            nuevaInformacionGenetica[i] = '1';
+            nuevaInformacionGenetica[i-1] = '1';
         }
-
     }
-
-    this->cadenaDeBits = nuevaInformacionGenetica;
-
+    cambiarInformacionGenetica(nuevaInformacionGenetica);
 }
 
 bool InformacionGenetica::estaEncendidoBit(unsigned int i) {
-
     bool encendido{};
     if (this->cadenaDeBits[i] == '1'){
         encendido = true;
     }
     return encendido;
-
-
 }
 
 unsigned int InformacionGenetica::contarBits() {

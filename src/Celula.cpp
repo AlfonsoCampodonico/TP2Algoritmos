@@ -6,24 +6,27 @@
 Celula::Celula() {
     this-> condicion = MUERTA;
     this-> genes = new Lista<Gen*>();
-    this-> color =new Colores(0,0,0);
+    this-> color =new Colores(255,0,0);
 }
 
 void Celula::setearGen(std::string informacionGenetica, unsigned int intensidad) {
     Gen* unGen = new Gen(informacionGenetica, intensidad);
-    this->genes->agregar(unGen);
+    Lista<Gen*>* listaGenes = (this->genes);
+    listaGenes->agregar(unGen);
 
 }
 
 void Celula::revivirCelula(){
     this->condicion = VIVA;
     this->color->asignarAzul(255);
+    this->color->asignarRojo(0);
 }
 bool Celula::estaViva(){
     return (this->condicion == VIVA);
 }
 void Celula::matarCelula(){
     this->condicion = MUERTA;
+    this->color->asignarRojo(255);
     this->color->asignarAzul(0);
 
 }
@@ -143,7 +146,7 @@ void Celula::casoTresActiva(Lista<Intensidad*>* listaIntensidades, Gen* genActua
     }
     else{
         unsigned int edadGen = genActual->ObtenerEdadGen();
-        unsigned int nuevaIntensidad = ((edadGen/turnos)* 100) +1;
+        unsigned int nuevaIntensidad = ((edadGen/(turnos+1))* 100) +1;
         genActual->cambiarIntensidadPrincipal(nuevaIntensidad);
 
 }}
@@ -191,12 +194,10 @@ void Celula::generarMutacion(){
         Gen* primerGen = listaParaMezclar->obtenerCursor();
         std::string cadenaDeBits = primerGen->obtenerInformacioGeneticaDelGen()->devolverCadena();
         Gen *genNuevo = new Gen(cadenaDeBits,primerGen->obtenerValorIntensidadPrincipal());
-
         while (listaParaMezclar->avanzarCursor()){
             Gen* GenSiguiente =listaParaMezclar->obtenerCursor();
             genNuevo->obtenerInformacioGeneticaDelGen()
                     ->combinarCon(GenSiguiente->obtenerInformacioGeneticaDelGen());
-
 
         }
         listaGenes->agregar(genNuevo);
@@ -227,7 +228,7 @@ void Celula::liberarGenes() {
 }
 
 Celula::~Celula(){
-    liberarGenes();
+    //liberarGenes();
     delete this->genes;
     delete this->color;
 
