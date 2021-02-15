@@ -21,4 +21,4 @@ add_executable(TP2Algoritmos
         src/EasyBMP.cpp src/EasyBMP.h
         src/EasyBMP_BMP.h
         src/EasyBMP_DataStructures.h
-        src/EasyBMP_VariousBMPutilities.h)
+        src/EasyBMP_VariousBMPutilities.h src/Seguimiento.cpp src/Seguimiento.h src/GenSeguimiento.cpp src/GenSeguimiento.h)

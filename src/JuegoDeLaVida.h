@@ -8,6 +8,7 @@
 #include "Tablero.h"
 #include "Informes.h"
 #include "ImpresoraDeImagenes.h"
+#include "Seguimiento.h"
 #include <iostream>
 #include <fstream>
 
@@ -18,6 +19,8 @@ private:
     Tablero* elTablero;
     Informes* informes;
     ImpresoraDeImagenes* impresora;
+    Seguimiento* seguimiento;
+
 public:
     /* PRE:
      * POST: pide los recursos necesarios para generar los elementos de los componentes del juego.
@@ -86,6 +89,8 @@ public:
      * POST: Libera los recursos pedidos por el juego de la vida
      */
     ~JuegoDeLaVida();
+
+    void realizarAccionElegida(unsigned int numeroElegido, bool seguimiento);
 };
 
 #endif //TP2ALGORITMOS_JUEGODELAVIDA_H

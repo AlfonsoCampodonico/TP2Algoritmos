@@ -12,6 +12,8 @@ JuegoDeLaVida::JuegoDeLaVida(){
     this->consola = new InterfazUsuario();
     this-> informes = new Informes();
     this->impresora = new ImpresoraDeImagenes();
+    this->seguimiento = new Seguimiento();
+
 }
 
 void JuegoDeLaVida::jugarElJuegoDeLaVida(){
@@ -107,12 +109,13 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
 }
 
 void JuegoDeLaVida::comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida){
-    bool reiniciarElJuegoDeLaVida {};
+    bool reiniciarElJuegoDeLaVida {}, seguimiento {};
     do{
         unsigned int numeroUsuario = elegirUnaAccionDelMenuDeJuego();
         reiniciarElJuegoDeLaVida = (numeroUsuario == 2);
         terminaElJuegoDeLaVida = (numeroUsuario == 3);
-        realizarAccionElegida(numeroUsuario);
+        seguimiento = (numeroUsuario == 4);
+        realizarAccionElegida(numeroUsuario, seguimiento);
     }while((!terminaElJuegoDeLaVida) && (!reiniciarElJuegoDeLaVida));
 }
 
@@ -123,7 +126,7 @@ unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
     do{
         this->consola->mostrarMenuDeJuegoDeLaVida();
         cin >> valorIngresado;
-        esUnValorValido = !((valorIngresado <= 0) || (valorIngresado > 3));
+        esUnValorValido = !((valorIngresado <= 0) || (valorIngresado > 4));
         if(!esUnValorValido){
             this->consola->mostrarQueNoEsUnNumeroValido();
         }
@@ -131,11 +134,15 @@ unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
     return valorIngresado;
 }
 
-void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido){
+void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool seguimiento){
     switch(numeroElegido){
         case 1:
             if(!this->informes->estaCongelado()){
                 ejecutarTurno();
+                if (seguimiento){
+                    this->seguimiento
+                }
+
             }
             else{
                 this->consola->mostrarCongelado();
@@ -146,6 +153,22 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido){
             break;
         case 3:
             this->consola->mostrarFinDelJuegoDeLaVida();
+            break;
+        case 4:
+            if (!seguimiento){
+                if(!this->informes->estaCongelado()){
+
+                    ejecutarTurno();
+                    this->seguimiento
+                }
+                else{
+                    this->consola->mostrarCongelado();
+                }
+                seguimiento = true;
+            }
+            else{
+                //Terminar seguimiento
+            }
             break;
     }
 }
@@ -162,7 +185,6 @@ void JuegoDeLaVida::ejecutarTurno(){
 
 void JuegoDeLaVida::reiniciarElJuegoDeLaVida(){
     delete this->elTablero;
-
     this->informes->reiniciarInforme();
     ifstream nuevoArchivoInicial;
     ingresarRutaDelArchivo(nuevoArchivoInicial);
@@ -176,4 +198,5 @@ JuegoDeLaVida::~JuegoDeLaVida(){
     delete this->consola;
     delete this->elTablero;
     delete this->impresora;
+    delete this->seguimiento;
 }

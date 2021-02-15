@@ -1,0 +1,60 @@
+//
+// Created by alfon on 2/6/2021.
+//
+
+#include "Seguimiento.h"
+
+
+Seguimiento::Seguimiento() {
+    this->informacionGeneticaDelGen = "";
+    this->turnoDeComienzo = 1;
+    this->turnoDeFinalizacion = 1;
+    this->listadoPorTurno = new Lista<GenSeguimiento*>();
+
+}
+
+Seguimiento::Seguimiento(std::string cadenaDeBits, unsigned int turnoInicio){
+    this->informacionGeneticaDelGen = cadenaDeBits;
+    this->turnoDeComienzo = turnoInicio;
+    this->turnoDeFinalizacion = 1;
+    this->listadoPorTurno = new Lista<GenSeguimiento*>();
+
+
+}
+
+void Seguimiento::modificarTurnoInicio(unsigned int turnoInicio){
+    this->turnoDeComienzo = turnoInicio;
+}
+
+void Seguimiento::modificarTurnoFin(unsigned int turnoFin){
+    this->turnoDeFinalizacion = turnoFin;
+}
+
+void Seguimiento::agregarTurnoAGen(unsigned int cargaAcumulada, unsigned int turno){
+    GenSeguimiento* nuevoTurno = new GenSeguimiento(cargaAcumulada,turno);
+    this->listadoPorTurno->agregar(nuevoTurno);
+}
+
+void Seguimiento::buscarTablero(Tablero* unTablero, unsigned int turno){
+    unsigned int acumulado = 0;
+    for(unsigned int columna = 1; columna <= unTablero->contarColumnas(); columna++){
+
+        for(unsigned int fila = 1; fila <= unTablero->contarFilas(); fila++){
+
+            Lista<Gen*>* unaListaGenes = unTablero->obtenerPosicionCelula(columna,fila)->obtenerListaGen();
+            unaListaGenes->iniciarCursor();
+
+            while (unaListaGenes->avanzarCursor()) {
+                Gen* unGen =   unaListaGenes->obtenerCursor();
+                if(unGen->
+                    obtenerInformacioGeneticaDelGen()->
+                        devolverCadena() == this->informacionGeneticaDelGen){
+
+                            acumulado += unGen->obtenerValorIntensidad() ;
+                      }
+            }
+        }
+
+    }
+    GenSeguimiento* nuevoGen = new GenSeguimiento(acumulado,turno);
+}
