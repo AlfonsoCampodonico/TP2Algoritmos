@@ -168,7 +168,6 @@ void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
         std::string valorIngresado;
         this->consola->mostrarPedidoSeguimientoGen();
         cin >> valorIngresado;
-        std::cout << "llega"<< std::endl;
         if(!informes->estaCongelado()){
             this->seguimiento->modificarInformacionGenetica(valorIngresado);
             this->seguimiento->modificarTurnoInicio(this->informes->obtenerTurnos());

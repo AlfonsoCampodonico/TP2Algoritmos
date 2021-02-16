@@ -92,12 +92,12 @@ private:
     /* PRE:
      * POST: Borra el tablero temporal para el mapa cartesiano
      */
-    void borrarTablero(Seguimiento *unSeguimiento, Colores ***espacio);
+    void borrarTablero(Seguimiento *unSeguimiento, Colores ***espacio,unsigned int ejeX,unsigned int ejeY);
 
     /* PRE:
      * POST: Dibuja el mapa cartesiano
      */
-    void dibujarCartesiano(Seguimiento *unSeguimiento, Bits *imagen, Colores ** *espacio);
+    void dibujarCartesiano(Seguimiento *unSeguimiento, Bits *imagen, Colores ** *espacio,unsigned int ejeX,unsigned int ejeY);
 
     /* PRE:
      * POST: Recorre una lista de Gen PorTurno
