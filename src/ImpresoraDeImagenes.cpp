@@ -3,7 +3,7 @@
 //
 
 #include "ImpresoraDeImagenes.h"
-
+#include <iostream>
 using namespace std;
 
 ImpresoraDeImagenes::ImpresoraDeImagenes(){
@@ -100,7 +100,7 @@ void ImpresoraDeImagenes::dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits*
     Lista<GenSeguimiento*>* listaGenPorTurno =  unSeguimiento->devolverListaAcumulado();
     listaGenPorTurno->iniciarCursor();
     unsigned int posicionX = 1;
-    Colores *** espacio;
+    Colores *** espacio = new Colores**[(unSeguimiento->devolverMayorAcumulado())]();
     for(unsigned int i = 0; i<unSeguimiento->devolverMayorAcumulado(); i++){
         espacio[i] = new Colores*[unSeguimiento->devolverTurnoFin()]();
     }
@@ -117,10 +117,15 @@ void ImpresoraDeImagenes::dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits*
 
 void ImpresoraDeImagenes::recorrerListaGenesSeguimiento(Lista<GenSeguimiento *> *listaGenPorTurno, unsigned int posicionX,
                                                    Colores ***espacio)  {
+	listaGenPorTurno->iniciarCursor();
     while (listaGenPorTurno->avanzarCursor()){
         GenSeguimiento* genporTurno = listaGenPorTurno->obtenerCursor();
         unsigned int posicionY = genporTurno->devolverTurnoCarga();
+        cout << "x: "<<posicionX <<endl;
+        cout << "y: "<< posicionY << endl;
+        cout << genporTurno->devolverTurnoCarga()<<endl;
         espacio[posicionX-1][posicionY-1]->asignarAzul(255);
+        cout <<"cartel "<<endl;
         posicionX++;
     }
 }

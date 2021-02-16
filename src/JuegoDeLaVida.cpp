@@ -152,10 +152,10 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
             reiniciarElJuegoDeLaVida();
             break;
         case 3:
-        	comenzarSeguimiento(seguimiento);
+        	this->consola->mostrarFinDelJuegoDeLaVida();
             break;
         case 4:
-        	this->consola->mostrarFinDelJuegoDeLaVida();
+        	comenzarSeguimiento(seguimiento);
             break;
     }
 }
@@ -168,6 +168,7 @@ void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
         std::string valorIngresado;
         this->consola->mostrarPedidoSeguimientoGen();
         cin >> valorIngresado;
+        std::cout << "llega"<< std::endl;
         if(!informes->estaCongelado()){
             this->seguimiento->modificarInformacionGenetica(valorIngresado);
             this->seguimiento->modificarTurnoInicio(this->informes->obtenerTurnos());

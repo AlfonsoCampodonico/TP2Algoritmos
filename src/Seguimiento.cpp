@@ -65,7 +65,7 @@ unsigned int Seguimiento::devolverTurnoInicio(){
 }
 
 unsigned int Seguimiento::devolverTurnoFin(){
-    return this->turnoDeComienzo;
+    return this->turnoDeFinalizacion;
 }
 
 std::string Seguimiento::devolverCadenaGen(){
