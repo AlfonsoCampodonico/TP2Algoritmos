@@ -129,7 +129,7 @@ unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
     do{
         this->consola->mostrarMenuDeJuegoDeLaVida();
         cin >> valorIngresado;
-        esUnValorValido = !((valorIngresado <= 0) || (valorIngresado > 4));
+        esUnValorValido = !((valorIngresado <= 0) || (valorIngresado > 5));
         if(!esUnValorValido){
             this->consola->mostrarQueNoEsUnNumeroValido();
         }
@@ -155,10 +155,10 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
             reiniciarElJuegoDeLaVida();
             break;
         case 3:
-            this->consola->mostrarFinDelJuegoDeLaVida();
+        	comenzarSeguimiento(seguimiento);
             break;
         case 4:
-            comenzarSeguimiento(seguimiento);
+        	this->consola->mostrarFinDelJuegoDeLaVida();
             break;
     }
 }

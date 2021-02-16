@@ -41,7 +41,8 @@ void InterfazUsuario::mostrarMenuDeJuegoDeLaVida(){
     cout << "Menu Juego de la Vida 1.0 Recargado" << endl;
     cout << "1. Ejecutar un turno" << endl;
     cout << "2. Reiniciar" << endl;
-    cout << "3. Terminar" << endl << endl;
+    cout << "3. Comenzar o terminar seguimiento de un gen" << endl;
+    cout << "4. Terminar" << endl << endl;
 }
 
 void InterfazUsuario::mostrarQueNoEsUnNumeroValido(){
@@ -62,5 +63,5 @@ void InterfazUsuario::mostrarInformeDelJuego(Informes* informes){
 
 void InterfazUsuario::mostrarPedidoSeguimientoGen(){
     cout << endl;
-    cout << "Favor introducir el Gen a realizar el seguimiento" << endl;
+    cout << "Por Favor introducir el Gen a realizar el seguimiento" << endl;
 }
