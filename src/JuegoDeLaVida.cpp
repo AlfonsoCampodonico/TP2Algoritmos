@@ -102,8 +102,6 @@ void JuegoDeLaVida::anadirGen(ifstream& archivo,Celula* celula){
 
     archivo  >> informacionGenetica;
     archivo  >> intensidad;
-    std::cout << informacionGenetica << std::endl;
-    std::cout << intensidad << std::endl;
     celula->setearGen(informacionGenetica, intensidad);
 
 
@@ -117,7 +115,6 @@ void JuegoDeLaVida::comenzarElJuegoDeLaVida(bool &terminaElJuegoDeLaVida){
         unsigned int numeroUsuario = elegirUnaAccionDelMenuDeJuego();
         reiniciarElJuegoDeLaVida = (numeroUsuario == 2);
         terminaElJuegoDeLaVida = (numeroUsuario == 3);
-        seguimiento = (numeroUsuario == 4);
         realizarAccionElegida(numeroUsuario, seguimiento);
     }while((!terminaElJuegoDeLaVida) && (!reiniciarElJuegoDeLaVida));
 }
@@ -138,6 +135,7 @@ unsigned int JuegoDeLaVida::elegirUnaAccionDelMenuDeJuego(){
 }
 
 void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &seguimiento){
+
     switch(numeroElegido){
         case 1:
             if(!this->informes->estaCongelado()){
@@ -145,7 +143,6 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
                 if (seguimiento){
                     this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
                 }
-
             }
             else{
                 this->consola->mostrarCongelado();
@@ -165,17 +162,18 @@ void JuegoDeLaVida::realizarAccionElegida(unsigned int numeroElegido, bool &segu
 
 void JuegoDeLaVida::comenzarSeguimiento(bool &seguimiento) {
 
-    std::string valorIngresado;
-    this->consola->mostrarPedidoSeguimientoGen();
-    cin >> valorIngresado;
+
 
     if (!seguimiento){
+        std::string valorIngresado;
+        this->consola->mostrarPedidoSeguimientoGen();
+        cin >> valorIngresado;
         if(!informes->estaCongelado()){
-
-            ejecutarTurno();
             this->seguimiento->modificarInformacionGenetica(valorIngresado);
             this->seguimiento->modificarTurnoInicio(this->informes->obtenerTurnos());
             this->seguimiento->buscarTablero(this->elTablero,informes->obtenerTurnos());
+            ejecutarTurno();
+
         }
         else{
             consola->mostrarCongelado();

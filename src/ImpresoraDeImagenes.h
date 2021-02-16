@@ -88,5 +88,22 @@ private:
      * POST: Dibuja la intensidad acumulada de un gen como un punto en el mapa cartesiano
      */
     void dibujarUnPuntoMapa(Colores *colorMapa, Bits *imagen, unsigned int pixelX, unsigned int pixelY);
+
+    /* PRE:
+     * POST: Borra el tablero temporal para el mapa cartesiano
+     */
+    void borrarTablero(Seguimiento *unSeguimiento, Colores ***espacio);
+
+    /* PRE:
+     * POST: Dibuja el mapa cartesiano
+     */
+    void dibujarCartesiano(Seguimiento *unSeguimiento, Bits *imagen, Colores ** *espacio);
+
+    /* PRE:
+     * POST: Recorre una lista de Gen PorTurno
+     */
+    void
+    recorrerListaGenesSeguimiento(Lista<GenSeguimiento *> *listaGenPorTurno, unsigned int posicionX,
+                                  Colores ***espacio);
 };
 #endif //TP2ALGORITMOS_IMPRESORADEIMAGENES_H

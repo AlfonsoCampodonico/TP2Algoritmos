@@ -10,7 +10,7 @@ Seguimiento::Seguimiento() {
     this->turnoDeComienzo = 1;
     this->turnoDeFinalizacion = 1;
     this->listadoPorTurno = new Lista<GenSeguimiento*>();
-    this->mayorAcumulado = 0;
+    this->mayorAcumulado = 1;
 
 }
 
