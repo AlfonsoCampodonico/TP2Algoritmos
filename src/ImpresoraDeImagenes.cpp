@@ -96,36 +96,38 @@ void ImpresoraDeImagenes::dibujarMapaCartesiano(Seguimiento* unSeguimiento){
 
 void ImpresoraDeImagenes::dibujarContenidoMapa(Seguimiento* unSeguimiento, Bits* imagen){
 
-
     Lista<GenSeguimiento*>* listaGenPorTurno =  unSeguimiento->devolverListaAcumulado();
-    listaGenPorTurno->iniciarCursor();
-    unsigned int posicionX = 1;
-    Colores *** espacio = new Colores**[(unSeguimiento->devolverMayorAcumulado())]();
-    for(unsigned int i = 0; i<unSeguimiento->devolverMayorAcumulado(); i++){
-        espacio[i] = new Colores*[unSeguimiento->devolverTurnoFin()]();
+    unsigned int posicionX = 1, ejeX = listaGenPorTurno->contarElementos()
+                              , ejeY = unSeguimiento->devolverMayorAcumulado();
+    Colores *** espacio = new Colores**[ejeY]();
+
+    for(unsigned int i = 0; i<ejeY; i++){
+        espacio[i] = new Colores*[ejeX]();
     }
-    for(unsigned int x = 0; x < unSeguimiento->devolverMayorAcumulado(); x++){
-        for(unsigned int j = 0; j<unSeguimiento->devolverTurnoFin(); j++){
+    for(unsigned int x = 0; x < ejeY; x++){
+
+        for(unsigned int j = 0; j<ejeX; j++){
+
             espacio[x][j] = new Colores(0,0,0);
         }
-        recorrerListaGenesSeguimiento(listaGenPorTurno, posicionX, espacio);
-        dibujarCartesiano(unSeguimiento, imagen, espacio);
-        borrarTablero(unSeguimiento, espacio);
 
-
-    }}
+    }
+    recorrerListaGenesSeguimiento(listaGenPorTurno, posicionX, espacio);
+    dibujarCartesiano(unSeguimiento, imagen, espacio);
+    borrarTablero(unSeguimiento, espacio);
+}
 
 void ImpresoraDeImagenes::recorrerListaGenesSeguimiento(Lista<GenSeguimiento *> *listaGenPorTurno, unsigned int posicionX,
                                                    Colores ***espacio)  {
 	listaGenPorTurno->iniciarCursor();
     while (listaGenPorTurno->avanzarCursor()){
         GenSeguimiento* genporTurno = listaGenPorTurno->obtenerCursor();
-        unsigned int posicionY = genporTurno->devolverTurnoCarga();
+        unsigned int posicionY = genporTurno->devolverCargaAcumuladaTurno();
         cout << "x: "<<posicionX <<endl;
         cout << "y: "<< posicionY << endl;
-        cout << genporTurno->devolverTurnoCarga()<<endl;
-        espacio[posicionX-1][posicionY-1]->asignarAzul(255);
-        cout <<"cartel "<<endl;
+        Colores* color = espacio[posicionX-1][posicionY-1];
+        color->asignarAzul(200);
+
         posicionX++;
     }
 }
@@ -137,7 +139,7 @@ void ImpresoraDeImagenes::dibujarCartesiano(Seguimiento *unSeguimiento, Bits *im
             unsigned int desdeY = ((fila-1) * tamanoPunto);
             Colores* colorDeUnaCelula;
             colorDeUnaCelula = espacio[columna-1][columna-1];
-            dibujarUnaCelula(colorDeUnaCelula, imagen, desdeX, desdeY);
+            dibujarUnPuntoMapa(colorDeUnaCelula, imagen, desdeX, desdeY);
         }
     }
 }
