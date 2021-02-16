@@ -8,7 +8,7 @@ using namespace std;
 
 ImpresoraDeImagenes::ImpresoraDeImagenes(){
     this->tamanodeUnaCelula = 30;
-    this->tamanoPunto = 25;
+    this->tamanoPunto = 30;
 }
 
 void ImpresoraDeImagenes::dibujarUnTablero(Tablero* unTablero, unsigned int numeroDeTurno){
